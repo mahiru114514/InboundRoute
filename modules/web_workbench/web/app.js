@@ -36,9 +36,11 @@ async function boot() {
     notify(`无法获取会话令牌：${error.message}`, true);
     return;
   }
-  if (typeof wireCurrency === "function") await wireCurrency();
+  // 底图 CDN、参考汇率和历史恢复可能较慢，不能阻塞引擎就绪状态更新。
+  setInterval(refreshServices, 3000);
   state.currentDayIndex = 1;
   await refreshServices();
+  if (typeof wireCurrency === "function") await wireCurrency();
   // 口岸/住宿清单来自 trip_engine 的 GET /anchors：取不到就禁用下拉并说明原因。
   // 这里刻意没有「写死的内置清单」兜底——创建行程本来就必须能连上 trip_engine。
   try {
@@ -65,7 +67,6 @@ async function boot() {
   const draft = loadDraft();
   if (draft && (draft.trip_id || null) === (state.trip?.trip_id || null)) applyDraft(draft);
   if (typeof renderRecommendations === "function") renderRecommendations();
-  setInterval(refreshServices, 3000);
 }
 
 /** 启动入口。挂到 window 上是为了让自动化测试/页面自检能等到初始化真正结束，

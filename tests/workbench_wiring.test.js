@@ -251,12 +251,14 @@ let createCalls = 0;
 let precheckCalls = 0;
 let PRECHECK_BLOCKS = false;
 let ROUTE_FAILURE = false;
+let serviceSnapshot = {...SERVICES, ready: {...SERVICES.ready, recommendation_engine: false},
+  services: SERVICES.services.map(item => item.module_id === 'recommendation_engine' ? {...item,ready:false} : item)};
 async function fetchStub(url, init) {
   const method = (init && init.method) || "GET";
   const body = init && init.body ? JSON.parse(init.body) : null;
   calls.push({ url, method, body, headers:init?.headers });
   if (url === "/api/session") return ok({ token: "wb-token", base: "http://127.0.0.1:1", map: { ready: false, hint: "" } });
-  if (url === "/api/services") return ok(SERVICES);
+  if (url === "/api/services") return ok(serviceSnapshot);
   if (url === "/api/pois") return ok({ pois: [POI_A, POI_B] });
   if (url === "/api/anchors") return ok(ANCHORS_FIXTURE);
   if (url === "/api/recommendations:generate" && method === "POST") {
@@ -354,6 +356,9 @@ const document = {
   querySelectorAll: (selector) => (selector.includes("interest") ? checkedInterests : []),
 };
 
+const intervals = [];
+let finishMapLoading;
+const mapLoading = new Promise(resolve => { finishMapLoading = resolve; });
 const sandbox = {
   window: {},
   URL, URLSearchParams,
@@ -369,12 +374,17 @@ const sandbox = {
   },
   setTimeout: () => 0,
   clearTimeout: () => {},
-  setInterval: () => 0,
+  setInterval: (callback, milliseconds) => { intervals.push({callback, milliseconds}); return intervals.length; },
+  testMapLoading: mapLoading,
   Number, Math, JSON, Date, String, Object, Array, Boolean, parseInt, parseFloat, isNaN,
   Promise, Set, Map, TextEncoder, Error,
 };
 vm.createContext(sandbox);
 for (const script of scripts) {
+  if (script.url === '/app.js') {
+    // 首次访问时 CDN 底图仍在加载；使用真实初始化，只延迟其完成。
+    vm.runInContext('const originalInitMap = initMap; initMap = async () => { await testMapLoading; return originalInitMap(); };', sandbox);
+  }
   vm.runInContext(fs.readFileSync(script.path, "utf8"), sandbox, { filename: path.basename(script.url) });
 }
 const exported = [
@@ -395,6 +405,20 @@ async function settle(rounds = 30) {
 }
 
 (async () => {
+  console.log('\n首次启动：底图未加载完时，推荐服务后来就绪');
+  await settle();
+  check('首次检查未就绪时推荐按钮禁用', $('generate-recommendations').disabled === true);
+  $('duration-days').value='5';
+  $('hotel').value='hotel_peace';
+  fire($('hotel'),'change');fire($('setup-form'),'change');
+  serviceSnapshot = SERVICES;
+  for (const timer of intervals) await timer.callback();
+  check('底图仍在加载时，推荐服务就绪后无需刷新即可启用', $('generate-recommendations').disabled === false);
+  check('自动恢复推荐不改变住宿与草稿', $('hotel').value === 'hotel_peace' && app.loadDraft().hotel === 'hotel_peace');
+  check('服务自动恢复后推荐日期可选择', $('recommendation-days').children.length === 5
+    && $('recommendation-days').children.every(label => !label.children[0].disabled));
+  sandbox.discardDraft();
+  finishMapLoading();
   console.log("\n2) 刷新页面自动恢复已保存行程");
   await sandbox.window.__workbenchBoot;
   await settle();
@@ -611,6 +635,7 @@ async function settle(rounds = 30) {
   calls.length = 0;
   createCalls = 0;
   app.state.trip = null;
+  app.state.services = SERVICES;
   $("arrival-date").value = "2026-10-12";
   $("arrival-time").value = "23:30";
   $("duration-days").value = "2";
@@ -625,6 +650,8 @@ async function settle(rounds = 30) {
     validateAt >= 0 && createAt > validateAt, calls.map((c) => `${c.method} ${c.url}`));
   check("创建成功后草稿被清掉，下次打开不会冒出过期设定",
     sandbox.localStorage._v["inboundroute.setupDraft"] === undefined, sandbox.localStorage._v);
+  check('创建完成后立即恢复推荐按钮与日期选择', !app.state.busy && !$('generate-recommendations').disabled
+    && $('recommendation-days').children.every(label => !label.children[0].disabled));
 
   // 草稿：刷新或误关页面时，① 里未提交的设定不该丢。
   const draft = {
@@ -779,6 +806,8 @@ async function settle(rounds = 30) {
     Boolean(patchCall) && patchCall.url === "/api/trips/trip_edit1"
       && !calls.some((c) => c.url === "/api/trips" && c.method === "POST"),
     calls.map((c) => `${c.method} ${c.url}`));
+  check('保存设定后立即恢复推荐按钮与日期选择', !$('generate-recommendations').disabled
+    && $('recommendation-days').children.every(label => !label.children[0].disabled));
   check("PATCH 内容包含可编辑的设定字段（天数 / 起始日期 / 离境锚点，保留每日独立时间）",
     Boolean(patchCall) && patchCall.body
       && "duration_days" in patchCall.body && "start_date" in patchCall.body
@@ -921,6 +950,9 @@ async function settle(rounds = 30) {
     && c.body.days[0].ordered_stops[0].locked===true));
   await sandbox.loadSavedTrip('');await settle();
   check('切换到新行程清除推荐理由及旧自定义住宿选择', $('recommendation-results').children.length===0 && app.state.savedHotels.length===0 && app.state.pickedHotel===null);
+  fire($('trip-history'),'change',{target:{value:'trip_saved'}});await settle(80);
+  check('通过历史下拉切换行程后立即恢复推荐', !app.state.busy && !$('generate-recommendations').disabled
+    && $('recommendation-days').children.every(label => !label.children[0].disabled));
   console.log(`\n${checks}/${checks} 通过`);
 })().catch((error) => {
   console.error(error);

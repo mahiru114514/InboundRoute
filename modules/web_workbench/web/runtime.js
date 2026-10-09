@@ -14,7 +14,7 @@
 const WB = { token: "", base: "" };
 const SESSION_PATH = "/api/session";
 /** 构建标记：排查「页面是不是旧文件」时看控制台这一行即可。改代码后请同步 +1 并刷新。 */
-const APP_BUILD = "workbench/2026-10-v19";
+const APP_BUILD = "workbench/2026-10-v20";
 console.info("[workbench] build", APP_BUILD);
 const state = {
   /** @type {PoiSummary[]} */ pois: [],

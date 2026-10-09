@@ -174,6 +174,7 @@ async function saveSettings(payload) {
     notify(error.message, true);
   } finally {
     state.busy = false;
+    if (typeof renderRecommendations === "function") renderRecommendations();
   }
 }
 
@@ -247,6 +248,7 @@ async function createTrip(event) {
     notify(error.message, true);
   } finally {
     state.busy = false;
+    if (typeof renderRecommendations === "function") renderRecommendations();
   }
 }
 

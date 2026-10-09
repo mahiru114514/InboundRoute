@@ -78,7 +78,11 @@ async function flowAction(task) {
   document.body.setAttribute('aria-busy', 'true');
   try { await task(); }
   catch (error) { notify(error.message, true); }
-  finally { state.busy = false; document.body.setAttribute('aria-busy', 'false'); }
+  finally {
+    state.busy = false;
+    document.body.setAttribute('aria-busy', 'false');
+    if (typeof renderRecommendations === 'function') renderRecommendations();
+  }
 }
 
 /* 历史列表以前只能「选」，不能删也不能复制：想去掉一份旧行程只能去翻磁盘文件。 */
