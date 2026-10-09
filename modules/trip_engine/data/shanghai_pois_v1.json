@@ -1,0 +1,2473 @@
+[
+  {
+    "poi_id": "sh_poi_00042",
+    "names": {
+      "zh-Hans": "外滩",
+      "zh-Hant": "外灘",
+      "en": "The Bund",
+      "ja": "外灘（バンド）",
+      "ko": "와이탄"
+    },
+    "romanization": {
+      "pinyin": "wài tān",
+      "pinyin_plain": "wai tan"
+    },
+    "search_aliases": [
+      "The Bund Shanghai",
+      "Waitan",
+      "外滩源"
+    ],
+    "category": {
+      "level1": "modern_skyline",
+      "level2": "riverwalk",
+      "label_en": "Riverwalk",
+      "label_zh": "滨江步道"
+    },
+    "coordinate": {
+      "lat": 31.241125,
+      "lng": 121.484703,
+      "crs": "WGS84",
+      "precision_m": 30
+    },
+    "drop_off_locations": [
+      {
+        "point": {
+          "lat": 31.242925,
+          "lng": 121.482203,
+          "crs": "WGS84",
+          "precision_m": 25
+        },
+        "desc_zh": "北京东路圆明园路口",
+        "desc_en": "Intersection of Beijing East Rd & Yuanmingyuan Rd",
+        "source": "curated",
+        "priority": 1,
+        "verified_at": 1791763200,
+        "note_zh": "避开中山东一路全线禁停违章区",
+        "note_en": "Avoids the no-stopping zone along Zhongshan East 1st Rd"
+      }
+    ],
+    "operating_rules": {
+      "opening_hours": [
+        {
+          "weekdays": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "open": "00:00",
+          "close": "23:59",
+          "close_next_day": false
+        }
+      ],
+      "last_entry_time": null,
+      "closure_data_status": "verified",
+      "closure_rules": [],
+      "is_enclosed_attraction": false,
+      "reservation_required": false,
+      "advance_booking_days": null,
+      "light_up": {
+        "required": true,
+        "T_light_rule": "window_start_minus_30",
+        "windows": [
+          {
+            "date_from": "05-01",
+            "date_to": "09-30",
+            "label_zh": "夏季",
+            "label_en": "Summer",
+            "start": "19:00",
+            "close": "23:00"
+          },
+          {
+            "date_from": "10-01",
+            "date_to": "04-30",
+            "label_zh": "冬季",
+            "label_en": "Winter",
+            "start": "18:00",
+            "close": "22:00"
+          }
+        ]
+      },
+      "dwell_time": {
+        "kind": "range",
+        "minutes_min": 90,
+        "minutes_max": 120
+      }
+    },
+    "provider_refs": {
+      "amap": "B000A7BD6C",
+      "tencent": "1010201000000000"
+    },
+    "provenance": {
+      "source": "manual",
+      "updated_at": 1791763200,
+      "reviewed_by": "data-ops",
+      "confidence": 0.95
+    },
+    "tags": [
+      "夜景",
+      "免费",
+      "步行街"
+    ],
+    "description_zh": "黄浦江畔的经典滨江步行区域，可欣赏外滩历史建筑与对岸陆家嘴天际线。适合沿江散步、拍照和感受上海的城市景观。"
+  },
+  {
+    "poi_id": "sh_poi_00088",
+    "names": {
+      "zh-Hans": "上海博物馆",
+      "zh-Hant": "上海博物館",
+      "en": "Shanghai Museum",
+      "ja": "上海博物館",
+      "ko": "상하이 박물관"
+    },
+    "romanization": {
+      "pinyin": "shàng hǎi bó wù guǎn",
+      "pinyin_plain": "shanghai bowuguan"
+    },
+    "search_aliases": [
+      "Shanghai Museum",
+      "上博"
+    ],
+    "category": {
+      "level1": "history_culture",
+      "level2": "museum",
+      "label_en": "Museum",
+      "label_zh": "博物馆"
+    },
+    "coordinate": {
+      "lat": 31.230025,
+      "lng": 121.469804,
+      "crs": "WGS84",
+      "precision_m": 25
+    },
+    "drop_off_locations": [
+      {
+        "point": {
+          "lat": 31.230925,
+          "lng": 121.468904,
+          "crs": "WGS84",
+          "precision_m": 20
+        },
+        "desc_zh": "人民大道 201 号正门落客区",
+        "desc_en": "Drop-off at 201 Renmin Ave main gate",
+        "source": "curated",
+        "priority": 1,
+        "verified_at": 1791763200
+      }
+    ],
+    "operating_rules": {
+      "opening_hours": [
+        {
+          "weekdays": [
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "open": "09:00",
+          "close": "17:00",
+          "close_next_day": false
+        }
+      ],
+      "last_entry_time": "15:00",
+      "closure_data_status": "verified",
+      "closure_rules": [
+        {
+          "kind": "weekly",
+          "weekday": 1,
+          "note_zh": "周一闭馆（法定节假日除外）"
+        },
+        {
+          "kind": "holiday_exception_open",
+          "date_from": "2026-10-01",
+          "date_to": "2026-10-07",
+          "note_zh": "国庆假期照常开放"
+        }
+      ],
+      "is_enclosed_attraction": true,
+      "reservation_required": true,
+      "advance_booking_days": null,
+      "light_up": null,
+      "dwell_time": {
+        "kind": "range",
+        "minutes_min": 120,
+        "minutes_max": 180
+      }
+    },
+    "provider_refs": {
+      "amap": "B000A7C4D1"
+    },
+    "provenance": {
+      "source": "manual",
+      "updated_at": 1790956800,
+      "reviewed_by": "official-page-review-2026-10-03",
+      "confidence": 0.9
+    },
+    "tags": [
+      "购票预约",
+      "周一闭馆（国定假日除外）",
+      "人民广场馆特展",
+      "日场15:00停止入场，夜场以公告为准"
+    ],
+    "description_zh": "人民广场旁的博物馆馆址，建筑体现“天圆地方”的意象。以馆内展览为主要参观内容，适合将观展与市中心漫步结合，具体展览以公告为准。"
+  },
+  {
+    "poi_id": "sh_poi_00107",
+    "names": {
+      "zh-Hans": "豫园",
+      "zh-Hant": "豫園",
+      "en": "Yu Garden",
+      "ja": "豫園",
+      "ko": "위위안"
+    },
+    "romanization": {
+      "pinyin": "yù yuán",
+      "pinyin_plain": "yu yuan"
+    },
+    "search_aliases": [
+      "Yu Garden",
+      "城隍庙"
+    ],
+    "category": {
+      "level1": "history_culture",
+      "level2": "classical_garden",
+      "label_en": "Classical Garden",
+      "label_zh": "古典园林"
+    },
+    "coordinate": {
+      "lat": 31.228626,
+      "lng": 121.486804,
+      "crs": "WGS84",
+      "precision_m": 25
+    },
+    "drop_off_locations": [
+      {
+        "point": {
+          "lat": 31.229526,
+          "lng": 121.487604,
+          "crs": "WGS84",
+          "precision_m": 20
+        },
+        "desc_zh": "福佑路豫园商城落客点",
+        "desc_en": "Drop-off at Fuyou Rd, Yuyuan Bazaar",
+        "source": "curated",
+        "priority": 1,
+        "verified_at": 1791763200
+      }
+    ],
+    "operating_rules": {
+      "opening_hours": [
+        {
+          "weekdays": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "open": "08:45",
+          "close": "16:45",
+          "close_next_day": false
+        }
+      ],
+      "last_entry_time": "16:15",
+      "closure_data_status": "unverified",
+      "closure_rules": [],
+      "is_enclosed_attraction": true,
+      "reservation_required": false,
+      "advance_booking_days": null,
+      "light_up": {
+        "required": true,
+        "T_light_rule": "window_start",
+        "windows": [
+          {
+            "date_from": "05-01",
+            "date_to": "09-30",
+            "label_zh": "夏季",
+            "label_en": "Summer",
+            "start": "18:30",
+            "close": "22:00"
+          },
+          {
+            "date_from": "10-01",
+            "date_to": "04-30",
+            "label_zh": "冬季",
+            "label_en": "Winter",
+            "start": "17:30",
+            "close": "21:30"
+          }
+        ]
+      },
+      "dwell_time": {
+        "kind": "point",
+        "minutes": 90
+      }
+    },
+    "provider_refs": {
+      "amap": "B000A7C9F3"
+    },
+    "provenance": {
+      "source": "manual",
+      "updated_at": 1791763200,
+      "reviewed_by": "data-ops",
+      "confidence": 0.7
+    },
+    "tags": [
+      "园林",
+      "闭馆信息待复核"
+    ],
+    "description_zh": "上海老城厢的江南古典园林，以亭台、假山、池水和庭院为主要看点。适合喜欢传统园林与建筑细节的用户，可慢慢步行观赏。"
+  },
+  {
+    "poi_id": "sh_poi_00119",
+    "names": {
+      "zh-Hans": "朱家角古镇",
+      "zh-Hant": "朱家角古鎮",
+      "en": "Zhujiajiao Ancient Town",
+      "ja": "朱家角古鎮",
+      "ko": "주자자오 고진"
+    },
+    "romanization": {
+      "pinyin": "zhū jiā jiǎo gǔ zhèn",
+      "pinyin_plain": "zhujiajiao guzhen"
+    },
+    "search_aliases": [
+      "Zhujiajiao",
+      "朱家角",
+      "角里"
+    ],
+    "category": {
+      "level1": "history_culture",
+      "level2": "historic_street",
+      "label_en": "Historic Water Town",
+      "label_zh": "水乡古镇"
+    },
+    "coordinate": {
+      "lat": 31.112361,
+      "lng": 121.04783,
+      "crs": "WGS84",
+      "precision_m": 40
+    },
+    "drop_off_locations": [
+      {
+        "point": {
+          "lat": 31.114061,
+          "lng": 121.05063,
+          "crs": "WGS84",
+          "precision_m": 30
+        },
+        "desc_zh": "课植园路景区停车场落客区",
+        "desc_en": "Drop-off at Kezhiyuan Rd scenic parking",
+        "source": "curated",
+        "priority": 1,
+        "verified_at": 1791763200,
+        "note_zh": "古镇内禁止机动车通行，需在景区入口落客",
+        "note_en": "No motor vehicles inside the old town; drop off at the entrance"
+      }
+    ],
+    "operating_rules": {
+      "opening_hours": [
+        {
+          "weekdays": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "open": "08:30",
+          "close": "16:30",
+          "close_next_day": false
+        },
+        {
+          "date_from": "05-01",
+          "date_to": "09-30",
+          "open": "08:00",
+          "close": "17:00",
+          "close_next_day": false
+        }
+      ],
+      "last_entry_time": "16:00",
+      "closure_data_status": "verified",
+      "closure_rules": [],
+      "is_enclosed_attraction": false,
+      "reservation_required": false,
+      "advance_booking_days": null,
+      "light_up": {
+        "required": true,
+        "T_light_rule": "window_start_minus_30",
+        "windows": [
+          {
+            "date_from": "05-01",
+            "date_to": "09-30",
+            "label_zh": "夏季",
+            "label_en": "Summer",
+            "start": "18:30",
+            "close": "21:30"
+          },
+          {
+            "date_from": "10-01",
+            "date_to": "04-30",
+            "label_zh": "冬季",
+            "label_en": "Winter",
+            "start": "17:30",
+            "close": "20:30"
+          }
+        ]
+      },
+      "dwell_time": {
+        "kind": "range",
+        "minutes_min": 180,
+        "minutes_max": 300
+      }
+    },
+    "provider_refs": {
+      "amap": "B000A83M61"
+    },
+    "provenance": {
+      "source": "manual",
+      "updated_at": 1791763200,
+      "reviewed_by": "data-ops",
+      "confidence": 0.85
+    },
+    "tags": [
+      "远郊",
+      "水乡",
+      "夜景"
+    ],
+    "description_zh": "青浦的江南水乡古镇，老街、河道与古桥构成主要游览体验。适合沿水漫步、欣赏古镇建筑；喜欢水乡风貌的用户可留出较宽松的时间。"
+  },
+  {
+    "poi_id": "sh_poi_00120",
+    "names": {
+      "zh-Hans": "东方明珠",
+      "zh-Hant": "東方明珠",
+      "en": "Oriental Pearl Tower",
+      "ja": "東方明珠タワー",
+      "ko": "동방명주"
+    },
+    "romanization": {
+      "pinyin": "dōng fāng míng zhū",
+      "pinyin_plain": "dongfang mingzhu"
+    },
+    "search_aliases": [
+      "Oriental Pearl",
+      "东方明珠广播电视塔",
+      "明珠塔"
+    ],
+    "category": {
+      "level1": "modern_skyline",
+      "level2": "observation_deck",
+      "label_en": "Observation Deck",
+      "label_zh": "观景台"
+    },
+    "coordinate": {
+      "lat": 31.241714,
+      "lng": 121.495367,
+      "crs": "WGS84",
+      "precision_m": 25
+    },
+    "drop_off_locations": [
+      {
+        "point": {
+          "lat": 31.242714,
+          "lng": 121.493367,
+          "crs": "WGS84",
+          "precision_m": 25
+        },
+        "desc_zh": "陆家嘴环路丰和路口落客区",
+        "desc_en": "Drop-off at Lujiazui Ring Rd & Fenghe Rd",
+        "source": "curated",
+        "priority": 1,
+        "verified_at": 1791763200
+      }
+    ],
+    "operating_rules": {
+      "opening_hours": [
+        {
+          "weekdays": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "open": "08:30",
+          "close": "21:30",
+          "close_next_day": false
+        }
+      ],
+      "last_entry_time": "21:00",
+      "closure_data_status": "unverified",
+      "closure_rules": [],
+      "is_enclosed_attraction": true,
+      "reservation_required": false,
+      "advance_booking_days": null,
+      "light_up": {
+        "required": true,
+        "T_light_rule": "window_start",
+        "windows": [
+          {
+            "date_from": "05-01",
+            "date_to": "09-30",
+            "label_zh": "夏季",
+            "label_en": "Summer",
+            "start": "19:00",
+            "close": "22:00"
+          },
+          {
+            "date_from": "10-01",
+            "date_to": "04-30",
+            "label_zh": "冬季",
+            "label_en": "Winter",
+            "start": "18:00",
+            "close": "21:30"
+          }
+        ]
+      },
+      "dwell_time": {
+        "kind": "range",
+        "minutes_min": 90,
+        "minutes_max": 120
+      }
+    },
+    "provider_refs": {
+      "amap": "B000A7B1M1"
+    },
+    "provenance": {
+      "source": "manual",
+      "updated_at": 1791763200,
+      "reviewed_by": "data-ops",
+      "confidence": 0.85
+    },
+    "tags": [
+      "地标",
+      "观景台",
+      "夜景",
+      "开放时间待复核"
+    ],
+    "description_zh": "陆家嘴黄浦江边的标志性电视塔，以城市观光为主要体验。适合想从不同视角欣赏外滩与浦东景观的用户，也可结合周边滨江散步。"
+  },
+  {
+    "poi_id": "sh_poi_00121",
+    "names": {
+      "zh-Hans": "上海中心大厦",
+      "zh-Hant": "上海中心大廈",
+      "en": "Shanghai Tower",
+      "ja": "上海センター",
+      "ko": "상하이 타워"
+    },
+    "romanization": {
+      "pinyin": "shàng hǎi zhōng xīn dà shà",
+      "pinyin_plain": "shanghai zhongxin dasha"
+    },
+    "search_aliases": [
+      "Shanghai Tower",
+      "上海中心",
+      "Shanghai Tower Observation Deck"
+    ],
+    "category": {
+      "level1": "modern_skyline",
+      "level2": "observation_deck",
+      "label_en": "Observation Deck",
+      "label_zh": "观景台"
+    },
+    "coordinate": {
+      "lat": 31.237334,
+      "lng": 121.501289,
+      "crs": "WGS84",
+      "precision_m": 25
+    },
+    "drop_off_locations": [
+      {
+        "point": {
+          "lat": 31.235734,
+          "lng": 121.499489,
+          "crs": "WGS84",
+          "precision_m": 25
+        },
+        "desc_zh": "银城中路花园石桥路口落客区",
+        "desc_en": "Drop-off at Yincheng Middle Rd & Huayuanshiqiao Rd",
+        "source": "curated",
+        "priority": 1,
+        "verified_at": 1791763200
+      }
+    ],
+    "operating_rules": {
+      "opening_hours": [
+        {
+          "weekdays": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "open": "08:30",
+          "close": "22:00",
+          "close_next_day": false
+        }
+      ],
+      "last_entry_time": null,
+      "closure_data_status": "unverified",
+      "closure_rules": [],
+      "is_enclosed_attraction": true,
+      "reservation_required": false,
+      "advance_booking_days": null,
+      "light_up": {
+        "required": true,
+        "T_light_rule": "window_start",
+        "windows": [
+          {
+            "date_from": "05-01",
+            "date_to": "09-30",
+            "label_zh": "夏季",
+            "label_en": "Summer",
+            "start": "19:00",
+            "close": "22:00"
+          },
+          {
+            "date_from": "10-01",
+            "date_to": "04-30",
+            "label_zh": "冬季",
+            "label_en": "Winter",
+            "start": "18:00",
+            "close": "21:30"
+          }
+        ]
+      },
+      "dwell_time": {
+        "kind": "range",
+        "minutes_min": 60,
+        "minutes_max": 120
+      }
+    },
+    "provider_refs": {
+      "amap": "B000A8T3K1"
+    },
+    "provenance": {
+      "source": "manual",
+      "updated_at": 1791763200,
+      "reviewed_by": "data-ops",
+      "confidence": 0.8
+    },
+    "tags": [
+      "地标",
+      "观景台",
+      "夜景",
+      "开放时间待复核"
+    ],
+    "description_zh": "陆家嘴的超高层城市地标，观光区以高处俯瞰城市为特色。适合喜欢天际线和高空视野的用户，与其他观景点内容相近时可按偏好取舍。"
+  },
+  {
+    "poi_id": "sh_poi_00122",
+    "names": {
+      "zh-Hans": "金茂大厦",
+      "zh-Hant": "金茂大廈",
+      "en": "Jin Mao Tower",
+      "ja": "ジンマオタワー",
+      "ko": "진마오 타워"
+    },
+    "romanization": {
+      "pinyin": "jīn mào dà shà",
+      "pinyin_plain": "jinmao dasha"
+    },
+    "search_aliases": [
+      "Jin Mao Tower",
+      "金茂大厦88层观光厅"
+    ],
+    "category": {
+      "level1": "modern_skyline",
+      "level2": "skyscraper",
+      "label_en": "Skyscraper",
+      "label_zh": "摩天楼"
+    },
+    "coordinate": {
+      "lat": 31.238628,
+      "lng": 121.499583,
+      "crs": "WGS84",
+      "precision_m": 25
+    },
+    "drop_off_locations": [
+      {
+        "point": {
+          "lat": 31.240428,
+          "lng": 121.501183,
+          "crs": "WGS84",
+          "precision_m": 25
+        },
+        "desc_zh": "世纪大道陆家嘴环路口落客区",
+        "desc_en": "Drop-off at Century Ave & Lujiazui Ring Rd",
+        "source": "curated",
+        "priority": 1,
+        "verified_at": 1791763200
+      }
+    ],
+    "operating_rules": {
+      "opening_hours": [
+        {
+          "weekdays": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "open": "08:30",
+          "close": "21:30",
+          "close_next_day": false
+        }
+      ],
+      "last_entry_time": null,
+      "closure_data_status": "unverified",
+      "closure_rules": [],
+      "is_enclosed_attraction": true,
+      "reservation_required": false,
+      "advance_booking_days": null,
+      "light_up": {
+        "required": true,
+        "T_light_rule": "window_start",
+        "windows": [
+          {
+            "date_from": "05-01",
+            "date_to": "09-30",
+            "label_zh": "夏季",
+            "label_en": "Summer",
+            "start": "19:00",
+            "close": "22:00"
+          },
+          {
+            "date_from": "10-01",
+            "date_to": "04-30",
+            "label_zh": "冬季",
+            "label_en": "Winter",
+            "start": "18:00",
+            "close": "21:30"
+          }
+        ]
+      },
+      "dwell_time": {
+        "kind": "range",
+        "minutes_min": 45,
+        "minutes_max": 75
+      }
+    },
+    "provider_refs": {
+      "amap": "B000A7B2C3"
+    },
+    "provenance": {
+      "source": "manual",
+      "updated_at": 1791763200,
+      "reviewed_by": "data-ops",
+      "confidence": 0.75
+    },
+    "tags": [
+      "地标",
+      "摩天楼",
+      "夜景",
+      "开放时间待复核"
+    ],
+    "description_zh": "陆家嘴的代表性摩天楼，观光体验侧重从高处欣赏黄浦江和周边建筑。适合喜欢高空城市景观的用户，可与滨江步行组合安排。"
+  },
+  {
+    "poi_id": "sh_poi_00123",
+    "names": {
+      "zh-Hans": "上海环球金融中心",
+      "zh-Hant": "上海環球金融中心",
+      "en": "Shanghai World Financial Center",
+      "ja": "上海環球金融センター",
+      "ko": "상하이 세계금융센터"
+    },
+    "romanization": {
+      "pinyin": "shàng hǎi huán qiú jīn róng zhōng xīn",
+      "pinyin_plain": "shanghai huanqiu jinrong zhongxin"
+    },
+    "search_aliases": [
+      "SWFC",
+      "Shanghai World Financial Center",
+      "环球金融中心",
+      "开瓶器"
+    ],
+    "category": {
+      "level1": "modern_skyline",
+      "level2": "skyscraper",
+      "label_en": "Skyscraper",
+      "label_zh": "摩天楼"
+    },
+    "coordinate": {
+      "lat": 31.236738,
+      "lng": 121.502594,
+      "crs": "WGS84",
+      "precision_m": 25
+    },
+    "drop_off_locations": [
+      {
+        "point": {
+          "lat": 31.235738,
+          "lng": 121.503994,
+          "crs": "WGS84",
+          "precision_m": 25
+        },
+        "desc_zh": "东泰路世纪大道口落客区",
+        "desc_en": "Drop-off at Dongtai Rd & Century Ave",
+        "source": "curated",
+        "priority": 1,
+        "verified_at": 1791763200
+      }
+    ],
+    "operating_rules": {
+      "opening_hours": [
+        {
+          "weekdays": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "open": "09:00",
+          "close": "22:00",
+          "close_next_day": false
+        }
+      ],
+      "last_entry_time": null,
+      "closure_data_status": "unverified",
+      "closure_rules": [],
+      "is_enclosed_attraction": true,
+      "reservation_required": false,
+      "advance_booking_days": null,
+      "light_up": {
+        "required": true,
+        "T_light_rule": "window_start",
+        "windows": [
+          {
+            "date_from": "05-01",
+            "date_to": "09-30",
+            "label_zh": "夏季",
+            "label_en": "Summer",
+            "start": "19:00",
+            "close": "22:00"
+          },
+          {
+            "date_from": "10-01",
+            "date_to": "04-30",
+            "label_zh": "冬季",
+            "label_en": "Winter",
+            "start": "18:00",
+            "close": "21:30"
+          }
+        ]
+      },
+      "dwell_time": {
+        "kind": "range",
+        "minutes_min": 45,
+        "minutes_max": 90
+      }
+    },
+    "provider_refs": {
+      "amap": "B000A7B3D4"
+    },
+    "provenance": {
+      "source": "manual",
+      "updated_at": 1791763200,
+      "reviewed_by": "data-ops",
+      "confidence": 0.75
+    },
+    "tags": [
+      "地标",
+      "摩天楼",
+      "夜景",
+      "开放时间待复核"
+    ],
+    "description_zh": "陆家嘴的代表性摩天楼，与上海中心、金茂大厦共同构成城市天际线。适合欣赏现代建筑及拍照；计划进入观光区域时需另查开放情况。"
+  },
+  {
+    "poi_id": "sh_poi_00124",
+    "names": {
+      "zh-Hans": "龙华寺",
+      "zh-Hant": "龍華寺",
+      "en": "Longhua Temple",
+      "ja": "龍華寺",
+      "ko": "룽화사"
+    },
+    "romanization": {
+      "pinyin": "lóng huá sì",
+      "pinyin_plain": "longhua si"
+    },
+    "search_aliases": [
+      "Longhua Temple",
+      "龙华古寺",
+      "龙华塔"
+    ],
+    "category": {
+      "level1": "history_culture",
+      "level2": "temple",
+      "label_en": "Temple",
+      "label_zh": "寺庙"
+    },
+    "coordinate": {
+      "lat": 31.182014,
+      "lng": 121.447518,
+      "crs": "WGS84",
+      "precision_m": 25
+    },
+    "drop_off_locations": [
+      {
+        "point": {
+          "lat": 31.183214,
+          "lng": 121.449518,
+          "crs": "WGS84",
+          "precision_m": 25
+        },
+        "desc_zh": "龙华路龙华西路口落客区",
+        "desc_en": "Drop-off at Longhua Rd & Longhua West Rd",
+        "source": "curated",
+        "priority": 1,
+        "verified_at": 1791763200
+      }
+    ],
+    "operating_rules": {
+      "opening_hours": [
+        {
+          "weekdays": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "open": "07:00",
+          "close": "16:30",
+          "close_next_day": false
+        }
+      ],
+      "last_entry_time": null,
+      "closure_data_status": "unverified",
+      "closure_rules": [],
+      "is_enclosed_attraction": true,
+      "reservation_required": false,
+      "advance_booking_days": null,
+      "light_up": null,
+      "dwell_time": {
+        "kind": "range",
+        "minutes_min": 45,
+        "minutes_max": 90
+      }
+    },
+    "provider_refs": {
+      "amap": "B000A80F11"
+    },
+    "provenance": {
+      "source": "manual",
+      "updated_at": 1791763200,
+      "reviewed_by": "data-ops",
+      "confidence": 0.75
+    },
+    "tags": [
+      "古寺",
+      "香火",
+      "开放时间待复核"
+    ],
+    "description_zh": "徐汇的历史佛教寺院，以寺庙建筑群和宗教文化为主要看点。适合关注传统建筑与上海历史的用户，参观时可放慢节奏，尊重宗教场所礼仪。"
+  },
+  {
+    "poi_id": "sh_poi_00125",
+    "names": {
+      "zh-Hans": "静安寺",
+      "zh-Hant": "靜安寺",
+      "en": "Jing'an Temple",
+      "ja": "静安寺",
+      "ko": "정안사"
+    },
+    "romanization": {
+      "pinyin": "jìng ān sì",
+      "pinyin_plain": "jingan si"
+    },
+    "search_aliases": [
+      "Jing'an Temple",
+      "Jingan Temple",
+      "静安古寺"
+    ],
+    "category": {
+      "level1": "history_culture",
+      "level2": "temple",
+      "label_en": "Temple",
+      "label_zh": "寺庙"
+    },
+    "coordinate": {
+      "lat": 31.225579,
+      "lng": 121.440598,
+      "crs": "WGS84",
+      "precision_m": 25
+    },
+    "drop_off_locations": [
+      {
+        "point": {
+          "lat": 31.227079,
+          "lng": 121.438798,
+          "crs": "WGS84",
+          "precision_m": 25
+        },
+        "desc_zh": "愚园路华山路落客区",
+        "desc_en": "Drop-off at Yuyuan Rd & Huashan Rd",
+        "source": "curated",
+        "priority": 1,
+        "verified_at": 1791763200
+      }
+    ],
+    "operating_rules": {
+      "opening_hours": [
+        {
+          "weekdays": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "open": "07:30",
+          "close": "17:00",
+          "close_next_day": false
+        }
+      ],
+      "last_entry_time": null,
+      "closure_data_status": "unverified",
+      "closure_rules": [],
+      "is_enclosed_attraction": true,
+      "reservation_required": false,
+      "advance_booking_days": null,
+      "light_up": null,
+      "dwell_time": {
+        "kind": "range",
+        "minutes_min": 30,
+        "minutes_max": 60
+      }
+    },
+    "provider_refs": {
+      "amap": "B000A80F22"
+    },
+    "provenance": {
+      "source": "manual",
+      "updated_at": 1791763200,
+      "reviewed_by": "data-ops",
+      "confidence": 0.75
+    },
+    "tags": [
+      "古寺",
+      "市中心",
+      "开放时间待复核"
+    ],
+    "description_zh": "位于上海市中心的历史寺院，可将寺庙建筑参观与周边街区漫步结合。适合对宗教文化或城市中的传统建筑感兴趣的用户。"
+  },
+  {
+    "poi_id": "sh_poi_00126",
+    "names": {
+      "zh-Hans": "武康路历史文化名街",
+      "zh-Hant": "武康路歷史文化名街",
+      "en": "Wukang Road Historic Street",
+      "ja": "武康路歴史文化ストリート",
+      "ko": "우캉루 역사문화 거리"
+    },
+    "romanization": {
+      "pinyin": "wǔ kāng lù lì shǐ wén huà míng jiē",
+      "pinyin_plain": "wukang lu lishi wenhua mingjie"
+    },
+    "search_aliases": [
+      "Wukang Road",
+      "武康路",
+      "武康大楼",
+      "Wukang Mansion"
+    ],
+    "category": {
+      "level1": "history_culture",
+      "level2": "historic_street",
+      "label_en": "Historic Street",
+      "label_zh": "历史街区"
+    },
+    "coordinate": {
+      "lat": 31.210275,
+      "lng": 121.433986,
+      "crs": "WGS84",
+      "precision_m": 30
+    },
+    "drop_off_locations": [
+      {
+        "point": {
+          "lat": 31.211075,
+          "lng": 121.435786,
+          "crs": "WGS84",
+          "precision_m": 25
+        },
+        "desc_zh": "淮海中路武康路口落客区",
+        "desc_en": "Drop-off at Huaihai Middle Rd & Wukang Rd",
+        "source": "curated",
+        "priority": 1,
+        "verified_at": 1791763200
+      }
+    ],
+    "operating_rules": {
+      "opening_hours": [
+        {
+          "weekdays": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "open": "00:00",
+          "close": "23:59",
+          "close_next_day": false
+        }
+      ],
+      "last_entry_time": null,
+      "closure_data_status": "verified",
+      "closure_rules": [],
+      "is_enclosed_attraction": false,
+      "reservation_required": false,
+      "advance_booking_days": null,
+      "light_up": null,
+      "dwell_time": {
+        "kind": "range",
+        "minutes_min": 60,
+        "minutes_max": 120
+      }
+    },
+    "provider_refs": {
+      "amap": "B000A85K77"
+    },
+    "provenance": {
+      "source": "manual",
+      "updated_at": 1791763200,
+      "reviewed_by": "data-ops",
+      "confidence": 0.8
+    },
+    "tags": [
+      "梧桐区",
+      "免费",
+      "citywalk"
+    ],
+    "description_zh": "衡复历史文化风貌区内的街道，沿途可欣赏历史建筑和街区生活。适合步行、拍照及观察建筑细节，喜欢城市漫游的用户可考虑保留。"
+  },
+  {
+    "poi_id": "sh_poi_00127",
+    "names": {
+      "zh-Hans": "田子坊",
+      "zh-Hant": "田子坊",
+      "en": "Tianzifang",
+      "ja": "田子坊",
+      "ko": "톈쯔팡"
+    },
+    "romanization": {
+      "pinyin": "tián zǐ fāng",
+      "pinyin_plain": "tianzifang"
+    },
+    "search_aliases": [
+      "Tianzifang",
+      "泰康路",
+      "Taikang Road"
+    ],
+    "category": {
+      "level1": "local_life",
+      "level2": "food_street",
+      "label_en": "Food Street",
+      "label_zh": "美食街"
+    },
+    "coordinate": {
+      "lat": 31.212037,
+      "lng": 121.463561,
+      "crs": "WGS84",
+      "precision_m": 25
+    },
+    "drop_off_locations": [
+      {
+        "point": {
+          "lat": 31.213637,
+          "lng": 121.461961,
+          "crs": "WGS84",
+          "precision_m": 25
+        },
+        "desc_zh": "瑞金二路泰康路口落客区",
+        "desc_en": "Drop-off at Ruijin 2nd Rd & Taikang Rd",
+        "source": "curated",
+        "priority": 1,
+        "verified_at": 1791763200
+      }
+    ],
+    "operating_rules": {
+      "opening_hours": [
+        {
+          "weekdays": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "open": "09:00",
+          "close": "22:00",
+          "close_next_day": false
+        }
+      ],
+      "last_entry_time": null,
+      "closure_data_status": "unverified",
+      "closure_rules": [],
+      "is_enclosed_attraction": false,
+      "reservation_required": false,
+      "advance_booking_days": null,
+      "light_up": null,
+      "dwell_time": {
+        "kind": "range",
+        "minutes_min": 60,
+        "minutes_max": 120
+      }
+    },
+    "provider_refs": {
+      "amap": "B000A84T99"
+    },
+    "provenance": {
+      "source": "manual",
+      "updated_at": 1791763200,
+      "reviewed_by": "data-ops",
+      "confidence": 0.75
+    },
+    "tags": [
+      "弄堂",
+      "小店",
+      "开放时间待复核"
+    ],
+    "description_zh": "由上海弄堂与特色商业结合形成的街区，石库门建筑和文化小店是主要看点。适合喜欢逛巷子、看创意店铺的用户，游览以步行为主。"
+  },
+  {
+    "poi_id": "sh_poi_00128",
+    "names": {
+      "zh-Hans": "新天地",
+      "zh-Hant": "新天地",
+      "en": "Xintiandi",
+      "ja": "新天地",
+      "ko": "신톈디"
+    },
+    "romanization": {
+      "pinyin": "xīn tiān dì",
+      "pinyin_plain": "xin tiandi"
+    },
+    "search_aliases": [
+      "Xintiandi",
+      "上海新天地",
+      "Shikumen Xintiandi"
+    ],
+    "category": {
+      "level1": "local_life",
+      "level2": "old_town",
+      "label_en": "Old Town",
+      "label_zh": "老城厢"
+    },
+    "coordinate": {
+      "lat": 31.222348,
+      "lng": 121.469579,
+      "crs": "WGS84",
+      "precision_m": 25
+    },
+    "drop_off_locations": [
+      {
+        "point": {
+          "lat": 31.220548,
+          "lng": 121.471179,
+          "crs": "WGS84",
+          "precision_m": 25
+        },
+        "desc_zh": "马当路兴业路口落客区",
+        "desc_en": "Drop-off at Madang Rd & Xingye Rd",
+        "source": "curated",
+        "priority": 1,
+        "verified_at": 1791763200
+      }
+    ],
+    "operating_rules": {
+      "opening_hours": [
+        {
+          "weekdays": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "open": "00:00",
+          "close": "23:59",
+          "close_next_day": false
+        }
+      ],
+      "last_entry_time": null,
+      "closure_data_status": "unverified",
+      "closure_rules": [],
+      "is_enclosed_attraction": false,
+      "reservation_required": false,
+      "advance_booking_days": null,
+      "light_up": {
+        "required": true,
+        "T_light_rule": "window_start",
+        "windows": [
+          {
+            "date_from": "05-01",
+            "date_to": "09-30",
+            "label_zh": "夏季",
+            "label_en": "Summer",
+            "start": "19:00",
+            "close": "22:30"
+          },
+          {
+            "date_from": "10-01",
+            "date_to": "04-30",
+            "label_zh": "冬季",
+            "label_en": "Winter",
+            "start": "18:00",
+            "close": "22:00"
+          }
+        ]
+      },
+      "dwell_time": {
+        "kind": "range",
+        "minutes_min": 90,
+        "minutes_max": 150
+      }
+    },
+    "provider_refs": {
+      "amap": "B000A84T88"
+    },
+    "provenance": {
+      "source": "manual",
+      "updated_at": 1791763200,
+      "reviewed_by": "data-ops",
+      "confidence": 0.75
+    },
+    "tags": [
+      "石库门",
+      "餐饮",
+      "夜景",
+      "开放时间待复核"
+    ],
+    "description_zh": "以石库门建筑改造形成的休闲步行街，融合餐饮、商业与文化空间。适合欣赏街区建筑、逛店或安排餐饮休息，偏重都市休闲体验。"
+  },
+  {
+    "poi_id": "sh_poi_00129",
+    "names": {
+      "zh-Hans": "乌中市集",
+      "zh-Hant": "烏中市集",
+      "en": "Wuzhong Market",
+      "ja": "烏中市集",
+      "ko": "우중 시장"
+    },
+    "romanization": {
+      "pinyin": "wū zhōng shì jí",
+      "pinyin_plain": "wuzhong shiji"
+    },
+    "search_aliases": [
+      "Wuzhong Market",
+      "乌中路菜场",
+      "Wuzhong Fresh Market"
+    ],
+    "category": {
+      "level1": "local_life",
+      "level2": "wet_market",
+      "label_en": "Wet Market",
+      "label_zh": "菜市场"
+    },
+    "coordinate": {
+      "lat": 31.214895,
+      "lng": 121.446413,
+      "crs": "WGS84",
+      "precision_m": 25
+    },
+    "drop_off_locations": [
+      {
+        "point": {
+          "lat": 31.216295,
+          "lng": 121.444813,
+          "crs": "WGS84",
+          "precision_m": 25
+        },
+        "desc_zh": "乌鲁木齐中路五原路口落客区",
+        "desc_en": "Drop-off at Urumqi Middle Rd & Wuyuan Rd",
+        "source": "curated",
+        "priority": 1,
+        "verified_at": 1791763200
+      }
+    ],
+    "operating_rules": {
+      "opening_hours": [
+        {
+          "weekdays": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "open": "06:00",
+          "close": "19:00",
+          "close_next_day": false
+        }
+      ],
+      "last_entry_time": null,
+      "closure_data_status": "unverified",
+      "closure_rules": [],
+      "is_enclosed_attraction": true,
+      "reservation_required": false,
+      "advance_booking_days": null,
+      "light_up": null,
+      "dwell_time": {
+        "kind": "point",
+        "minutes": 45
+      }
+    },
+    "provider_refs": {
+      "amap": "B0FFHBJ8KL"
+    },
+    "provenance": {
+      "source": "manual",
+      "updated_at": 1791763200,
+      "reviewed_by": "data-ops",
+      "confidence": 0.7
+    },
+    "tags": [
+      "菜市场",
+      "市井",
+      "上午最佳",
+      "开放时间待复核"
+    ],
+    "description_zh": "兼有日常菜场与餐饮空间的市集，可观察生鲜摊位和城市生活。适合喜欢市井氛围与食物文化的用户，比地标式观光更贴近居民日常。"
+  },
+  {
+    "poi_id": "sh_poi_00130",
+    "names": {
+      "zh-Hans": "世纪公园",
+      "zh-Hant": "世紀公園",
+      "en": "Century Park",
+      "ja": "世紀公園",
+      "ko": "세기공원"
+    },
+    "romanization": {
+      "pinyin": "shì jì gōng yuán",
+      "pinyin_plain": "shiji gongyuan"
+    },
+    "search_aliases": [
+      "Century Park",
+      "世纪公园1号门",
+      "浦东世纪公园"
+    ],
+    "category": {
+      "level1": "nature",
+      "level2": "park",
+      "label_en": "Park",
+      "label_zh": "公园"
+    },
+    "coordinate": {
+      "lat": 31.221071,
+      "lng": 121.552749,
+      "crs": "WGS84",
+      "precision_m": 30
+    },
+    "drop_off_locations": [
+      {
+        "point": {
+          "lat": 31.219271,
+          "lng": 121.551149,
+          "crs": "WGS84",
+          "precision_m": 25
+        },
+        "desc_zh": "锦绣路1号门落客区",
+        "desc_en": "Drop-off at Gate 1, Jinxiu Rd",
+        "source": "curated",
+        "priority": 1,
+        "verified_at": 1791763200
+      }
+    ],
+    "operating_rules": {
+      "opening_hours": [
+        {
+          "weekdays": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "open": "07:00",
+          "close": "18:00",
+          "close_next_day": false
+        }
+      ],
+      "last_entry_time": null,
+      "closure_data_status": "verified",
+      "closure_rules": [],
+      "is_enclosed_attraction": true,
+      "reservation_required": false,
+      "advance_booking_days": null,
+      "light_up": null,
+      "dwell_time": {
+        "kind": "range",
+        "minutes_min": 90,
+        "minutes_max": 150
+      }
+    },
+    "provider_refs": {
+      "amap": "B000A7XW11"
+    },
+    "provenance": {
+      "source": "manual",
+      "updated_at": 1791763200,
+      "reviewed_by": "data-ops",
+      "confidence": 0.8
+    },
+    "tags": [
+      "公园",
+      "亲子",
+      "收费"
+    ],
+    "description_zh": "浦东的大型城市公园，以草坪、树林和湖泊景观为主。适合散步、亲子休闲与自然观赏，可以按体力选择一段步行路线，而不必走完整个园区。"
+  },
+  {
+    "poi_id": "sh_poi_00131",
+    "names": {
+      "zh-Hans": "中山公园",
+      "zh-Hant": "中山公園",
+      "en": "Zhongshan Park",
+      "ja": "中山公園",
+      "ko": "중산공원"
+    },
+    "romanization": {
+      "pinyin": "zhōng shān gōng yuán",
+      "pinyin_plain": "zhongshan gongyuan"
+    },
+    "search_aliases": [
+      "Zhongshan Park",
+      "长宁中山公园"
+    ],
+    "category": {
+      "level1": "nature",
+      "level2": "park",
+      "label_en": "Park",
+      "label_zh": "公园"
+    },
+    "coordinate": {
+      "lat": 31.224645,
+      "lng": 121.414457,
+      "crs": "WGS84",
+      "precision_m": 30
+    },
+    "drop_off_locations": [
+      {
+        "point": {
+          "lat": 31.223045,
+          "lng": 121.416257,
+          "crs": "WGS84",
+          "precision_m": 25
+        },
+        "desc_zh": "长宁路1号门落客区",
+        "desc_en": "Drop-off at Gate 1, Changning Rd",
+        "source": "curated",
+        "priority": 1,
+        "verified_at": 1791763200
+      }
+    ],
+    "operating_rules": {
+      "opening_hours": [
+        {
+          "weekdays": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "open": "06:00",
+          "close": "21:30",
+          "close_next_day": false
+        }
+      ],
+      "last_entry_time": null,
+      "closure_data_status": "verified",
+      "closure_rules": [],
+      "is_enclosed_attraction": false,
+      "reservation_required": false,
+      "advance_booking_days": null,
+      "light_up": null,
+      "dwell_time": {
+        "kind": "range",
+        "minutes_min": 45,
+        "minutes_max": 90
+      }
+    },
+    "provider_refs": {
+      "amap": "B000A7XW22"
+    },
+    "provenance": {
+      "source": "manual",
+      "updated_at": 1791763200,
+      "reviewed_by": "data-ops",
+      "confidence": 0.8
+    },
+    "tags": [
+      "公园",
+      "免费",
+      "地铁2号线"
+    ],
+    "description_zh": "长宁区的城市公园，可在绿地与步行空间中放松。适合作为商圈游览之间的休息站，喜欢轻松散步的用户可安排短时间停留。"
+  },
+  {
+    "poi_id": "sh_poi_00132",
+    "names": {
+      "zh-Hans": "上海植物园",
+      "zh-Hant": "上海植物園",
+      "en": "Shanghai Botanical Garden",
+      "ja": "上海植物園",
+      "ko": "상하이 식물원"
+    },
+    "romanization": {
+      "pinyin": "shàng hǎi zhí wù yuán",
+      "pinyin_plain": "shanghai zhiwuyuan"
+    },
+    "search_aliases": [
+      "Shanghai Botanical Garden",
+      "植物园",
+      "龙吴路植物园"
+    ],
+    "category": {
+      "level1": "nature",
+      "level2": "botanical_garden",
+      "label_en": "Botanical Garden",
+      "label_zh": "植物园"
+    },
+    "coordinate": {
+      "lat": 31.150819,
+      "lng": 121.442108,
+      "crs": "WGS84",
+      "precision_m": 30
+    },
+    "drop_off_locations": [
+      {
+        "point": {
+          "lat": 31.152419,
+          "lng": 121.440308,
+          "crs": "WGS84",
+          "precision_m": 25
+        },
+        "desc_zh": "龙吴路997号正门落客区",
+        "desc_en": "Drop-off at main gate, 997 Longwu Rd",
+        "source": "curated",
+        "priority": 1,
+        "verified_at": 1791763200
+      }
+    ],
+    "operating_rules": {
+      "opening_hours": [
+        {
+          "weekdays": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "open": "07:00",
+          "close": "17:00",
+          "close_next_day": false
+        }
+      ],
+      "last_entry_time": null,
+      "closure_data_status": "unverified",
+      "closure_rules": [],
+      "is_enclosed_attraction": true,
+      "reservation_required": false,
+      "advance_booking_days": null,
+      "light_up": null,
+      "dwell_time": {
+        "kind": "range",
+        "minutes_min": 120,
+        "minutes_max": 180
+      }
+    },
+    "provider_refs": {
+      "amap": "B000A7XW33"
+    },
+    "provenance": {
+      "source": "manual",
+      "updated_at": 1791763200,
+      "reviewed_by": "data-ops",
+      "confidence": 0.75
+    },
+    "tags": [
+      "植物园",
+      "收费",
+      "展览温室",
+      "开放时间待复核"
+    ],
+    "description_zh": "徐汇的植物园，以植物收集展示、园艺和自然科普为特色。适合喜欢花草与植物知识的用户，可选择感兴趣的专类园，按季节观察不同景观。"
+  },
+  {
+    "poi_id": "sh_poi_00133",
+    "names": {
+      "zh-Hans": "共青森林公园",
+      "zh-Hant": "共青森林公園",
+      "en": "Gongqing Forest Park",
+      "ja": "共青森林公園",
+      "ko": "공청 삼림공원"
+    },
+    "romanization": {
+      "pinyin": "gòng qīng sēn lín gōng yuán",
+      "pinyin_plain": "gongqing senlin gongyuan"
+    },
+    "search_aliases": [
+      "Gongqing Forest Park",
+      "军工路森林公园",
+      "共青森林公园烧烤区"
+    ],
+    "category": {
+      "level1": "nature",
+      "level2": "park",
+      "label_en": "Park",
+      "label_zh": "公园"
+    },
+    "coordinate": {
+      "lat": 31.314668,
+      "lng": 121.524663,
+      "crs": "WGS84",
+      "precision_m": 35
+    },
+    "drop_off_locations": [
+      {
+        "point": {
+          "lat": 31.312668,
+          "lng": 121.522863,
+          "crs": "WGS84",
+          "precision_m": 25
+        },
+        "desc_zh": "军工路2000号西门落客区",
+        "desc_en": "Drop-off at West Gate, 2000 Jungong Rd",
+        "source": "curated",
+        "priority": 1,
+        "verified_at": 1791763200
+      }
+    ],
+    "operating_rules": {
+      "opening_hours": [
+        {
+          "weekdays": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "open": "06:00",
+          "close": "17:00",
+          "close_next_day": false
+        }
+      ],
+      "last_entry_time": null,
+      "closure_data_status": "unverified",
+      "closure_rules": [],
+      "is_enclosed_attraction": true,
+      "reservation_required": false,
+      "advance_booking_days": null,
+      "light_up": null,
+      "dwell_time": {
+        "kind": "range",
+        "minutes_min": 120,
+        "minutes_max": 210
+      }
+    },
+    "provider_refs": {
+      "amap": "B000A7XW44"
+    },
+    "provenance": {
+      "source": "manual",
+      "updated_at": 1791763200,
+      "reviewed_by": "data-ops",
+      "confidence": 0.7
+    },
+    "tags": [
+      "森林公园",
+      "骑行",
+      "野餐",
+      "开放时间待复核"
+    ],
+    "description_zh": "以森林景观为特色的城市公园，包含草坪、湖边植物与林地空间。适合喜欢户外和自然氛围的用户，游览以步行为主，可留出休息时间。"
+  },
+  {
+    "poi_id": "sh_poi_00134",
+    "names": {
+      "zh-Hans": "静安公园",
+      "zh-Hant": "靜安公園",
+      "en": "Jing'an Park",
+      "ja": "静安公園",
+      "ko": "정안공원"
+    },
+    "romanization": {
+      "pinyin": "jìng ān gōng yuán",
+      "pinyin_plain": "jingan gongyuan"
+    },
+    "search_aliases": [
+      "Jing'an Park",
+      "Jingan Park",
+      "静安雕塑公园"
+    ],
+    "category": {
+      "level1": "nature",
+      "level2": "park",
+      "label_en": "Park",
+      "label_zh": "公园"
+    },
+    "coordinate": {
+      "lat": 31.227278,
+      "lng": 121.440397,
+      "crs": "WGS84",
+      "precision_m": 25
+    },
+    "drop_off_locations": [
+      {
+        "point": {
+          "lat": 31.228478,
+          "lng": 121.441997,
+          "crs": "WGS84",
+          "precision_m": 25
+        },
+        "desc_zh": "南京西路1649号门口落客区",
+        "desc_en": "Drop-off at 1649 Nanjing West Rd gate",
+        "source": "curated",
+        "priority": 1,
+        "verified_at": 1791763200
+      }
+    ],
+    "operating_rules": {
+      "opening_hours": [
+        {
+          "weekdays": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "open": "05:00",
+          "close": "22:00",
+          "close_next_day": false
+        }
+      ],
+      "last_entry_time": null,
+      "closure_data_status": "verified",
+      "closure_rules": [],
+      "is_enclosed_attraction": false,
+      "reservation_required": false,
+      "advance_booking_days": null,
+      "light_up": null,
+      "dwell_time": {
+        "kind": "point",
+        "minutes": 30
+      }
+    },
+    "provider_refs": {
+      "amap": "B000A7XW55"
+    },
+    "provenance": {
+      "source": "manual",
+      "updated_at": 1791763200,
+      "reviewed_by": "data-ops",
+      "confidence": 0.8
+    },
+    "tags": [
+      "口袋公园",
+      "免费",
+      "静安寺对面"
+    ],
+    "description_zh": "静安寺地区的城市绿地，可在繁华商圈附近散步和休息。适合将购物、寺院参观与轻松步行结合，对专程游览需求不高时也可缩短停留。"
+  },
+  {
+    "poi_id": "sh_poi_00135",
+    "names": {
+      "zh-Hans": "徐家汇公园",
+      "zh-Hant": "徐家匯公園",
+      "en": "Xujiahui Park",
+      "ja": "徐家匯公園",
+      "ko": "쉬자후이공원"
+    },
+    "romanization": {
+      "pinyin": "xú jiā huì gōng yuán",
+      "pinyin_plain": "xujiahui gongyuan"
+    },
+    "search_aliases": [
+      "Xujiahui Park",
+      "徐家汇绿地",
+      "百代小红楼"
+    ],
+    "category": {
+      "level1": "nature",
+      "level2": "park",
+      "label_en": "Park",
+      "label_zh": "公园"
+    },
+    "coordinate": {
+      "lat": 31.201378,
+      "lng": 121.433285,
+      "crs": "WGS84",
+      "precision_m": 25
+    },
+    "drop_off_locations": [
+      {
+        "point": {
+          "lat": 31.202978,
+          "lng": 121.434885,
+          "crs": "WGS84",
+          "precision_m": 25
+        },
+        "desc_zh": "肇嘉浜路衡山路口落客区",
+        "desc_en": "Drop-off at Zhaojiabang Rd & Hengshan Rd",
+        "source": "curated",
+        "priority": 1,
+        "verified_at": 1791763200
+      }
+    ],
+    "operating_rules": {
+      "opening_hours": [
+        {
+          "weekdays": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "open": "05:00",
+          "close": "22:00",
+          "close_next_day": false
+        }
+      ],
+      "last_entry_time": null,
+      "closure_data_status": "verified",
+      "closure_rules": [],
+      "is_enclosed_attraction": false,
+      "reservation_required": false,
+      "advance_booking_days": null,
+      "light_up": null,
+      "dwell_time": {
+        "kind": "point",
+        "minutes": 45
+      }
+    },
+    "provider_refs": {
+      "amap": "B000A7XW66"
+    },
+    "provenance": {
+      "source": "manual",
+      "updated_at": 1791763200,
+      "reviewed_by": "data-ops",
+      "confidence": 0.8
+    },
+    "tags": [
+      "免费",
+      "商圈旁",
+      "城市绿地"
+    ],
+    "description_zh": "徐家汇商圈旁的开放式休闲绿地，将树木、水景与城市历史元素结合。适合街区游览中短暂停留、散步与放松，偏重日常城市休闲。"
+  },
+  {
+    "poi_id": "sh_poi_00136",
+    "names": {
+      "zh-Hans": "长风公园",
+      "zh-Hant": "長風公園",
+      "en": "Changfeng Park",
+      "ja": "長風公園",
+      "ko": "창펑공원"
+    },
+    "romanization": {
+      "pinyin": "cháng fēng gōng yuán",
+      "pinyin_plain": "changfeng gongyuan"
+    },
+    "search_aliases": [
+      "Changfeng Park",
+      "长风海洋世界"
+    ],
+    "category": {
+      "level1": "nature",
+      "level2": "park",
+      "label_en": "Park",
+      "label_zh": "公园"
+    },
+    "coordinate": {
+      "lat": 31.225539,
+      "lng": 121.39175,
+      "crs": "WGS84",
+      "precision_m": 30
+    },
+    "drop_off_locations": [
+      {
+        "point": {
+          "lat": 31.223739,
+          "lng": 121.39355,
+          "crs": "WGS84",
+          "precision_m": 25
+        },
+        "desc_zh": "大渡河路189号门口落客区",
+        "desc_en": "Drop-off at 189 Daduhe Rd gate",
+        "source": "curated",
+        "priority": 1,
+        "verified_at": 1791763200
+      }
+    ],
+    "operating_rules": {
+      "opening_hours": [
+        {
+          "weekdays": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "open": "06:00",
+          "close": "21:00",
+          "close_next_day": false
+        }
+      ],
+      "last_entry_time": null,
+      "closure_data_status": "verified",
+      "closure_rules": [],
+      "is_enclosed_attraction": true,
+      "reservation_required": false,
+      "advance_booking_days": null,
+      "light_up": null,
+      "dwell_time": {
+        "kind": "range",
+        "minutes_min": 60,
+        "minutes_max": 120
+      }
+    },
+    "provider_refs": {
+      "amap": "B000A7XW77"
+    },
+    "provenance": {
+      "source": "manual",
+      "updated_at": 1791763200,
+      "reviewed_by": "data-ops",
+      "confidence": 0.75
+    },
+    "tags": [
+      "公园",
+      "银锄湖",
+      "亲子"
+    ],
+    "description_zh": "普陀区以湖泊和山水园林为特色的公园，银锄湖是主要景观之一。适合绕湖散步、欣赏园林和亲子休闲，可按步行意愿选择游览范围。"
+  },
+  {
+    "poi_id": "sh_poi_00137",
+    "names": {
+      "zh-Hans": "上海动物园",
+      "zh-Hant": "上海動物園",
+      "en": "Shanghai Zoo",
+      "ja": "上海動物園",
+      "ko": "상하이 동물원"
+    },
+    "romanization": {
+      "pinyin": "shàng hǎi dòng wù yuán",
+      "pinyin_plain": "shanghai dongwuyuan"
+    },
+    "search_aliases": [
+      "Shanghai Zoo",
+      "西郊公园",
+      "虹桥路动物园"
+    ],
+    "category": {
+      "level1": "nature",
+      "level2": "park",
+      "label_en": "Park",
+      "label_zh": "公园"
+    },
+    "coordinate": {
+      "lat": 31.197584,
+      "lng": 121.357189,
+      "crs": "WGS84",
+      "precision_m": 30
+    },
+    "drop_off_locations": [
+      {
+        "point": {
+          "lat": 31.199384,
+          "lng": 121.359189,
+          "crs": "WGS84",
+          "precision_m": 25
+        },
+        "desc_zh": "虹桥路2381号正门落客区",
+        "desc_en": "Drop-off at main gate, 2381 Hongqiao Rd",
+        "source": "curated",
+        "priority": 1,
+        "verified_at": 1791763200
+      }
+    ],
+    "operating_rules": {
+      "opening_hours": [
+        {
+          "weekdays": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "open": "07:30",
+          "close": "17:00",
+          "close_next_day": false
+        }
+      ],
+      "last_entry_time": null,
+      "closure_data_status": "unverified",
+      "closure_rules": [],
+      "is_enclosed_attraction": true,
+      "reservation_required": false,
+      "advance_booking_days": null,
+      "light_up": null,
+      "dwell_time": {
+        "kind": "range",
+        "minutes_min": 150,
+        "minutes_max": 240
+      }
+    },
+    "provider_refs": {
+      "amap": "B000A7XW88"
+    },
+    "provenance": {
+      "source": "manual",
+      "updated_at": 1791763200,
+      "reviewed_by": "data-ops",
+      "confidence": 0.75
+    },
+    "tags": [
+      "动物园",
+      "亲子",
+      "收费",
+      "开放时间待复核"
+    ],
+    "description_zh": "位于虹桥路的城市动物园，兼有动物展示、科普与保护研究。适合亲子及对动物感兴趣的用户，主要靠步行串联展区，可优先选择想看的区域。"
+  },
+  {
+    "poi_id": "sh_poi_00138",
+    "names": {
+      "zh-Hans": "鲁迅公园",
+      "zh-Hant": "魯迅公園",
+      "en": "Lu Xun Park",
+      "ja": "魯迅公園",
+      "ko": "루쉰공원"
+    },
+    "romanization": {
+      "pinyin": "lǔ xùn gōng yuán",
+      "pinyin_plain": "luxun gongyuan"
+    },
+    "search_aliases": [
+      "Lu Xun Park",
+      "LuXun Park",
+      "虹口公园"
+    ],
+    "category": {
+      "level1": "nature",
+      "level2": "park",
+      "label_en": "Park",
+      "label_zh": "公园"
+    },
+    "coordinate": {
+      "lat": 31.268537,
+      "lng": 121.473287,
+      "crs": "WGS84",
+      "precision_m": 30
+    },
+    "drop_off_locations": [
+      {
+        "point": {
+          "lat": 31.266937,
+          "lng": 121.474887,
+          "crs": "WGS84",
+          "precision_m": 25
+        },
+        "desc_zh": "四川北路2288号门口落客区",
+        "desc_en": "Drop-off at 2288 Sichuan North Rd gate",
+        "source": "curated",
+        "priority": 1,
+        "verified_at": 1791763200
+      }
+    ],
+    "operating_rules": {
+      "opening_hours": [
+        {
+          "weekdays": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "open": "05:00",
+          "close": "21:00",
+          "close_next_day": false
+        }
+      ],
+      "last_entry_time": null,
+      "closure_data_status": "verified",
+      "closure_rules": [],
+      "is_enclosed_attraction": false,
+      "reservation_required": false,
+      "advance_booking_days": null,
+      "light_up": null,
+      "dwell_time": {
+        "kind": "range",
+        "minutes_min": 45,
+        "minutes_max": 90
+      }
+    },
+    "provider_refs": {
+      "amap": "B000A7XW99"
+    },
+    "provenance": {
+      "source": "manual",
+      "updated_at": 1791763200,
+      "reviewed_by": "data-ops",
+      "confidence": 0.8
+    },
+    "tags": [
+      "公园",
+      "免费",
+      "鲁迅墓",
+      "樱花"
+    ],
+    "description_zh": "虹口的城市公园，兼具绿地休闲与鲁迅相关纪念资源。适合散步及了解近现代文化；想参观纪念馆时，可把馆内观展与公园步行分别安排。"
+  },
+  {
+    "poi_id": "sh_poi_00139",
+    "names": {
+      "zh-Hans": "世博文化公园",
+      "zh-Hant": "世博文化公園",
+      "en": "Expo Culture Park",
+      "ja": "世博文化公園",
+      "ko": "엑스포 문화공원"
+    },
+    "romanization": {
+      "pinyin": "shì bó wén huà gōng yuán",
+      "pinyin_plain": "shibo wenhua gongyuan"
+    },
+    "search_aliases": [
+      "Expo Culture Park",
+      "双子山",
+      "世博公园"
+    ],
+    "category": {
+      "level1": "nature",
+      "level2": "park",
+      "label_en": "Park",
+      "label_zh": "公园"
+    },
+    "coordinate": {
+      "lat": 31.185882,
+      "lng": 121.475402,
+      "crs": "WGS84",
+      "precision_m": 35
+    },
+    "drop_off_locations": [
+      {
+        "point": {
+          "lat": 31.184082,
+          "lng": 121.477402,
+          "crs": "WGS84",
+          "precision_m": 25
+        },
+        "desc_zh": "博成路世博大道口落客区",
+        "desc_en": "Drop-off at Bocheng Rd & Expo Ave",
+        "source": "curated",
+        "priority": 1,
+        "verified_at": 1791763200
+      }
+    ],
+    "operating_rules": {
+      "opening_hours": [
+        {
+          "weekdays": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "open": "06:00",
+          "close": "22:00",
+          "close_next_day": false
+        }
+      ],
+      "last_entry_time": null,
+      "closure_data_status": "verified",
+      "closure_rules": [],
+      "is_enclosed_attraction": false,
+      "reservation_required": false,
+      "advance_booking_days": null,
+      "light_up": null,
+      "dwell_time": {
+        "kind": "range",
+        "minutes_min": 90,
+        "minutes_max": 150
+      }
+    },
+    "provider_refs": {
+      "amap": "B0FFHBJ9MM"
+    },
+    "provenance": {
+      "source": "manual",
+      "updated_at": 1791763200,
+      "reviewed_by": "data-ops",
+      "confidence": 0.7
+    },
+    "tags": [
+      "公园",
+      "免费",
+      "滨江",
+      "双子山"
+    ],
+    "description_zh": "浦东滨江的大型城市公园，包含双子山、温室花园等景观。适合喜欢绿地与户外步行的用户，可只选部分区域游览，特色设施需另查参观安排。"
+  },
+  {
+    "poi_id": "sh_poi_00140",
+    "names": {
+      "zh-Hans": "辰山植物园",
+      "zh-Hant": "辰山植物園",
+      "en": "Chenshan Botanical Garden",
+      "ja": "辰山植物園",
+      "ko": "천산 식물원"
+    },
+    "romanization": {
+      "pinyin": "chén shān zhí wù yuán",
+      "pinyin_plain": "chenshan zhiwuyuan"
+    },
+    "search_aliases": [
+      "Chenshan Botanical Garden",
+      "松江辰山",
+      "辰山矿坑花园"
+    ],
+    "category": {
+      "level1": "nature",
+      "level2": "botanical_garden",
+      "label_en": "Botanical Garden",
+      "label_zh": "植物园"
+    },
+    "coordinate": {
+      "lat": 31.079628,
+      "lng": 121.17761,
+      "crs": "WGS84",
+      "precision_m": 35
+    },
+    "drop_off_locations": [
+      {
+        "point": {
+          "lat": 31.081628,
+          "lng": 121.17941,
+          "crs": "WGS84",
+          "precision_m": 25
+        },
+        "desc_zh": "辰花公路3888号1号门落客区",
+        "desc_en": "Drop-off at Gate 1, 3888 Chenhua Highway",
+        "source": "curated",
+        "priority": 1,
+        "verified_at": 1791763200
+      }
+    ],
+    "operating_rules": {
+      "opening_hours": [
+        {
+          "weekdays": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "open": "08:00",
+          "close": "17:00",
+          "close_next_day": false
+        }
+      ],
+      "last_entry_time": null,
+      "closure_data_status": "unverified",
+      "closure_rules": [],
+      "is_enclosed_attraction": true,
+      "reservation_required": false,
+      "advance_booking_days": null,
+      "light_up": null,
+      "dwell_time": {
+        "kind": "range",
+        "minutes_min": 180,
+        "minutes_max": 300
+      }
+    },
+    "provider_refs": {
+      "amap": "B000A7XV00"
+    },
+    "provenance": {
+      "source": "manual",
+      "updated_at": 1791763200,
+      "reviewed_by": "data-ops",
+      "confidence": 0.7
+    },
+    "tags": [
+      "远郊",
+      "植物园",
+      "收费",
+      "开放时间待复核"
+    ],
+    "description_zh": "松江的综合性植物园，植物展示、展览温室与矿坑花园是主要看点。适合自然观赏和植物科普，园区较大，建议按兴趣选择重点区域。"
+  }
+]

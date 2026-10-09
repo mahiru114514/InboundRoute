@@ -1,0 +1,66 @@
+{
+  "$schema_target": "poi.schema.json",
+  "poi_id": "sh_poi_00042",
+  "names": {
+    "zh-Hans": "外滩",
+    "zh-Hant": "外灘",
+    "en": "The Bund",
+    "ja": "外灘（バンド）",
+    "ko": "와이탄"
+  },
+  "romanization": {
+    "pinyin": "wài tān",
+    "pinyin_plain": "wai tan"
+  },
+  "search_aliases": ["The Bund Shanghai", "Waitan", "外滩源"],
+  "category": {
+    "level1": "modern_skyline",
+    "level2": "riverwalk",
+    "label_en": "Riverwalk",
+    "label_zh": "滨江步道"
+  },
+  "coordinate": {"lat": 31.2397, "lng": 121.49, "crs": "WGS84", "precision_m": 30},
+  "drop_off_locations": [
+    {
+      "point": {"lat": 31.2415, "lng": 121.4875, "crs": "WGS84", "precision_m": 25},
+      "desc_zh": "北京东路圆明园路口",
+      "desc_en": "Intersection of Beijing East Rd & Yuanmingyuan Rd",
+      "source": "curated",
+      "priority": 1,
+      "verified_at": 1791763200,
+      "note_zh": "避开中山东一路全线禁停违章区",
+      "note_en": "Avoids the no-stopping zone along Zhongshan East 1st Rd"
+    },
+    {
+      "point": {"lat": 31.2388, "lng": 121.4902, "crs": "GCJ-02", "precision_m": 80},
+      "desc_zh": "中山东一路临时停靠点",
+      "desc_en": "Temporary stop on Zhongshan East 1st Rd",
+      "source": "amap",
+      "priority": 3,
+      "verified_at": 1791763200
+    }
+  ],
+  "operating_rules": {
+    "opening_hours": [
+      {"weekdays": [1, 2, 3, 4, 5, 6, 7], "open": "00:00", "close": "23:59", "close_next_day": false}
+    ],
+    "last_entry_time": null,
+    "closure_data_status": "verified",
+    "closure_rules": [],
+    "is_enclosed_attraction": false,
+    "reservation_required": false,
+    "advance_booking_days": null,
+    "light_up": {
+      "required": true,
+      "T_light_rule": "window_start_minus_30",
+      "windows": [
+        {"date_from": "05-01", "date_to": "09-30", "label_zh": "夏季", "label_en": "Summer", "start": "19:00", "close": "23:00"},
+        {"date_from": "10-01", "date_to": "04-30", "label_zh": "冬季", "label_en": "Winter", "start": "18:00", "close": "22:00"}
+      ]
+    },
+    "dwell_time": {"kind": "range", "minutes_min": 90, "minutes_max": 120}
+  },
+  "provider_refs": {"amap": "B000A7BD6C", "tencent": "1010201000000000"},
+  "provenance": {"source": "manual", "updated_at": 1791763200, "reviewed_by": "data-ops", "confidence": 0.95},
+  "tags": ["夜景", "免费", "步行街"]
+}

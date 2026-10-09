@@ -1,0 +1,26 @@
+{
+  "reviewed_on": "2026-10-03",
+  "lighting_status": "demo_windows_not_verified",
+  "reviews": [
+    {
+      "poi_id": "sh_poi_00088",
+      "venue": "上海博物馆人民广场馆（不是东馆）",
+      "source_url": "https://www.shanghaimuseum.cn/mu/frontend/pg/m/service/visit-west",
+      "notice_effective_from": "2026-06-30",
+      "exhibition_window": ["2026-07-09", "2027-11-14"],
+      "verified_fields": {
+        "daytime_open": "09:00",
+        "daytime_close": "17:00",
+        "last_entry_time": "15:00",
+        "weekly_closed": "Monday except national holidays",
+        "advance_booking_days": null
+      },
+      "booking_scope": "散客可预约购票；提前7天的强制预约只适用于20人及以上团队，不应用于本项目solo/couple/family_kids/senior",
+      "excluded_from_automatic_rules": "指定夜场为09:00-21:00、19:00停止入场；日期须查公众号，不能把夜场时间套用每天。节日例外需按年度官方通知核对。",
+      "entrance": "人民大道201号，武胜路南门入馆",
+      "dropoff_status": "仅核实步行入口，没有查到合法临停落客点公告，现有落客坐标仍是演示人工数据"
+    }
+  ],
+  "unverified_policy": "其余POI不能仅靠类别、24小时示例或无闭馆规则来认定完整运营数据已核验；14个unverified及8个亮灯窗口继续人工核实。",
+  "images_policy": "没有授权照片，界面使用带暂无照片说明的文字占位；补图前核实授权及来源。"
+}

@@ -1,0 +1,297 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "plan",
+    "days",
+    "skipped_days",
+    "warnings",
+    "trip_id",
+    "trip_version"
+  ],
+  "properties": {
+    "plan": {
+      "$ref": "#/$defs/plan"
+    },
+    "days": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "day_index",
+          "date",
+          "stops"
+        ],
+        "properties": {
+          "day_index": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 15
+          },
+          "date": {
+            "type": "string",
+            "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+          },
+          "stops": {
+            "type": "array",
+            "items": {
+              "$ref": "#/$defs/detail_stop"
+            },
+            "maxItems": 6
+          }
+        }
+      },
+      "maxItems": 15
+    },
+    "skipped_days": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "day_index",
+          "reason"
+        ],
+        "properties": {
+          "day_index": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 15
+          },
+          "reason": {
+            "type": "string"
+          }
+        }
+      },
+      "maxItems": 15
+    },
+    "warnings": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "trip_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "trip_version": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "minimum": 1
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://inboundroute.local/schemas/recommendation.schema.json",
+  "title": "Recommendation",
+  "description": "只读推荐输出；估算信息与推荐理由不写入冻结行程字段。",
+  "$defs": {
+    "stop": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "poi_id",
+        "planned_dwell_minutes"
+      ],
+      "properties": {
+        "poi_id": {
+          "type": "string",
+          "pattern": "^[a-z]{2}_poi_[0-9]{5,8}$"
+        },
+        "planned_dwell_minutes": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 720
+        }
+      }
+    },
+    "plan_day": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "day_index",
+        "stops"
+      ],
+      "properties": {
+        "day_index": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 15
+        },
+        "stops": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/stop"
+          },
+          "maxItems": 6
+        }
+      }
+    },
+    "plan": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "days"
+      ],
+      "properties": {
+        "days": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/plan_day"
+          },
+          "maxItems": 15
+        }
+      }
+    },
+    "detail_stop": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "poi_id",
+        "name_zh",
+        "planned_dwell_minutes",
+        "reasons",
+        "warnings"
+      ],
+      "properties": {
+        "poi_id": {
+          "type": "string",
+          "pattern": "^[a-z]{2}_poi_[0-9]{5,8}$"
+        },
+        "name_zh": {
+          "type": "string"
+        },
+        "planned_dwell_minutes": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 720
+        },
+        "reasons": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "warnings": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "estimated_arrival_local": {
+          "type": "string",
+          "pattern": "^([01][0-9]|2[0-3]):[0-5][0-9]$"
+        },
+        "estimated_departure_local": {
+          "type": "string",
+          "pattern": "^([01][0-9]|2[0-3]):[0-5][0-9]$"
+        }
+      }
+    },
+    "setup": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "user_id": {"type": ["string", "null"]},
+        "user_profile": {"type": "object"},
+        "duration_days": {"type": "integer", "minimum": 1, "maximum": 15},
+        "start_date": {"type": "string", "format": "date"},
+        "daily_start_local": {"type": "string", "pattern": "^([01][0-9]|2[0-3]):[0-5][0-9]$"},
+        "anchor_arrival": {"type": "object"},
+        "anchor_hotel": {"type": "object"},
+        "anchor_departure": {"type": ["object", "null"]},
+        "budget": {"type": ["object", "null"]},
+        "cost_inputs": {"type": "object"}
+      },
+      "required": [
+        "user_profile",
+        "duration_days",
+        "anchor_arrival",
+        "anchor_hotel"
+      ],
+      "description": "沿用 POST /trips 的创建输入；完整业务约束由 trip_engine 校验。"
+    },
+    "generate_request": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "day_indices"
+      ],
+      "properties": {
+        "trip_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "setup": {
+          "$ref": "#/$defs/setup"
+        },
+        "day_indices": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 15
+          },
+          "minItems": 1,
+          "maxItems": 15,
+          "uniqueItems": true
+        }
+      },
+      "oneOf": [
+        {
+          "required": [
+            "trip_id"
+          ],
+          "not": {
+            "required": [
+              "setup"
+            ]
+          }
+        },
+        {
+          "required": [
+            "setup"
+          ],
+          "not": {
+            "required": [
+              "trip_id"
+            ]
+          }
+        }
+      ]
+    },
+    "create_request": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "setup",
+        "plan"
+      ],
+      "properties": {
+        "setup": {
+          "$ref": "#/$defs/setup"
+        },
+        "plan": {
+          "$ref": "#/$defs/plan"
+        }
+      }
+    },
+    "apply_request": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "plan"
+      ],
+      "properties": {
+        "plan": {
+          "$ref": "#/$defs/plan"
+        }
+      }
+    }
+  }
+}

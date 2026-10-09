@@ -1,0 +1,114 @@
+{
+  "$comment": "抵达 / 离境口岸与住宿候选（trip_engine 主数据）。坐标一律 WGS84；coordinate_source 如实标注来源：curated=人工整理核对过，approximate=近似值（页面会提示建议点选校正）。以前这两份清单写死在 web_workbench/web/app.js 里，加一个口岸必须改前端代码。",
+  "coordinate_system": "WGS84",
+  "hubs": [
+    {
+      "id": "hub_pvg_t2", "name_zh": "浦东国际机场 T2", "name_en": "Pudong Int'l Airport T2",
+      "name_pinyin": "pudong guoji jichang T2", "aliases": ["PVG", "pudong airport", "浦东机场", "浦东机场T2"],
+      "lat": 31.1443, "lng": 121.8083, "coordinate_source": "curated"
+    },
+    {
+      "id": "hub_pvg_t1", "name_zh": "浦东国际机场 T1", "name_en": "Pudong Int'l Airport T1",
+      "name_pinyin": "pudong guoji jichang T1", "aliases": ["PVG T1", "浦东机场 T1", "浦东机场T1"],
+      "lat": 31.1434, "lng": 121.8055, "coordinate_source": "approximate"
+    },
+    {
+      "id": "hub_hongqiao_rail", "name_zh": "虹桥火车站", "name_en": "Shanghai Hongqiao Railway Station",
+      "name_pinyin": "hongqiao huochezhan", "aliases": ["Hongqiao Railway", "虹桥站", "上海虹桥站"],
+      "lat": 31.1943, "lng": 121.3198, "coordinate_source": "curated"
+    },
+    {
+      "id": "hub_hongqiao_t2", "name_zh": "虹桥国际机场 T2", "name_en": "Shanghai Hongqiao Airport T2",
+      "name_pinyin": "hongqiao guoji jichang T2", "aliases": ["SHA", "Hongqiao Airport", "虹桥机场", "虹桥机场T2"],
+      "lat": 31.1975, "lng": 121.3363, "coordinate_source": "approximate"
+    },
+    {
+      "id": "hub_hongqiao_t1", "name_zh": "虹桥国际机场 T1", "name_en": "Shanghai Hongqiao Airport T1",
+      "name_pinyin": "hongqiao guoji jichang T1", "aliases": ["SHA T1", "虹桥机场 T1", "虹桥机场T1"],
+      "lat": 31.1979, "lng": 121.3267, "coordinate_source": "approximate"
+    },
+    {
+      "id": "hub_shanghai_rail", "name_zh": "上海站", "name_en": "Shanghai Railway Station",
+      "name_pinyin": "shanghai zhan", "aliases": ["Shanghai Station", "新客站", "上海火车站"],
+      "lat": 31.2495, "lng": 121.4550, "coordinate_source": "approximate"
+    },
+    {
+      "id": "hub_shanghai_south", "name_zh": "上海南站", "name_en": "Shanghai South Railway Station",
+      "name_pinyin": "shanghai nan zhan", "aliases": ["Shanghai South", "南站", "上海南"],
+      "lat": 31.1545, "lng": 121.4290, "coordinate_source": "approximate"
+    },
+    {
+      "id": "hub_shanghai_west", "name_zh": "上海西站", "name_en": "Shanghai West Railway Station",
+      "name_pinyin": "shanghai xi zhan", "aliases": ["Shanghai West", "西站", "上海西"],
+      "lat": 31.2680, "lng": 121.3990, "coordinate_source": "approximate"
+    },
+    {
+      "id": "hub_wusongkou_cruise", "name_zh": "吴淞口国际邮轮港", "name_en": "Wusongkou International Cruise Terminal",
+      "name_pinyin": "wusongkou guoji youlun gang", "aliases": ["Cruise Terminal", "邮轮港", "吴淞口"],
+      "lat": 31.3940, "lng": 121.5070, "coordinate_source": "approximate"
+    }
+  ],
+  "hotels": [
+    {
+      "id": "hotel_hyland", "name_zh": "上海宏安瑞士大酒店", "name_en": "Radisson Collection Hotel, Hyland Shanghai",
+      "name_pinyin": "shanghai hongan ruishi dajiudian",
+      "aliases": ["Swissotel Grand Shanghai", "瑞士大酒店", "宏安瑞士"],
+      "lat": 31.2335, "lng": 121.4789, "coordinate_source": "curated"
+    },
+    {
+      "id": "hotel_peace", "name_zh": "和平饭店", "name_en": "Fairmont Peace Hotel",
+      "name_pinyin": "heping fandian", "aliases": ["Peace Hotel", "费尔蒙"],
+      "lat": 31.2405, "lng": 121.4903, "coordinate_source": "curated"
+    },
+    {
+      "id": "hotel_westin_bund", "name_zh": "威斯汀大饭店", "name_en": "The Westin Bund Center Shanghai",
+      "name_pinyin": "weiziting dafandian", "aliases": ["Westin", "外滩威斯汀"],
+      "lat": 31.2320, "lng": 121.4880, "coordinate_source": "approximate"
+    },
+    {
+      "id": "hotel_porter", "name_zh": "波特曼丽思卡尔顿酒店", "name_en": "The Portman Ritz-Carlton Shanghai",
+      "name_pinyin": "boteman lisi kaerdun", "aliases": ["Portman", "波特曼", "丽思卡尔顿"],
+      "lat": 31.2290, "lng": 121.4480, "coordinate_source": "approximate"
+    },
+    {
+      "id": "hotel_jinjiang", "name_zh": "锦江饭店", "name_en": "Jin Jiang Hotel",
+      "name_pinyin": "jinjiang fandian", "aliases": ["Jinjiang", "锦江"],
+      "lat": 31.2168, "lng": 121.4585, "coordinate_source": "approximate"
+    },
+    {
+      "id": "hotel_pudong_shangrila", "name_zh": "浦东香格里拉大酒店", "name_en": "Pudong Shangri-La Shanghai",
+      "name_pinyin": "pudong xianggeli la", "aliases": ["Shangri-La", "香格里拉"],
+      "lat": 31.2390, "lng": 121.5000, "coordinate_source": "approximate"
+    },
+    {
+      "id": "hotel_waldorf_bund", "name_zh": "上海外滩华尔道夫酒店", "name_en": "Waldorf Astoria Shanghai on the Bund",
+      "name_pinyin": "waitan huaerdaofu", "aliases": ["Waldorf", "华尔道夫"],
+      "lat": 31.2380, "lng": 121.4880, "coordinate_source": "approximate"
+    },
+    {
+      "id": "hotel_peninsula", "name_zh": "上海半岛酒店", "name_en": "The Peninsula Shanghai",
+      "name_pinyin": "shanghai bandao jiudian", "aliases": ["Peninsula", "半岛"],
+      "lat": 31.2440, "lng": 121.4890, "coordinate_source": "approximate"
+    },
+    {
+      "id": "hotel_ritz_pudong", "name_zh": "上海浦东丽思卡尔顿酒店", "name_en": "The Ritz-Carlton Shanghai, Pudong",
+      "name_pinyin": "pudong lisi kaerdun", "aliases": ["Ritz Pudong", "浦东丽思"],
+      "lat": 31.2380, "lng": 121.5050, "coordinate_source": "approximate"
+    },
+    {
+      "id": "hotel_garden_okura", "name_zh": "上海花园饭店", "name_en": "Okura Garden Hotel Shanghai",
+      "name_pinyin": "shanghai huayuan fandian", "aliases": ["Okura", "花园饭店", "大仓"],
+      "lat": 31.2180, "lng": 121.4590, "coordinate_source": "approximate"
+    },
+    {
+      "id": "hotel_marriott_city", "name_zh": "上海雅居乐万豪酒店", "name_en": "Shanghai Marriott Marquis City Centre",
+      "name_pinyin": "shanghai yajule wanhao", "aliases": ["Marriott Marquis", "万豪"],
+      "lat": 31.2350, "lng": 121.4750, "coordinate_source": "approximate"
+    },
+    {
+      "id": "hotel_conrad", "name_zh": "上海康莱德酒店", "name_en": "Conrad Shanghai",
+      "name_pinyin": "shanghai kanglaide", "aliases": ["Conrad", "康莱德"],
+      "lat": 31.2320, "lng": 121.4720, "coordinate_source": "approximate"
+    }
+  ]
+}

@@ -1,0 +1,264 @@
+{
+  "$comment": "C4 API 契约草案。PRD 只有一句「HTTPS/RESTful API」，无端点、无请求/响应、无错误码。此文件冻结前后端并行开发的边界。",
+  "version": "0.1.0-draft",
+  "base": "/api/v1",
+  "auth": {
+    "scheme": "Bearer JWT",
+    "rules": [
+      "所有端点必须鉴权（PRD 无鉴权设计，裸 trip_id 可被遍历）",
+      "trip 资源必须校验 trip.user_id == token.sub，否则 403",
+      "地图三方 key 一律不下发客户端；所有三方调用经服务端代理"
+    ]
+  },
+  "endpoints": [
+    {
+      "id": "create_trip",
+      "method": "POST",
+      "path": "/trips",
+      "purpose": "模块一：创建行程骨架（面板①提交）",
+      "request_schema": "trip.schema.json#/properties/user_profile + anchors + budget? + cost_inputs?",
+      "response_schema": "trip.schema.json",
+      "notes": "服务端生成 trip_id/version/created_at，并按 duration 初始化 days[]（day_status=empty，daily_start_local 默认 09:00）"
+    },
+    {
+      "id": "get_trip",
+      "method": "GET",
+      "path": "/trips/{trip_id}",
+      "response_schema": "trip.schema.json",
+      "notes": "离线包生成也走此端点（客户端本地固化）；动态返回只读 budget_assessment，人均费用来自 cost_inputs 及已选交通，缺失费用不当作 0。"
+    },
+    {
+      "id": "patch_trip_config",
+      "method": "PATCH",
+      "path": "/trips/{trip_id}",
+      "request_schema": "trip.schema.json#/properties/user_profile | anchor_* | budget | cost_inputs | days[].daily_start_local | days[].start_anchor | days[].end_anchor | days[].end_transit",
+      "notes": "改偏好/锚点/每日起点/预算/费用；带 If-Match: version，冲突返回 VERSION_CONFLICT。cost_inputs 为完整费用设置，null 清空；只改预算或费用保留交通。end_transit 保存当天最后一区段，改点位或重排后失效。"
+    },
+    {
+      "id": "list_pois",
+      "method": "GET",
+      "path": "/pois",
+      "query": {
+        "city": "shanghai",
+        "interests": "modern_skyline,nature",
+        "bbox": "minLng,minLat,maxLng,maxLat",
+        "category_level1": "history_culture",
+        "limit": "≤200",
+        "cursor": "分页游标"
+      },
+      "response_schema": "poi.schema.json[]",
+      "notes": "模块二：排序权重按 mappings.json#/interests_weight 计算，服务端排序"
+    },
+    {
+      "id": "get_poi",
+      "method": "GET",
+      "path": "/pois/{poi_id}",
+      "response_schema": "poi.schema.json",
+      "notes": "模块二详情抽屉：4 行展示的字段→文案→空值降级见 mappings.json#/drawer_field_map"
+    },
+    {
+      "id": "add_stop",
+      "method": "POST",
+      "path": "/trips/{trip_id}/days/{day_index}/stops",
+      "request_schema": {
+        "poi_id": "string（景点必填）",
+        "stop_order": "integer?",
+        "user_preferred_arrival_local": "HH:mm?",
+        "force": "boolean（Rule-01 用户已确认时置 true，需带 conflict_confirm_token）",
+        "stop_type": "poi | hotel | arrival_anchor | departure_anchor，默认 poi",
+        "anchor": "trip.schema.json#/$defs/day_anchor?（住宿/口岸；省略使用行程配置）",
+        "planned_dwell_minutes": "integer 0..720?（住宿可表示睡眠时长）"
+      },
+      "response_schema": {
+        "trip": "trip.schema.json",
+        "notices": "trip.schema.json#/$defs/notice[]"
+      },
+      "notes": "触发 rules.json 的 add_stop 事件；命中 Rule-01 且未确认时返回 RULE_HARD_CONFLICT + conflict_confirm_token"
+    },
+    {
+      "id": "reorder_stops",
+      "method": "PUT",
+      "path": "/trips/{trip_id}/days/{day_index}/stops",
+      "request_schema": {
+        "stop_order": [
+          "stop_id 有序数组（兼容无歧义的旧 poi_id 数组）"
+        ],
+        "locked_ids": [
+          "string"
+        ]
+      },
+      "response_schema": {
+        "trip": "trip.schema.json",
+        "notices": "notice[]",
+        "recomputed_segments": "route.schema.json[]"
+      },
+      "notes": "拖拽排序。**重算范围与调用预算见 mappings.json#/cache_keys.call_budget**；locked 的点不得被自动移动"
+    },
+    {
+      "id": "remove_stop",
+      "method": "DELETE",
+      "path": "/trips/{trip_id}/days/{day_index}/stops/{stop_id}",
+      "notes": "以稳定 stop_id 删除单个停靠点；兼容只匹配一个停靠点的旧 poi_id；同时清理该点产生的 notice"
+    },
+    {
+      "id": "evaluate_rules",
+      "method": "POST",
+      "path": "/trips/{trip_id}/rules:evaluate",
+      "request_schema": {
+        "day_index": "integer?",
+        "trigger": "rules.json#/execution_model/trigger_events"
+      },
+      "response_schema": {
+        "notices": "notice[]",
+        "evaluated_rules": [
+          "rule_id"
+        ],
+        "skipped_rules": [
+          {
+            "rule_id": "string",
+            "reason": "missing_data|no_match|locked"
+          }
+        ]
+      },
+      "notes": "纯求值，不落库。用于前端本地重算与联调（skipped_rules 让缺失数据可见）"
+    },
+    {
+      "id": "confirm_conflict",
+      "method": "POST",
+      "path": "/trips/{trip_id}/conflicts/{notice_id}/confirm",
+      "request_schema": {
+        "decision": "proceed_anyway|reject"
+      },
+      "notes": "落库 notice.outcome 与 confirmed_at；改期后按 expires_on_reorder 失效"
+    },
+    {
+      "id": "compute_routes",
+      "method": "POST",
+      "path": "/trips/{trip_id}/days/{day_index}/routes:compute",
+      "request_schema": {
+        "modes": [
+          "transit",
+          "taxi",
+          "walk"
+        ],
+        "prefetch": "boolean"
+      },
+      "response_schema": "route.schema.json[]",
+      "notes": "模块四。服务端做缓存/并发/降级；返回 degraded_reason 时 HTTP 仍为 200（见 errors.json DEGRADED_RESULT）"
+    },
+    {
+      "id": "get_station",
+      "method": "GET",
+      "path": "/stations/{station_id}",
+      "response_schema": "station.schema.json",
+      "notes": "3.5 微观增强的进出站口/换乘数据来源；coverage.completeness=none 时前端整体降级"
+    },
+    {
+      "id": "export_offline_package",
+      "method": "POST",
+      "path": "/trips/{trip_id}/offline-package",
+      "response_schema": {
+        "package_version": "string",
+        "trip_version": "integer",
+        "generated_at": "UTC秒",
+        "payload": "按 mappings.json#/offline_package.must_include 裁剪"
+      },
+      "notes": "模块五。体积 ≤5MB；含问路卡模板键而非最终文案（多语言）"
+    },
+    {
+      "id": "health",
+      "method": "GET",
+      "path": "/health",
+      "response_schema": {
+        "ok": "boolean",
+        "upstreams": {
+          "amap": "up|degraded|down",
+          "tencent": "…",
+          "baidu": "…"
+        }
+      },
+      "notes": "降级率与三方时延的监控入口（PRD 无埋点设计）"
+    },
+    {
+      "id": "preview_trip",
+      "method": "POST",
+      "path": "/trips:preview",
+      "purpose": "校验创建输入并返回只读骨架，不保存行程",
+      "request_schema": "同 create_trip",
+      "response_schema": "trip.schema.json"
+    },
+    {
+      "id": "generate_recommendations",
+      "method": "POST",
+      "path": "/recommendations:generate",
+      "purpose": "独立推荐模块生成指定空白游玩日的只读方案",
+      "request_schema": "recommendation.schema.json#/$defs/generate_request",
+      "response_schema": "recommendation.schema.json",
+      "notes": "恰好提供 trip_id 或 setup；选中日期不重复，不改已安排日期，交通时间仅为规划估算。"
+    },
+    {
+      "id": "create_recommended_trip",
+      "method": "POST",
+      "path": "/trips:recommended",
+      "purpose": "校验整个推荐方案并原子创建行程",
+      "request_schema": "recommendation.schema.json#/$defs/create_request",
+      "response_schema": "trip.schema.json",
+      "notes": "不先落盘空骨架；任何 POI 或日期不合法时整体失败。"
+    },
+    {
+      "id": "apply_recommendations",
+      "method": "POST",
+      "path": "/trips/{trip_id}/recommendations:apply",
+      "purpose": "原子填充现有行程的空白日期",
+      "request_schema": "recommendation.schema.json#/$defs/apply_request",
+      "response_schema": "trip.schema.json",
+      "notes": "必须携带 If-Match，重新核对版本与目标日为空；一次递增版本，只读推荐理由不持久化。"
+    }
+  ],
+  "cross_cutting": {
+    "pagination": {
+      "style": "cursor",
+      "default_limit": 50,
+      "max_limit": 200
+    },
+    "rate_limit": {
+      "per_user_per_hour": 60,
+      "concurrent_sessions": 8,
+      "headers": [
+        "X-RateLimit-Limit",
+        "X-RateLimit-Remaining",
+        "Retry-After"
+      ]
+    },
+    "timeouts": {
+      "client_connect_ms": 1000,
+      "client_read_ms": 2000,
+      "retry": {
+        "max": 2,
+        "backoff_ms": [
+          300,
+          800
+        ],
+        "retry_on": [
+          "UPSTREAM_TIMEOUT",
+          "UPSTREAM_RATE_LIMITED（仅非 429）"
+        ]
+      }
+    },
+    "circuit_breaker": {
+      "error_rate_threshold": 0.5,
+      "window_seconds": 30,
+      "open_seconds": 5
+    },
+    "observability": {
+      "required_events": [
+        "route_compute",
+        "rule_triggered",
+        "degraded",
+        "cache_hit",
+        "offline_package_written"
+      ],
+      "alert": "降级率 5 分钟 >10% 触发告警"
+    }
+  }
+}

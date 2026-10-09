@@ -1,0 +1,47 @@
+const assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm');
+class Node {constructor(tag,c='',text=''){Object.assign(this,{tagName:tag,className:c,textContent:text,children:[],events:{},value:'',dataset:{}});} append(...n){this.children.push(...n);} replaceChildren(...n){this.children=n;} setAttribute(){} addEventListener(e,f){this.events[e]=f;}}
+const root=new Node('section'),summary=new Node('summary'),disclosure=new Node('details');const money={min_cents:45000,max_cents:46000};
+const assessment={complete:false,status:'incomplete',budget_cents:100000,total:money,remaining:{min_cents:54000,max_cents:55000},automatic_lodging:true,
+ categories:{transport:{...money,label:'当地交通',complete:false}},missing:[{message:'房价待补充'}],suggestions:[{kind:'transit',title:'可换公共交通',body:'选择公共交通',savings_min_cents:4400,savings_max_cents:5500,extra_minutes:10}],defaults:{lodging_nights:[],dates:['2026-10-12']},itinerary_key:'test'};
+const trip={trip_id:'t',version:1,budget_assessment:assessment,cost_inputs:null,days:[{day_index:1,date:'2026-10-12',ordered_stops:[]}]};
+let saved;
+const ctx={state:{trip,pois:[],busy:false},element:(...a)=>new Node(...a),$:id=>({'budget-assessment':root,'budget-summary':summary,'budget-disclosure':disclosure}[id]),notify:()=>{},flowAction:f=>f(),flow:{offline:null,routes:{keep:true}},api:async(url,args)=>{saved=args.body;return {...trip,cost_inputs:args.body.cost_inputs};},renderTrip:()=>{},renderFlow:()=>{},rememberTrip:()=>{}};
+vm.createContext(ctx);vm.runInContext(fs.readFileSync('modules/web_workbench/web/budget_assessment.js','utf8'),ctx);
+const all=n=>[n,...n.children.flatMap(all)];
+(async()=>{
+ ctx.renderBudgetAssessment();let nodes=all(root),text=nodes.map(n=>n.textContent).join(' ');
+ assert.match(text,/已计入/);assert.match(text,/房价待补充/);assert.match(text,/不能.*完整|待补充/);assert.match(text,/公共交通/);
+ assert.match(summary.textContent,/450\.00.*460\.00.*\/ 人/);assert.match(summary.textContent,/待补充 1 项/);
+ assert.ok(!disclosure.open,'expense disclosure stays closed by default');
+ const breakdown=nodes.find(n=>n.tagName==='details' && n.children[0]?.textContent==='查看费用明细和来源');breakdown.open=true;
+ const input=nodes.find(n=>n.dataset.costField==='intercity_cents');assert.ok(input);input.value='123.45';input.events.input();
+ assert.match(nodes.find(n=>n.children.includes(input)).children[0].textContent,/人民币元/);
+ const editor=nodes.find(n=>n.tagName==='details' && n.children[0]?.textContent==='填写 / 核对费用（人民币）');editor.open=true;disclosure.open=true;
+ ctx.state.trip={...trip,budget_assessment:{...assessment,total:{min_cents:60000,max_cents:60000}}};
+ ctx.renderBudgetAssessment();
+ assert.equal(all(root).find(n=>n.dataset.costField==='intercity_cents'),input,'background refresh preserves edited inputs');
+ assert.match(all(root).map(n=>n.textContent).join(' '),/600\.00/,'background refresh updates assessment');
+ assert.equal(editor.open,true);assert.equal(disclosure.open,true);assert.equal(all(root).find(n=>n.tagName==='details' && n.children[0]?.textContent==='查看费用明细和来源').open,true);
+ ctx.formatCurrencyMoney=cents=>`¥${(cents/100).toFixed(2)}（约 USD ${(cents/700).toFixed(2)}）`;ctx.renderBudgetAssessment();
+ assert.match(summary.textContent,/USD/);assert.match(all(root).map(n=>n.textContent).join(' '),/每人可省.*USD/);
+ assert.equal(all(root).find(n=>n.dataset.costField==='intercity_cents'),input,'currency refresh preserves dirty CNY editor');
+ delete ctx.formatCurrencyMoney;
+ const save=nodes.find(n=>n.tagName==='button' && n.textContent==='保存费用并评估');await save.events.click();
+ assert.equal(saved.cost_inputs.intercity_cents,12345);assert.equal(saved.cost_inputs.lodging_nights,null,'saving automatic mode must not freeze room nights');
+ assert.equal(saved.cost_inputs.lodging_rooms,1,'automatic room count is editable and explicit');
+ assert.equal(ctx.flow.routes.keep,true,'cost edits preserve routes');
+ assert.equal(ctx.costMoney('0'),0);assert.equal(ctx.costMoney(''),null);assert.throws(()=>ctx.costMoney('-1'));assert.throws(()=>ctx.costMoney('1.001'));
+ const snapshot=ctx.state.trip;ctx.state.trip=null;ctx.renderBudgetAssessment();assert.match(all(root).map(n=>n.textContent).join(' '),/保存.*行程/);
+ ctx.state.trip=snapshot;
+ const reference={min_cents:4000,max_cents:4000,sources:['https://www.shanghai.gov.cn/huangpu/index.html'],researched_at:'2026-10-06',reference_note:'成人日场'};
+ ctx.state.trip={...snapshot,trip_id:'auto',cost_inputs:null,days:[{day_index:1,date:'2026-10-12',ordered_stops:[{stop_id:'paid',stop_type:'poi',poi_id:'sh_poi_00107'}]}],budget_assessment:{...assessment,assumptions:['住宿按1人1间'],price_notices:[{message:'特展148元，基础免费'}],lines:[{...reference,label:'豫园',source:'reference_price',category:'tickets',id:'paid'}],defaults:{dates:['2026-10-12'],lodging_nights:[{date:'2026-10-12',hotel_name:'和平饭店',rooms:1,room_price_cents:null,reference_price:{...reference,min_cents:228000,max_cents:305000}}],ticket_prices:{paid:reference}}}};
+ ctx.renderBudgetAssessment();nodes=all(root);text=nodes.map(n=>n.textContent).join(' ');
+ assert.match(text,/特展148/);assert.match(text,/参考价/);assert.ok(nodes.some(n=>n.tagName==='a' && n.href===reference.sources[0]));
+ const ticket=nodes.find(n=>n.dataset.costField==='ticket');assert.equal(ticket.value,'');assert.match(ticket.placeholder,/40/);
+ const room=nodes.find(n=>n.dataset.costField==='room_price_cents');assert.equal(room.disabled,true);
+ let autosave=nodes.find(n=>n.tagName==='button' && n.textContent==='保存费用并评估');await autosave.events.click();
+ assert.equal(saved.cost_inputs.lodging_nights,null);assert.equal(saved.cost_inputs.ticket_cents.paid,null);
+ const mode=nodes.find(n=>n.dataset.costField==='automatic_lodging');assert.equal(mode.checked,true);mode.checked=false;mode.events.change();
+ assert.equal(room.disabled,false);room.value='800';await autosave.events.click();assert.equal(saved.cost_inputs.lodging_nights[0].room_price_cents,80000);
+ console.log('Budget assessment UI: missing data, savings, editable cost inputs, save, route preservation and empty state passed');
+})().catch(e=>{console.error(e);process.exitCode=1;});

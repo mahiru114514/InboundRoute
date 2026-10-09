@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>模块工作台 · 携程</title><link rel="stylesheet" href="/style.css"><script src="/app.js" defer></script></head>
+<body>
+<aside class="sidebar">
+  <a class="brand" href="/" aria-label="模块工作台首页"><span class="brand-mark">M</span><span>模块工作台<small>LOCAL WORKSPACE</small></span></a>
+  <div class="nav-label">工作空间</div><div class="nav-item active"><span>▦</span> 模块管理 <span id="nav-count" class="nav-count">0</span></div>
+  <button class="nav-item" id="guide-open"><span>↗</span> 开发接入指南</button>
+  <div class="sidebar-bottom"><div class="connection"><i id="connection-dot"></i><span id="connection-text">正在连接本机服务</span></div><p>所有模块和数据存储在本机</p><button id="shutdown" class="quiet">关闭管理服务 ↗</button></div>
+</aside>
+<main>
+  <div class="topline"><span>工作空间 <b>/</b> 模块管理</span><span class="local-label">LOCAL <span>仅本机访问</span></span></div>
+  <header><div><div class="eyebrow">YOUR MODULAR WORKSPACE</div><h1>功能，由你组合<span>。</span></h1><p>安装一个模块，扩展一种能力。在这里管理每个功能的生命周期。</p></div><div class="install-actions"><button id="install-folder" class="secondary" title="选择本地模块文件夹，跳过打包直接安装">▤ 从文件夹安装</button><button id="upload" class="primary" title="上传符合规范的模块 ZIP">＋ 安装 ZIP</button><input id="zip-input" type="file" accept=".zip,application/zip" hidden><input id="dir-input" type="file" webkitdirectory multiple hidden></div></header>
+  <section class="stats" aria-label="模块统计"><div><span>全部模块</span><strong id="total">—</strong><small>已发现的本地模块</small></div><div><span><i class="dot green"></i>运行中</span><strong id="running">—</strong><small>正在执行的功能</small></div><div><span>已启用</span><strong id="enabled">—</strong><small>可按需启动</small></div><div><span><i class="dot amber"></i>需要关注</span><strong id="errors">—</strong><small>异常或依赖缺失</small></div></section>
+  <section class="module-section"><div class="section-heading"><h2>我的模块 <span id="list-count">0</span></h2><button id="refresh" class="secondary">↻ 刷新发现</button></div>
+    <div class="toolbar"><div class="filters" role="group" aria-label="筛选模块"><button class="selected" data-filter="all" aria-pressed="true">全部模块</button><button data-filter="running" aria-pressed="false">运行中</button><button data-filter="disabled" aria-pressed="false">已禁用</button><button data-filter="error" aria-pressed="false">需关注</button></div><label class="search"><span>⌕</span><input id="search" placeholder="搜索名称或模块 ID" aria-label="搜索模块"></label></div>
+    <div id="module-list" class="module-grid" aria-live="polite"></div>
+  </section>
+  <section class="install-note"><div class="note-icon">↓</div><div><h3>即插即用，从一个文件夹开始</h3><p>选择本地模块文件夹直接安装，无需打包；也可以上传 ZIP 压缩包，或把模块文件夹放入 modules 后点击刷新发现。</p></div><button id="guide-inline" class="text-button">查看模块规范 →</button></section>
+  <footer><span>携程 · 模块工作台</span><span>本地运行 / 独立进程 / 按需启用</span></footer>
+</main>
+<div id="toast" class="toast" role="status" hidden></div>
+<dialog id="detail"><div class="dialog-header"><div><div class="eyebrow">MODULE DETAIL</div><h2 id="detail-title"></h2></div><button class="icon-button" id="detail-close" aria-label="关闭详情">×</button></div><div class="detail-tabs"><button id="config-tab" class="selected">模块配置</button><button id="logs-tab">运行日志</button></div><section id="config-panel"><p class="help">以 JSON 对象保存配置，下次运行生效。请先停止模块再修改。</p><label class="editor-label" for="config-editor">配置内容</label><textarea id="config-editor" spellcheck="false"></textarea><button id="save-config" class="primary">保存配置</button></section><section id="logs-panel" hidden><div class="log-heading"><p class="help">显示最近 64 KB 日志，每 3 秒刷新。</p><button id="refresh-logs" class="secondary">刷新日志</button></div><pre id="log-content"></pre></section></dialog>
+<dialog id="guide"><div class="dialog-header"><h2>接入你的第一个模块</h2><button id="guide-close" class="icon-button" aria-label="关闭指南">×</button></div><p>每个模块一个目录，目录名与清单中的 id 一致。</p><pre>my_module/
+├── manifest.json
+└── plugin.py</pre><h3>manifest.json</h3><pre>{
+  "id": "my_module",
+  "name": "我的模块",
+  "version": "1.0.0",
+  "description": "这个模块提供的功能",
+  "dependencies": []
+}</pre><h3>plugin.py</h3><pre>def run(context):
+    context.log("模块已启动")
+    while not context.wait(5):
+        context.log(context.config.get("message", "运行中"))</pre><p>将这两个文件压缩成 ZIP 上传，用“从文件夹安装”直接选择该目录，或放入 modules/my_module 后刷新发现。安装后依次点击“启用”和“运行”。</p><p class="help">依赖模块需先启用并运行。模块是本地 Python 代码，请只安装可信来源；进程隔离不是安全沙箱。完整说明见项目 README.md。</p></dialog>
+<dialog id="confirm"><h2 id="confirm-title"></h2><p id="confirm-text"></p><div class="confirm-actions"><button id="confirm-cancel" class="secondary">取消</button><button id="confirm-ok" class="danger">确认</button></div></dialog>
+</body></html>

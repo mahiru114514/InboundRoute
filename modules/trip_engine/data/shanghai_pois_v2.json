@@ -1,0 +1,1236 @@
+[
+  {
+    "poi_id": "sh_poi_00141",
+    "names": {
+      "zh-Hans": "上海博物馆东馆",
+      "en": "Shanghai Museum East"
+    },
+    "romanization": {
+      "pinyin": "shàng hǎi bó wù guǎn dōng guǎn",
+      "pinyin_plain": "shang hai bo wu guan dong guan"
+    },
+    "search_aliases": [
+      "上博东馆",
+      "Shanghai Museum East Branch"
+    ],
+    "category": {
+      "level1": "history_culture",
+      "level2": "museum",
+      "label_en": "Museum",
+      "label_zh": "博物馆"
+    },
+    "coordinate": {
+      "lat": 31.222045,
+      "lng": 121.534446,
+      "crs": "WGS84"
+    },
+    "drop_off_locations": [],
+    "operating_rules": {
+      "opening_hours": [
+        {
+          "weekdays": [
+            1,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "open": "10:00",
+          "close": "18:00",
+          "close_next_day": false
+        }
+      ],
+      "last_entry_time": "17:00",
+      "closure_data_status": "unverified",
+      "closure_rules": [],
+      "is_enclosed_attraction": true,
+      "advance_booking_days": null,
+      "light_up": null,
+      "dwell_time": {
+        "kind": "range",
+        "minutes_min": 180,
+        "minutes_max": 240
+      },
+      "reservation_required": false
+    },
+    "provider_refs": {
+      "amap": "B0FFIFP90V"
+    },
+    "provenance": {
+      "source": "manual",
+      "updated_at": 1791043200,
+      "reviewed_by": "source-review-2026-10-04",
+      "confidence": 0.6
+    },
+    "tags": [
+      "浦东新区",
+      "市区",
+      "中华艺术与历史专题展，适合安排半天观展。",
+      "停留时长为规划参考",
+      "开放与休馆安排待核实",
+      "坐标为地点标注点，实际入口待核实",
+      "常规周二休馆，节假日安排须查公告",
+      "散客常规参观免预约；互动体验空间另行预约",
+      "散客入口：B1层东门（近丁香路）"
+    ],
+    "description_zh": "以中国古代艺术为主题，展陈涵盖青铜、陶瓷、书画等门类。适合喜欢历史与艺术、愿意花时间细看展品的用户，可按兴趣选择展厅。"
+  },
+  {
+    "poi_id": "sh_poi_00142",
+    "names": {
+      "zh-Hans": "上海自然博物馆",
+      "en": "Shanghai Natural History Museum"
+    },
+    "romanization": {
+      "pinyin": "shàng hǎi zì rán bó wù guǎn",
+      "pinyin_plain": "shang hai zi ran bo wu guan"
+    },
+    "search_aliases": [
+      "自然博物馆",
+      "Shanghai Natural History Museum"
+    ],
+    "category": {
+      "level1": "history_culture",
+      "level2": "museum",
+      "label_en": "Museum",
+      "label_zh": "博物馆"
+    },
+    "coordinate": {
+      "lat": 31.236933,
+      "lng": 121.458114,
+      "crs": "WGS84"
+    },
+    "drop_off_locations": [],
+    "operating_rules": {
+      "opening_hours": [],
+      "last_entry_time": null,
+      "closure_data_status": "unverified",
+      "closure_rules": [],
+      "is_enclosed_attraction": true,
+      "advance_booking_days": null,
+      "light_up": null,
+      "dwell_time": {
+        "kind": "range",
+        "minutes_min": 120,
+        "minutes_max": 180
+      }
+    },
+    "provider_refs": {
+      "amap": "B00156NVZG"
+    },
+    "provenance": {
+      "source": "manual",
+      "updated_at": 1791043200,
+      "reviewed_by": "source-review-2026-10-04",
+      "confidence": 0.6
+    },
+    "tags": [
+      "静安区",
+      "市区",
+      "自然科学与生命演化主题展馆，可与静安周边散步组合。",
+      "停留时长为规划参考",
+      "开放与休馆安排待核实",
+      "预约政策待核实",
+      "坐标为地点标注点，实际入口待核实",
+      "官网休馆资料存在冲突，出发前请查最新公告"
+    ],
+    "description_zh": "围绕生命演化、自然多样性与人与自然关系展开的博物馆。适合亲子和对自然科学感兴趣的用户，可选择主题展区逐步参观。"
+  },
+  {
+    "poi_id": "sh_poi_00143",
+    "names": {
+      "zh-Hans": "上海天文馆",
+      "en": "Shanghai Astronomy Museum"
+    },
+    "romanization": {
+      "pinyin": "shàng hǎi tiān wén guǎn",
+      "pinyin_plain": "shang hai tian wen guan"
+    },
+    "search_aliases": [
+      "临港天文馆",
+      "Shanghai Astronomy Museum"
+    ],
+    "category": {
+      "level1": "history_culture",
+      "level2": "museum",
+      "label_en": "Museum",
+      "label_zh": "博物馆"
+    },
+    "coordinate": {
+      "lat": 30.91516,
+      "lng": 121.922836,
+      "crs": "WGS84"
+    },
+    "drop_off_locations": [],
+    "operating_rules": {
+      "opening_hours": [],
+      "last_entry_time": null,
+      "closure_data_status": "unverified",
+      "closure_rules": [],
+      "is_enclosed_attraction": true,
+      "advance_booking_days": null,
+      "light_up": null,
+      "dwell_time": {
+        "kind": "range",
+        "minutes_min": 180,
+        "minutes_max": 240
+      }
+    },
+    "provider_refs": {
+      "amap": "B0FFHGVTPF"
+    },
+    "provenance": {
+      "source": "manual",
+      "updated_at": 1791043200,
+      "reviewed_by": "source-review-2026-10-04",
+      "confidence": 0.6
+    },
+    "tags": [
+      "浦东新区",
+      "近郊",
+      "临港天文主题场馆，可与滴水湖安排同一天。",
+      "停留时长为规划参考",
+      "开放与休馆安排待核实",
+      "预约政策待核实",
+      "坐标为地点标注点，实际入口待核实"
+    ],
+    "description_zh": "临港的天文主题场馆，通过主题展区介绍宇宙与人类探索历程。适合对星空、科学和建筑感兴趣的用户，也可与附近的滴水湖组合游览。"
+  },
+  {
+    "poi_id": "sh_poi_00144",
+    "names": {
+      "zh-Hans": "世博会博物馆",
+      "en": "World Expo Museum"
+    },
+    "romanization": {
+      "pinyin": "shì bó huì bó wù guǎn",
+      "pinyin_plain": "shi bo hui bo wu guan"
+    },
+    "search_aliases": [
+      "上海世博会博物馆",
+      "World Expo Museum"
+    ],
+    "category": {
+      "level1": "history_culture",
+      "level2": "museum",
+      "label_en": "Museum",
+      "label_zh": "博物馆"
+    },
+    "coordinate": {
+      "lat": 31.196374,
+      "lng": 121.477669,
+      "crs": "WGS84"
+    },
+    "drop_off_locations": [],
+    "operating_rules": {
+      "opening_hours": [
+        {
+          "weekdays": [
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "open": "09:00",
+          "close": "17:00",
+          "close_next_day": false
+        }
+      ],
+      "last_entry_time": "16:15",
+      "closure_data_status": "unverified",
+      "closure_rules": [],
+      "is_enclosed_attraction": true,
+      "advance_booking_days": null,
+      "light_up": null,
+      "dwell_time": {
+        "kind": "range",
+        "minutes_min": 90,
+        "minutes_max": 150
+      },
+      "reservation_required": false
+    },
+    "provider_refs": {
+      "amap": "B001575WDA"
+    },
+    "provenance": {
+      "source": "manual",
+      "updated_at": 1791043200,
+      "reviewed_by": "source-review-2026-10-04",
+      "confidence": 0.6
+    },
+    "tags": [
+      "黄浦区",
+      "市区",
+      "了解世界博览会与上海世博记忆。",
+      "停留时长为规划参考",
+      "开放与休馆安排待核实",
+      "坐标为地点标注点，实际入口待核实",
+      "常规周一休馆，节假日是否开放另行公告",
+      "散客常规参观无需预约"
+    ],
+    "description_zh": "以世界博览会及其文化交流为主题的博物馆，连接各届世博故事与上海世博记忆。适合喜欢展览、设计和城市文化的用户，游览主要在室内进行。"
+  },
+  {
+    "poi_id": "sh_poi_00145",
+    "names": {
+      "zh-Hans": "上海城市规划展示馆",
+      "en": "Shanghai Urban Planning Exhibition Center"
+    },
+    "romanization": {
+      "pinyin": "shàng hǎi chéng shì guī huà zhǎn shì guǎn",
+      "pinyin_plain": "shang hai cheng shi gui hua zhan shi guan"
+    },
+    "search_aliases": [
+      "城市规划馆",
+      "Urban Planning Exhibition Center"
+    ],
+    "category": {
+      "level1": "history_culture",
+      "level2": "museum",
+      "label_en": "Museum",
+      "label_zh": "博物馆"
+    },
+    "coordinate": {
+      "lat": 31.233391,
+      "lng": 121.471034,
+      "crs": "WGS84"
+    },
+    "drop_off_locations": [],
+    "operating_rules": {
+      "opening_hours": [],
+      "last_entry_time": null,
+      "closure_data_status": "unverified",
+      "closure_rules": [],
+      "is_enclosed_attraction": true,
+      "advance_booking_days": null,
+      "light_up": null,
+      "dwell_time": {
+        "kind": "range",
+        "minutes_min": 90,
+        "minutes_max": 120
+      }
+    },
+    "provider_refs": {
+      "amap": "B001546728"
+    },
+    "provenance": {
+      "source": "manual",
+      "updated_at": 1791043200,
+      "reviewed_by": "source-review-2026-10-04",
+      "confidence": 0.6
+    },
+    "tags": [
+      "黄浦区",
+      "市区",
+      "从城市规划与模型了解上海，可与人民广场周边组合。",
+      "停留时长为规划参考",
+      "开放与休馆安排待核实",
+      "预约政策待核实",
+      "坐标为地点标注点，实际入口待核实"
+    ],
+    "description_zh": "人民广场附近的专题展示馆，通过模型、图片与影像介绍上海的城市规划和建设。适合想了解城市发展与空间变化的用户，可与周边步行组合。"
+  },
+  {
+    "poi_id": "sh_poi_00146",
+    "names": {
+      "zh-Hans": "中国航海博物馆",
+      "en": "China Maritime Museum"
+    },
+    "romanization": {
+      "pinyin": "zhōng guó háng hǎi bó wù guǎn",
+      "pinyin_plain": "zhong guo hang hai bo wu guan"
+    },
+    "search_aliases": [
+      "航海博物馆",
+      "China Maritime Museum"
+    ],
+    "category": {
+      "level1": "history_culture",
+      "level2": "museum",
+      "label_en": "Museum",
+      "label_zh": "博物馆"
+    },
+    "coordinate": {
+      "lat": 30.899419,
+      "lng": 121.91529,
+      "crs": "WGS84"
+    },
+    "drop_off_locations": [],
+    "operating_rules": {
+      "opening_hours": [],
+      "last_entry_time": null,
+      "closure_data_status": "unverified",
+      "closure_rules": [],
+      "is_enclosed_attraction": true,
+      "advance_booking_days": null,
+      "light_up": null,
+      "dwell_time": {
+        "kind": "range",
+        "minutes_min": 120,
+        "minutes_max": 180
+      }
+    },
+    "provider_refs": {
+      "amap": "B00156DD2R"
+    },
+    "provenance": {
+      "source": "manual",
+      "updated_at": 1791043200,
+      "reviewed_by": "source-review-2026-10-04",
+      "confidence": 0.6
+    },
+    "tags": [
+      "浦东新区",
+      "近郊",
+      "临港航海主题展馆，适合与滴水湖组合。",
+      "停留时长为规划参考",
+      "开放与休馆安排待核实",
+      "预约政策待核实",
+      "导航参考：中国航海博物馆北门，开放状态待核实"
+    ],
+    "description_zh": "临港的航海主题博物馆，展陈涉及船舶、港口、海员与航海历史。适合对海洋和交通技术感兴趣的用户，可与滴水湖或天文馆择项组合。"
+  },
+  {
+    "poi_id": "sh_poi_00147",
+    "names": {
+      "zh-Hans": "广富林文化遗址",
+      "en": "Guangfulin Cultural Relics Park"
+    },
+    "romanization": {
+      "pinyin": "guǎng fù lín wén huà yí zhǐ",
+      "pinyin_plain": "guang fu lin wen hua yi zhi"
+    },
+    "search_aliases": [
+      "广富林",
+      "Guangfulin"
+    ],
+    "category": {
+      "level1": "history_culture",
+      "level2": "historic_street",
+      "label_en": "Historic Street",
+      "label_zh": "历史文化街区"
+    },
+    "coordinate": {
+      "lat": 31.064737,
+      "lng": 121.191807,
+      "crs": "WGS84"
+    },
+    "drop_off_locations": [],
+    "operating_rules": {
+      "opening_hours": [],
+      "last_entry_time": null,
+      "closure_data_status": "unverified",
+      "closure_rules": [],
+      "is_enclosed_attraction": true,
+      "advance_booking_days": null,
+      "light_up": null,
+      "dwell_time": {
+        "kind": "range",
+        "minutes_min": 120,
+        "minutes_max": 180
+      }
+    },
+    "provider_refs": {
+      "amap": "B0FFF0JR9H"
+    },
+    "provenance": {
+      "source": "manual",
+      "updated_at": 1791043200,
+      "reviewed_by": "source-review-2026-10-04",
+      "confidence": 0.6
+    },
+    "tags": [
+      "松江区",
+      "近郊",
+      "松江文化遗址与园区建筑；园内展馆的票务及开放安排需分别核对。",
+      "停留时长为规划参考",
+      "开放与休馆安排待核实",
+      "预约政策待核实",
+      "坐标为地点标注点，实际入口待核实"
+    ],
+    "description_zh": "松江的文化遗址园区，通过遗址与展示空间了解上海早期历史。适合关注考古、传统文化和园区建筑的用户，园内展馆可按兴趣分别选择。"
+  },
+  {
+    "poi_id": "sh_poi_00148",
+    "names": {
+      "zh-Hans": "浦东美术馆",
+      "en": "Museum of Art Pudong"
+    },
+    "romanization": {
+      "pinyin": "pǔ dōng měi shù guǎn",
+      "pinyin_plain": "pu dong mei shu guan"
+    },
+    "search_aliases": [
+      "MAP",
+      "Museum of Art Pudong"
+    ],
+    "category": {
+      "level1": "history_culture",
+      "level2": "museum",
+      "label_en": "Museum",
+      "label_zh": "博物馆"
+    },
+    "coordinate": {
+      "lat": 31.240119,
+      "lng": 121.491865,
+      "crs": "WGS84"
+    },
+    "drop_off_locations": [],
+    "operating_rules": {
+      "opening_hours": [],
+      "last_entry_time": null,
+      "closure_data_status": "unverified",
+      "closure_rules": [],
+      "is_enclosed_attraction": true,
+      "advance_booking_days": null,
+      "light_up": null,
+      "dwell_time": {
+        "kind": "range",
+        "minutes_min": 90,
+        "minutes_max": 150
+      }
+    },
+    "provider_refs": {
+      "amap": "B0FFLCKUTU"
+    },
+    "provenance": {
+      "source": "manual",
+      "updated_at": 1791043200,
+      "reviewed_by": "source-review-2026-10-04",
+      "confidence": 0.6
+    },
+    "tags": [
+      "浦东新区",
+      "市区",
+      "陆家嘴滨江美术展馆，可与周边城市景观组合。",
+      "停留时长为规划参考",
+      "开放与休馆安排待核实",
+      "预约政策待核实",
+      "坐标为地点标注点，实际入口待核实"
+    ],
+    "description_zh": "陆家嘴的艺术展览场馆，参观内容以不同主题展览为主。适合喜欢美术和艺术观展的用户，可结合滨江漫步；出发前先查看当期展览是否感兴趣。"
+  },
+  {
+    "poi_id": "sh_poi_00149",
+    "names": {
+      "zh-Hans": "上海宋庆龄故居纪念馆",
+      "en": "Shanghai Soong Ching Ling Memorial Residence"
+    },
+    "romanization": {
+      "pinyin": "shàng hǎi sòng qìng líng gù jū jì niàn guǎn",
+      "pinyin_plain": "shang hai song qing ling gu ju ji nian guan"
+    },
+    "search_aliases": [
+      "宋庆龄故居",
+      "Soong Ching Ling Residence"
+    ],
+    "category": {
+      "level1": "history_culture",
+      "level2": "museum",
+      "label_en": "Museum",
+      "label_zh": "博物馆"
+    },
+    "coordinate": {
+      "lat": 31.206217,
+      "lng": 121.434165,
+      "crs": "WGS84"
+    },
+    "drop_off_locations": [],
+    "operating_rules": {
+      "opening_hours": [],
+      "last_entry_time": null,
+      "closure_data_status": "unverified",
+      "closure_rules": [],
+      "is_enclosed_attraction": true,
+      "advance_booking_days": null,
+      "light_up": null,
+      "dwell_time": {
+        "kind": "range",
+        "minutes_min": 60,
+        "minutes_max": 90
+      }
+    },
+    "provider_refs": {
+      "amap": "B00151EA79"
+    },
+    "provenance": {
+      "source": "manual",
+      "updated_at": 1791043200,
+      "reviewed_by": "source-review-2026-10-04",
+      "confidence": 0.6
+    },
+    "tags": [
+      "徐汇区",
+      "市区",
+      "历史故居与纪念展示，可与衡复街区步行游览组合。",
+      "停留时长为规划参考",
+      "开放与休馆安排待核实",
+      "预约政策待核实",
+      "导航参考：宋庆龄故居西北门，开放状态待核实"
+    ],
+    "description_zh": "宋庆龄生前寓所及相关纪念展示空间，适合了解人物生平与近现代历史。可将故居参观与淮海路、衡复街区步行结合，游览偏重历史文化。"
+  },
+  {
+    "poi_id": "sh_poi_00150",
+    "names": {
+      "zh-Hans": "上海邮政博物馆",
+      "en": "Shanghai Postal Museum"
+    },
+    "romanization": {
+      "pinyin": "shàng hǎi yóu zhèng bó wù guǎn",
+      "pinyin_plain": "shang hai you zheng bo wu guan"
+    },
+    "search_aliases": [
+      "邮政博物馆",
+      "Shanghai Postal Museum"
+    ],
+    "category": {
+      "level1": "history_culture",
+      "level2": "museum",
+      "label_en": "Museum",
+      "label_zh": "博物馆"
+    },
+    "coordinate": {
+      "lat": 31.246253,
+      "lng": 121.480262,
+      "crs": "WGS84"
+    },
+    "drop_off_locations": [],
+    "operating_rules": {
+      "opening_hours": [],
+      "last_entry_time": null,
+      "closure_data_status": "unverified",
+      "closure_rules": [],
+      "is_enclosed_attraction": true,
+      "advance_booking_days": null,
+      "light_up": null,
+      "dwell_time": {
+        "kind": "range",
+        "minutes_min": 60,
+        "minutes_max": 90
+      }
+    },
+    "provider_refs": {
+      "amap": "B00155F9RW"
+    },
+    "provenance": {
+      "source": "manual",
+      "updated_at": 1791043200,
+      "reviewed_by": "source-review-2026-10-04",
+      "confidence": 0.6
+    },
+    "tags": [
+      "虹口区",
+      "市区",
+      "邮政历史与近代建筑主题，可与苏州河沿岸组合。",
+      "停留时长为规划参考",
+      "开放与休馆安排待核实",
+      "预约政策待核实",
+      "坐标为地点标注点，实际入口待核实"
+    ],
+    "description_zh": "通过文献、实物与展示介绍邮政的发展历程和文化。适合喜欢通信史、城市记忆与博物馆观展的用户，可与苏州河附近的街区漫步组合。"
+  },
+  {
+    "poi_id": "sh_poi_00151",
+    "names": {
+      "zh-Hans": "七宝古镇",
+      "en": "Qibao Ancient Town"
+    },
+    "romanization": {
+      "pinyin": "qī bǎo gǔ zhèn",
+      "pinyin_plain": "qi bao gu zhen"
+    },
+    "search_aliases": [
+      "七宝老街",
+      "Qibao Old Street"
+    ],
+    "category": {
+      "level1": "local_life",
+      "level2": "old_town",
+      "label_en": "Old Town",
+      "label_zh": "古镇老街"
+    },
+    "coordinate": {
+      "lat": 31.15523,
+      "lng": 121.351331,
+      "crs": "WGS84"
+    },
+    "drop_off_locations": [],
+    "operating_rules": {
+      "opening_hours": [],
+      "last_entry_time": null,
+      "closure_data_status": "unverified",
+      "closure_rules": [],
+      "is_enclosed_attraction": false,
+      "advance_booking_days": null,
+      "light_up": null,
+      "dwell_time": {
+        "kind": "range",
+        "minutes_min": 90,
+        "minutes_max": 150
+      }
+    },
+    "provider_refs": {
+      "amap": "B0FFHRIVGO"
+    },
+    "provenance": {
+      "source": "manual",
+      "updated_at": 1791043200,
+      "reviewed_by": "source-review-2026-10-04",
+      "confidence": 0.6
+    },
+    "tags": [
+      "闵行区",
+      "市区",
+      "老街、水乡与小吃；沿街店铺的营业时间各不相同。",
+      "停留时长为规划参考",
+      "开放与休馆安排待核实",
+      "预约政策待核实",
+      "坐标为地点标注点，实际入口待核实"
+    ],
+    "description_zh": "闵行城市中的江南古镇，老街、古桥与特色小吃构成主要体验。适合想逛古镇又偏好城市周边行程的用户，游览以步行和街区探索为主。"
+  },
+  {
+    "poi_id": "sh_poi_00152",
+    "names": {
+      "zh-Hans": "南翔老街",
+      "en": "Nanxiang Old Street"
+    },
+    "romanization": {
+      "pinyin": "nán xiáng lǎo jiē",
+      "pinyin_plain": "nan xiang lao jie"
+    },
+    "search_aliases": [
+      "南翔古镇",
+      "Nanxiang Old Town"
+    ],
+    "category": {
+      "level1": "local_life",
+      "level2": "old_town",
+      "label_en": "Old Town",
+      "label_zh": "古镇老街"
+    },
+    "coordinate": {
+      "lat": 31.29221,
+      "lng": 121.304121,
+      "crs": "WGS84"
+    },
+    "drop_off_locations": [],
+    "operating_rules": {
+      "opening_hours": [],
+      "last_entry_time": null,
+      "closure_data_status": "unverified",
+      "closure_rules": [],
+      "is_enclosed_attraction": false,
+      "advance_booking_days": null,
+      "light_up": null,
+      "dwell_time": {
+        "kind": "range",
+        "minutes_min": 90,
+        "minutes_max": 150
+      }
+    },
+    "provider_refs": {
+      "amap": "B0H2UHPMJ4"
+    },
+    "provenance": {
+      "source": "manual",
+      "updated_at": 1791043200,
+      "reviewed_by": "source-review-2026-10-04",
+      "confidence": 0.6
+    },
+    "tags": [
+      "嘉定区",
+      "近郊",
+      "嘉定老街与地方小吃，适合慢节奏步行游览。",
+      "停留时长为规划参考",
+      "开放与休馆安排待核实",
+      "预约政策待核实",
+      "坐标为地点标注点，实际入口待核实"
+    ],
+    "description_zh": "南翔古镇的传统商业与住宅街区，可观察老街风貌、探访文化空间。适合喜欢街区漫步及地方饮食的用户，附近园林与场馆可按兴趣另行组合。"
+  },
+  {
+    "poi_id": "sh_poi_00153",
+    "names": {
+      "zh-Hans": "枫泾古镇",
+      "en": "Fengjing Ancient Town"
+    },
+    "romanization": {
+      "pinyin": "fēng jīng gǔ zhèn",
+      "pinyin_plain": "feng jing gu zhen"
+    },
+    "search_aliases": [
+      "枫泾",
+      "Fengjing"
+    ],
+    "category": {
+      "level1": "local_life",
+      "level2": "old_town",
+      "label_en": "Old Town",
+      "label_zh": "古镇老街"
+    },
+    "coordinate": {
+      "lat": 30.886534,
+      "lng": 121.009845,
+      "crs": "WGS84"
+    },
+    "drop_off_locations": [],
+    "operating_rules": {
+      "opening_hours": [],
+      "last_entry_time": null,
+      "closure_data_status": "unverified",
+      "closure_rules": [],
+      "is_enclosed_attraction": false,
+      "advance_booking_days": null,
+      "light_up": null,
+      "dwell_time": {
+        "kind": "range",
+        "minutes_min": 120,
+        "minutes_max": 180
+      }
+    },
+    "provider_refs": {
+      "amap": "B001556VY1"
+    },
+    "provenance": {
+      "source": "manual",
+      "updated_at": 1791043200,
+      "reviewed_by": "source-review-2026-10-04",
+      "confidence": 0.6
+    },
+    "tags": [
+      "金山区",
+      "近郊",
+      "金山水乡古镇；街区与收费展馆分别核对开放安排。",
+      "停留时长为规划参考",
+      "开放与休馆安排待核实",
+      "预约政策待核实",
+      "导航参考：枫泾古镇正门，开放状态待核实"
+    ],
+    "description_zh": "金山的历史古镇，以江南水乡景观和民俗文化为特色。适合喜欢老街、传统建筑与古镇生活的用户，距中心城区较远，宜预留交通时间。"
+  },
+  {
+    "poi_id": "sh_poi_00154",
+    "names": {
+      "zh-Hans": "新场古镇",
+      "en": "Xinchang Ancient Town"
+    },
+    "romanization": {
+      "pinyin": "xīn chǎng gǔ zhèn",
+      "pinyin_plain": "xin chang gu zhen"
+    },
+    "search_aliases": [
+      "浦东新场",
+      "Xinchang Shanghai"
+    ],
+    "category": {
+      "level1": "local_life",
+      "level2": "old_town",
+      "label_en": "Old Town",
+      "label_zh": "古镇老街"
+    },
+    "coordinate": {
+      "lat": 31.027118,
+      "lng": 121.642532,
+      "crs": "WGS84"
+    },
+    "drop_off_locations": [],
+    "operating_rules": {
+      "opening_hours": [],
+      "last_entry_time": null,
+      "closure_data_status": "unverified",
+      "closure_rules": [],
+      "is_enclosed_attraction": false,
+      "advance_booking_days": null,
+      "light_up": null,
+      "dwell_time": {
+        "kind": "range",
+        "minutes_min": 120,
+        "minutes_max": 180
+      }
+    },
+    "provider_refs": {
+      "amap": "B00155LZNL"
+    },
+    "provenance": {
+      "source": "manual",
+      "updated_at": 1791043200,
+      "reviewed_by": "source-review-2026-10-04",
+      "confidence": 0.6
+    },
+    "tags": [
+      "浦东新区",
+      "近郊",
+      "浦东历史街区与水乡巷道；不要与成都同名古镇混淆。",
+      "停留时长为规划参考",
+      "开放与休馆安排待核实",
+      "预约政策待核实",
+      "坐标为地点标注点，实际入口待核实"
+    ],
+    "description_zh": "浦东的历史文化古镇，传统街巷、民居与地方文化是主要看点。适合喜欢古镇漫步和生活气息的用户，可按兴趣观察建筑与街区细节。"
+  },
+  {
+    "poi_id": "sh_poi_00155",
+    "names": {
+      "zh-Hans": "北外滩滨江绿地",
+      "en": "North Bund Riverside Green Space"
+    },
+    "romanization": {
+      "pinyin": "běi wài tān bīn jiāng lǜ dì",
+      "pinyin_plain": "bei wai tan bin jiang lv di"
+    },
+    "search_aliases": [
+      "北外滩滨江",
+      "North Bund Riverside"
+    ],
+    "category": {
+      "level1": "modern_skyline",
+      "level2": "riverwalk",
+      "label_en": "Riverwalk",
+      "label_zh": "滨江步道"
+    },
+    "coordinate": {
+      "lat": 31.24947,
+      "lng": 121.494937,
+      "crs": "WGS84"
+    },
+    "drop_off_locations": [],
+    "operating_rules": {
+      "opening_hours": [],
+      "last_entry_time": null,
+      "closure_data_status": "unverified",
+      "closure_rules": [],
+      "is_enclosed_attraction": false,
+      "advance_booking_days": null,
+      "light_up": null,
+      "dwell_time": {
+        "kind": "range",
+        "minutes_min": 60,
+        "minutes_max": 90
+      }
+    },
+    "provider_refs": {
+      "amap": "B00156NZVG"
+    },
+    "provenance": {
+      "source": "manual",
+      "updated_at": 1791043200,
+      "reviewed_by": "source-review-2026-10-04",
+      "confidence": 0.6
+    },
+    "tags": [
+      "虹口区",
+      "市区",
+      "黄浦江北岸城市景观与滨江步行。",
+      "停留时长为规划参考",
+      "开放与休馆安排待核实",
+      "预约政策待核实",
+      "坐标为地点标注点，实际入口待核实"
+    ],
+    "description_zh": "虹口黄浦江岸的滨江绿地，可步行欣赏江面与城市景观。适合拍照、散步和轻松休闲；与外滩同日安排时，可按体力缩短其中一段路线。"
+  },
+  {
+    "poi_id": "sh_poi_00156",
+    "names": {
+      "zh-Hans": "徐汇滨江绿地",
+      "en": "Xuhui Riverside Green Space"
+    },
+    "romanization": {
+      "pinyin": "xú huì bīn jiāng lǜ dì",
+      "pinyin_plain": "xu hui bin jiang lv di"
+    },
+    "search_aliases": [
+      "西岸滨江",
+      "Xuhui Riverside"
+    ],
+    "category": {
+      "level1": "modern_skyline",
+      "level2": "riverwalk",
+      "label_en": "Riverwalk",
+      "label_zh": "滨江步道"
+    },
+    "coordinate": {
+      "lat": 31.182707,
+      "lng": 121.45932,
+      "crs": "WGS84"
+    },
+    "drop_off_locations": [],
+    "operating_rules": {
+      "opening_hours": [],
+      "last_entry_time": null,
+      "closure_data_status": "unverified",
+      "closure_rules": [],
+      "is_enclosed_attraction": false,
+      "advance_booking_days": null,
+      "light_up": null,
+      "dwell_time": {
+        "kind": "range",
+        "minutes_min": 60,
+        "minutes_max": 120
+      }
+    },
+    "provider_refs": {
+      "amap": "B00156ZEPU"
+    },
+    "provenance": {
+      "source": "manual",
+      "updated_at": 1791043200,
+      "reviewed_by": "source-review-2026-10-04",
+      "confidence": 0.6
+    },
+    "tags": [
+      "徐汇区",
+      "市区",
+      "徐汇西岸滨江步行空间，可按体力缩短游览区间。",
+      "停留时长为规划参考",
+      "开放与休馆安排待核实",
+      "预约政策待核实",
+      "坐标为地点标注点，实际入口待核实"
+    ],
+    "description_zh": "徐汇西岸的滨江公共空间，适合沿黄浦江步行、休息与欣赏城市景观。喜欢户外漫步的用户可考虑保留，游览距离可按体力自由调整。"
+  },
+  {
+    "poi_id": "sh_poi_00157",
+    "names": {
+      "zh-Hans": "东方绿舟",
+      "en": "Oriental Land"
+    },
+    "romanization": {
+      "pinyin": "dōng fāng lǜ zhōu",
+      "pinyin_plain": "dong fang lv zhou"
+    },
+    "search_aliases": [
+      "东方绿舟景区",
+      "Oriental Land Shanghai"
+    ],
+    "category": {
+      "level1": "nature",
+      "level2": "park",
+      "label_en": "Park",
+      "label_zh": "公园"
+    },
+    "coordinate": {
+      "lat": 31.101343,
+      "lng": 121.013542,
+      "crs": "WGS84"
+    },
+    "drop_off_locations": [],
+    "operating_rules": {
+      "opening_hours": [],
+      "last_entry_time": null,
+      "closure_data_status": "unverified",
+      "closure_rules": [],
+      "is_enclosed_attraction": true,
+      "advance_booking_days": null,
+      "light_up": null,
+      "dwell_time": {
+        "kind": "range",
+        "minutes_min": 180,
+        "minutes_max": 240
+      }
+    },
+    "provider_refs": {
+      "amap": "B00155IPXY"
+    },
+    "provenance": {
+      "source": "manual",
+      "updated_at": 1791043200,
+      "reviewed_by": "source-review-2026-10-04",
+      "confidence": 0.6
+    },
+    "tags": [
+      "青浦区",
+      "近郊",
+      "青浦户外游憩园区，适合给交通与园内步行留足时间。",
+      "停留时长为规划参考",
+      "开放与休馆安排待核实",
+      "预约政策待核实",
+      "导航参考：东方绿舟1号门，开放状态待核实"
+    ],
+    "description_zh": "青浦淀山湖旁的户外游憩与青少年活动园区，兼具自然景观和教育体验。适合亲子及喜欢户外活动的用户，园内活动可按兴趣另行选择。"
+  },
+  {
+    "poi_id": "sh_poi_00158",
+    "names": {
+      "zh-Hans": "佘山国家森林公园",
+      "en": "Sheshan National Forest Park"
+    },
+    "romanization": {
+      "pinyin": "shé shān guó jiā sēn lín gōng yuán",
+      "pinyin_plain": "she shan guo jia sen lin gong yuan"
+    },
+    "search_aliases": [
+      "佘山森林公园",
+      "Sheshan"
+    ],
+    "category": {
+      "level1": "nature",
+      "level2": "park",
+      "label_en": "Park",
+      "label_zh": "公园"
+    },
+    "coordinate": {
+      "lat": 31.096811,
+      "lng": 121.180918,
+      "crs": "WGS84"
+    },
+    "drop_off_locations": [],
+    "operating_rules": {
+      "opening_hours": [],
+      "last_entry_time": null,
+      "closure_data_status": "unverified",
+      "closure_rules": [],
+      "is_enclosed_attraction": true,
+      "advance_booking_days": null,
+      "light_up": null,
+      "dwell_time": {
+        "kind": "range",
+        "minutes_min": 120,
+        "minutes_max": 180
+      }
+    },
+    "provider_refs": {
+      "amap": "B00155IWT7"
+    },
+    "provenance": {
+      "source": "manual",
+      "updated_at": 1791043200,
+      "reviewed_by": "source-review-2026-10-04",
+      "confidence": 0.6
+    },
+    "tags": [
+      "松江区",
+      "近郊",
+      "松江山林步道；东佘山与西佘山入口和路线需分别确认。",
+      "停留时长为规划参考",
+      "开放与休馆安排待核实",
+      "预约政策待核实",
+      "导航参考：佘山国家森林公园东北门（西佘山一侧），开放状态待核实"
+    ],
+    "description_zh": "松江的山林公园，适合登高、步行和接触自然。喜欢山地路线的用户可考虑保留；东佘山与西佘山游线不同，建议按体力选定一侧游览。"
+  },
+  {
+    "poi_id": "sh_poi_00159",
+    "names": {
+      "zh-Hans": "上海海湾国家森林公园",
+      "en": "Shanghai Haiwan National Forest Park"
+    },
+    "romanization": {
+      "pinyin": "shàng hǎi hǎi wān guó jiā sēn lín gōng yuán",
+      "pinyin_plain": "shang hai hai wan guo jia sen lin gong yuan"
+    },
+    "search_aliases": [
+      "海湾森林公园",
+      "Haiwan Forest Park"
+    ],
+    "category": {
+      "level1": "nature",
+      "level2": "park",
+      "label_en": "Park",
+      "label_zh": "公园"
+    },
+    "coordinate": {
+      "lat": 30.868275,
+      "lng": 121.67438,
+      "crs": "WGS84"
+    },
+    "drop_off_locations": [],
+    "operating_rules": {
+      "opening_hours": [],
+      "last_entry_time": null,
+      "closure_data_status": "unverified",
+      "closure_rules": [],
+      "is_enclosed_attraction": true,
+      "advance_booking_days": null,
+      "light_up": null,
+      "dwell_time": {
+        "kind": "range",
+        "minutes_min": 180,
+        "minutes_max": 240
+      }
+    },
+    "provider_refs": {
+      "amap": "B00155LYLB"
+    },
+    "provenance": {
+      "source": "manual",
+      "updated_at": 1791043200,
+      "reviewed_by": "source-review-2026-10-04",
+      "confidence": 0.6
+    },
+    "tags": [
+      "奉贤区",
+      "近郊",
+      "奉贤森林园区，园内距离较长，建议安排较宽松的一天。",
+      "停留时长为规划参考",
+      "开放与休馆安排待核实",
+      "预约政策待核实",
+      "导航参考：海湾国家森林公园1号门，开放状态待核实"
+    ],
+    "description_zh": "奉贤的大型森林园区，林地、水岸和步行空间构成主要自然体验。适合喜欢林间散步与户外摄影的用户，宜把交通和园内步行都留得宽松些。"
+  },
+  {
+    "poi_id": "sh_poi_00160",
+    "names": {
+      "zh-Hans": "滴水湖",
+      "en": "Dishui Lake"
+    },
+    "romanization": {
+      "pinyin": "dī shuǐ hú",
+      "pinyin_plain": "di shui hu"
+    },
+    "search_aliases": [
+      "临港滴水湖",
+      "Dishui Lake"
+    ],
+    "category": {
+      "level1": "nature",
+      "level2": "waterfront",
+      "label_en": "Waterfront",
+      "label_zh": "湖滨步道"
+    },
+    "coordinate": {
+      "lat": 30.905091,
+      "lng": 121.924639,
+      "crs": "WGS84"
+    },
+    "drop_off_locations": [],
+    "operating_rules": {
+      "opening_hours": [],
+      "last_entry_time": null,
+      "closure_data_status": "unverified",
+      "closure_rules": [],
+      "is_enclosed_attraction": false,
+      "advance_booking_days": null,
+      "light_up": null,
+      "dwell_time": {
+        "kind": "range",
+        "minutes_min": 60,
+        "minutes_max": 120
+      }
+    },
+    "provider_refs": {
+      "amap": "B00155LYLW"
+    },
+    "provenance": {
+      "source": "manual",
+      "updated_at": 1791043200,
+      "reviewed_by": "source-review-2026-10-04",
+      "confidence": 0.6
+    },
+    "tags": [
+      "浦东新区",
+      "近郊",
+      "临港湖滨散步，与天文馆、航海博物馆组合时需考虑区间交通。",
+      "停留时长为规划参考",
+      "开放与休馆安排待核实",
+      "预约政策待核实",
+      "坐标为地点标注点，实际入口待核实"
+    ],
+    "description_zh": "临港的湖滨公共空间，以湖景和沿湖步行为主要体验。适合轻松散步与户外拍照，可与天文馆或航海博物馆组合；不必为游览而走完整圈。"
+  }
+]

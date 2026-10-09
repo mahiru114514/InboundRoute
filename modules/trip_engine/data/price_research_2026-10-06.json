@@ -1,0 +1,1049 @@
+{
+  "researched_at": "2026-10-06",
+  "purpose": "价格调研快照，用于行程预算自动参考估算；不代表指定日期实时报价",
+  "pricing_basis": "公开可访问资料；部分来源发布于2021—2025年或为游客反馈，查询日期不等于报价日期。官方来源也不代表已核实指定出行日价格。未知保留null。",
+  "exchange_rate": {
+    "base": "USD",
+    "quote": "CNY",
+    "rate": "6.7351",
+    "effective_date": "2026-09-30",
+    "source": "https://www.chinamoney.org.cn/chinese/bkccpr/?tab=2"
+  },
+  "counts": {
+    "hotels": 12,
+    "attractions": 45
+  },
+  "hotels": [
+    {
+      "entity_id": "hotel_hyland",
+      "name": "上海宏安瑞士大酒店",
+      "currency": "CNY",
+      "unit": "per_room_per_night",
+      "min_cents": null,
+      "max_cents": null,
+      "status": "identity_conflict",
+      "retrieved_at": "2026-10-06",
+      "sources": [
+        "https://www.swissotel.cn/hotels/shanghai/",
+        "https://www.tripadvisor.com/Hotel_Review-g308272-d1021906-Reviews-Swissotel_Grand_Shanghai-Shanghai.html",
+        "https://www.tripadvisor.com/Hotel_Review-g308272-d299549-Reviews-Radisson_Collection_Hotel_Hyland_Shanghai-Shanghai.html"
+      ],
+      "scope": "中文名上海宏安瑞士大酒店指向Swissotel Grand；英文名及南京东路坐标指向Radisson Collection Hyland。须先核对实体，禁止直接匹配价格。",
+      "candidates": [
+        {
+          "name": "上海宏安瑞士大酒店 / Swissotel Grand Shanghai",
+          "original_currency": "USD",
+          "original_min": 118,
+          "original_max": 195,
+          "cny_range_cents": [
+            79000,
+            132000
+          ]
+        },
+        {
+          "name": "上海海仑丽笙精选酒店 / Radisson Collection Hyland Shanghai",
+          "original_currency": "USD",
+          "original_min": 119,
+          "original_max": 224,
+          "cny_range_cents": [
+            80000,
+            151000
+          ]
+        }
+      ],
+      "requires_confirmation": true,
+      "auto_fill_eligible": false
+    },
+    {
+      "entity_id": "hotel_peace",
+      "name": "和平饭店",
+      "currency": "CNY",
+      "unit": "per_room_per_night",
+      "min_cents": 228000,
+      "max_cents": 305000,
+      "status": "ota_reference",
+      "retrieved_at": "2026-10-06",
+      "original_price": {
+        "currency": "USD",
+        "min": 339,
+        "max": 452
+      },
+      "sources": [
+        "https://www.tripadvisor.com/Hotel_Review-g308272-d303020-Reviews-Fairmont_Peace_Hotel-Shanghai.html"
+      ],
+      "scope": "Tripadvisor标准客房平均房价范围；没有绑定用户入住日期、房型、早餐、税费及退改政策；人民币为汇率折算并向外取整到10元。不是可预订报价。",
+      "requires_confirmation": true,
+      "auto_fill_eligible": true
+    },
+    {
+      "entity_id": "hotel_westin_bund",
+      "name": "威斯汀大饭店",
+      "currency": "CNY",
+      "unit": "per_room_per_night",
+      "min_cents": 119000,
+      "max_cents": 155000,
+      "status": "ota_reference",
+      "retrieved_at": "2026-10-06",
+      "original_price": {
+        "currency": "USD",
+        "min": 177,
+        "max": 230
+      },
+      "sources": [
+        "https://www.tripadvisor.com/Hotel_Review-g308272-d301757-Reviews-The_Westin_Bund_Center_Shanghai-Shanghai.html"
+      ],
+      "scope": "Tripadvisor标准客房平均房价范围；没有绑定用户入住日期、房型、早餐、税费及退改政策；人民币为汇率折算并向外取整到10元。不是可预订报价。",
+      "requires_confirmation": true,
+      "auto_fill_eligible": true
+    },
+    {
+      "entity_id": "hotel_porter",
+      "name": "波特曼丽思卡尔顿酒店",
+      "currency": "CNY",
+      "unit": "per_room_per_night",
+      "min_cents": 129000,
+      "max_cents": 201000,
+      "status": "ota_reference",
+      "retrieved_at": "2026-10-06",
+      "original_price": {
+        "currency": "USD",
+        "min": 192,
+        "max": 298
+      },
+      "sources": [
+        "https://www.tripadvisor.com/Hotel_Review-g308272-d302253-Reviews-The_Portman_Ritz_Carlton_Shanghai-Shanghai.html"
+      ],
+      "scope": "Tripadvisor标准客房平均房价范围；没有绑定用户入住日期、房型、早餐、税费及退改政策；人民币为汇率折算并向外取整到10元。不是可预订报价。",
+      "requires_confirmation": true,
+      "auto_fill_eligible": true
+    },
+    {
+      "entity_id": "hotel_jinjiang",
+      "name": "锦江饭店",
+      "currency": "CNY",
+      "unit": "per_room_per_night",
+      "min_cents": 57000,
+      "max_cents": 94000,
+      "status": "ota_reference",
+      "retrieved_at": "2026-10-06",
+      "original_price": {
+        "currency": "USD",
+        "min": 85,
+        "max": 139
+      },
+      "sources": [
+        "https://www.tripadvisor.com/Hotel_Review-g308272-d303013-Reviews-Jin_Jiang_Hotel_Shanghai-Shanghai.html"
+      ],
+      "scope": "Tripadvisor标准客房平均房价范围；没有绑定用户入住日期、房型、早餐、税费及退改政策；人民币为汇率折算并向外取整到10元。不是可预订报价。",
+      "requires_confirmation": true,
+      "auto_fill_eligible": true
+    },
+    {
+      "entity_id": "hotel_pudong_shangrila",
+      "name": "浦东香格里拉大酒店",
+      "currency": "CNY",
+      "unit": "per_room_per_night",
+      "min_cents": 111000,
+      "max_cents": 259000,
+      "status": "ota_reference",
+      "retrieved_at": "2026-10-06",
+      "original_price": {
+        "currency": "USD",
+        "min": 166,
+        "max": 384
+      },
+      "sources": [
+        "https://www.tripadvisor.com/Hotel_Review-g308272-d307540-Reviews-Pudong_Shangri_La_Shanghai-Shanghai.html"
+      ],
+      "scope": "Tripadvisor标准客房平均房价范围；没有绑定用户入住日期、房型、早餐、税费及退改政策；人民币为汇率折算并向外取整到10元。不是可预订报价。",
+      "requires_confirmation": true,
+      "auto_fill_eligible": true
+    },
+    {
+      "entity_id": "hotel_waldorf_bund",
+      "name": "上海外滩华尔道夫酒店",
+      "currency": "CNY",
+      "unit": "per_room_per_night",
+      "min_cents": 243000,
+      "max_cents": 366000,
+      "status": "ota_reference",
+      "retrieved_at": "2026-10-06",
+      "original_price": {
+        "currency": "USD",
+        "min": 361,
+        "max": 542
+      },
+      "sources": [
+        "https://www.tripadvisor.com/Hotel_Review-g308272-d1800802-Reviews-Waldorf_Astoria_Shanghai_on_the_Bund-Shanghai.html"
+      ],
+      "scope": "Tripadvisor标准客房平均房价范围；没有绑定用户入住日期、房型、早餐、税费及退改政策；人民币为汇率折算并向外取整到10元。不是可预订报价。",
+      "requires_confirmation": true,
+      "auto_fill_eligible": true
+    },
+    {
+      "entity_id": "hotel_peninsula",
+      "name": "上海半岛酒店",
+      "currency": "CNY",
+      "unit": "per_room_per_night",
+      "min_cents": 251000,
+      "max_cents": 412000,
+      "status": "ota_reference",
+      "retrieved_at": "2026-10-06",
+      "original_price": {
+        "currency": "USD",
+        "min": 373,
+        "max": 611
+      },
+      "sources": [
+        "https://www.tripadvisor.com/Hotel_Review-g308272-d1461776-Reviews-The_Peninsula_Shanghai-Shanghai.html"
+      ],
+      "scope": "Tripadvisor标准客房平均房价范围；没有绑定用户入住日期、房型、早餐、税费及退改政策；人民币为汇率折算并向外取整到10元。不是可预订报价。",
+      "requires_confirmation": true,
+      "auto_fill_eligible": true
+    },
+    {
+      "entity_id": "hotel_ritz_pudong",
+      "name": "上海浦东丽思卡尔顿酒店",
+      "currency": "CNY",
+      "unit": "per_room_per_night",
+      "min_cents": 241000,
+      "max_cents": 469000,
+      "status": "ota_reference",
+      "retrieved_at": "2026-10-06",
+      "original_price": {
+        "currency": "USD",
+        "min": 359,
+        "max": 695
+      },
+      "sources": [
+        "https://cn.tripadvisor.com/Hotel_Review-g308272-d1654265-Reviews-The_Ritz_Carlton_Shanghai_Pudong-Shanghai.html"
+      ],
+      "scope": "Tripadvisor标准客房平均房价范围；没有绑定用户入住日期、房型、早餐、税费及退改政策；人民币为汇率折算并向外取整到10元。不是可预订报价。",
+      "requires_confirmation": true,
+      "auto_fill_eligible": true
+    },
+    {
+      "entity_id": "hotel_garden_okura",
+      "name": "上海花园饭店",
+      "currency": "CNY",
+      "unit": "per_room_per_night",
+      "min_cents": 83000,
+      "max_cents": 200000,
+      "status": "ota_reference",
+      "retrieved_at": "2026-10-06",
+      "original_price": {
+        "currency": "USD",
+        "min": 124,
+        "max": 296
+      },
+      "sources": [
+        "https://www.tripadvisor.com/Hotel_Review-g308272-d301722-Reviews-Okura_Garden_Hotel_Shanghai-Shanghai.html"
+      ],
+      "scope": "Tripadvisor标准客房平均房价范围；没有绑定用户入住日期、房型、早餐、税费及退改政策；人民币为汇率折算并向外取整到10元。不是可预订报价。",
+      "requires_confirmation": true,
+      "auto_fill_eligible": true
+    },
+    {
+      "entity_id": "hotel_marriott_city",
+      "name": "上海雅居乐万豪酒店",
+      "currency": "CNY",
+      "unit": "per_room_per_night",
+      "min_cents": 120000,
+      "max_cents": 218000,
+      "status": "ota_reference",
+      "retrieved_at": "2026-10-06",
+      "original_price": {
+        "currency": "USD",
+        "min": 179,
+        "max": 323
+      },
+      "sources": [
+        "https://www.tripadvisor.com/Hotel_Review-g308272-d1954359-Reviews-Shanghai_Marriott_Marquis_City_Centre-Shanghai.html"
+      ],
+      "scope": "Tripadvisor标准客房平均房价范围；没有绑定用户入住日期、房型、早餐、税费及退改政策；人民币为汇率折算并向外取整到10元。不是可预订报价。",
+      "requires_confirmation": true,
+      "auto_fill_eligible": true
+    },
+    {
+      "entity_id": "hotel_conrad",
+      "name": "上海康莱德酒店",
+      "currency": "CNY",
+      "unit": "per_room_per_night",
+      "min_cents": 119000,
+      "max_cents": 210000,
+      "status": "ota_reference",
+      "retrieved_at": "2026-10-06",
+      "original_price": {
+        "currency": "USD",
+        "min": 177,
+        "max": 311
+      },
+      "sources": [
+        "https://www.tripadvisor.com/Hotel_Review-g308272-d23833016-Reviews-Conrad_Shanghai-Shanghai.html"
+      ],
+      "scope": "Tripadvisor标准客房平均房价范围；没有绑定用户入住日期、房型、早餐、税费及退改政策；人民币为汇率折算并向外取整到10元。不是可预订报价。",
+      "requires_confirmation": true,
+      "auto_fill_eligible": true
+    }
+  ],
+  "attractions": [
+    {
+      "entity_id": "sh_poi_00042",
+      "name": "外滩",
+      "currency": "CNY",
+      "unit": "per_person_admission",
+      "min_cents": 0,
+      "max_cents": 0,
+      "status": "secondary_reference",
+      "scope": "外滩公共步道；不含游船及收费体验",
+      "sources": [
+        "https://m.ly.com/scenery_1/detail/?sceneryId=8259"
+      ],
+      "retrieved_at": "2026-10-06",
+      "requires_confirmation": true,
+      "auto_fill_eligible": true
+    },
+    {
+      "entity_id": "sh_poi_00088",
+      "name": "上海博物馆",
+      "currency": "CNY",
+      "unit": "per_person_admission",
+      "min_cents": 0,
+      "max_cents": 0,
+      "status": "product_policy_base",
+      "scope": "按产品口径基础标注免费，特展单独注明：人民广场馆美洲文明特展全价148、指定日135；2026-07-09至2027-11-14。当前特展期间人民广场馆不展出其他展览，实际入馆需购票（符合免票资格者除外）；指定日排除周末、国定假日及部分寒暑假日期；优惠票74、亲子200/320须匹配资格",
+      "sources": [
+        "https://www.shanghaimuseum.net/mu/frontend/pg/m/article/id/I00005037",
+        "https://www.jfdaily.com.cn/sgh/detail?id=4066231"
+      ],
+      "retrieved_at": "2026-10-06",
+      "requires_confirmation": true,
+      "auto_fill_eligible": true,
+      "base_price_basis": "user_requested_product_label",
+      "special_exhibitions": [
+        {
+          "name": "世界树之巅：美洲古代文明大展",
+          "currency": "CNY",
+          "full_price_cents": 14800,
+          "designated_day_price_cents": 13500,
+          "valid_from": "2026-07-09",
+          "valid_until": "2027-11-14",
+          "admission_requires_ticket_during_exhibition": true,
+          "sources": [
+            "https://www.shanghaimuseum.net/mu/frontend/pg/m/article/id/I00005037",
+            "https://www.jfdaily.com.cn/sgh/detail?id=4066231"
+          ],
+          "conditions": "按产品口径基础标注免费，特展单独注明：人民广场馆美洲文明特展全价148、指定日135；2026-07-09至2027-11-14。当前特展期间人民广场馆不展出其他展览，实际入馆需购票（符合免票资格者除外）；指定日排除周末、国定假日及部分寒暑假日期；优惠票74、亲子200/320须匹配资格"
+        }
+      ]
+    },
+    {
+      "entity_id": "sh_poi_00107",
+      "name": "豫园",
+      "currency": "CNY",
+      "unit": "per_person_admission",
+      "min_cents": 3000,
+      "max_cents": 4000,
+      "status": "official_reference",
+      "scope": "豫园日场成人：4—6月、9—11月40，其余月份30；不含豫园商城灯会等活动",
+      "sources": [
+        "https://www.shanghai.gov.cn/huangpu/index.html"
+      ],
+      "retrieved_at": "2026-10-06",
+      "requires_confirmation": true,
+      "auto_fill_eligible": true
+    },
+    {
+      "entity_id": "sh_poi_00119",
+      "name": "朱家角古镇",
+      "currency": "CNY",
+      "unit": "per_person_admission",
+      "min_cents": 0,
+      "max_cents": 0,
+      "status": "mixed_reference",
+      "scope": "古镇街区免大门票；课植园等场馆另收费，官方联票60，不能把联票当街区门票；街区免费依据第三方游览资料，官网可核实联票。",
+      "sources": [
+        "https://www.zhujiajiao.com/cn/questions/",
+        "https://www.shanghai.gov.cn/nw15343/20260520/076b925cd6424c99a319e9199536af42.html",
+        "https://you.ctrip.com/sight/shanghai2/14903.html"
+      ],
+      "retrieved_at": "2026-10-06",
+      "requires_confirmation": true,
+      "auto_fill_eligible": true
+    },
+    {
+      "entity_id": "sh_poi_00120",
+      "name": "东方明珠",
+      "currency": "CNY",
+      "unit": "per_person_admission",
+      "min_cents": 19900,
+      "max_cents": 19900,
+      "status": "secondary_reference",
+      "scope": "成人观光参考199；不同球体、楼层、联票组合名称不一致，须确认具体票种后使用",
+      "sources": [
+        "https://m.qianlvtong.com/home/product/id/1.html?shco=1234567912345",
+        "https://ep.shxwcb.com/2025/09/12/img/08-090912.pdf"
+      ],
+      "retrieved_at": "2026-10-06",
+      "requires_confirmation": true,
+      "auto_fill_eligible": true
+    },
+    {
+      "entity_id": "sh_poi_00121",
+      "name": "上海中心大厦",
+      "currency": "CNY",
+      "unit": "per_person_admission",
+      "min_cents": 18000,
+      "max_cents": 18000,
+      "status": "official_reference",
+      "scope": "上海之巅118层成人参考180；125/126层等组合另收费，非全部楼层通票",
+      "sources": [
+        "https://www.gzw.sh.gov.cn/shgzw_zxzx_gqdt/20230919/5dd39d37aaa648d9aee71573b4c901b6.html",
+        "https://ep.shxwcb.com/2026/08/08/20260808-06-07-1_20260807215208.html"
+      ],
+      "retrieved_at": "2026-10-06",
+      "requires_confirmation": true,
+      "auto_fill_eligible": true
+    },
+    {
+      "entity_id": "sh_poi_00122",
+      "name": "金茂大厦",
+      "currency": "CNY",
+      "unit": "per_person_admission",
+      "min_cents": 12000,
+      "max_cents": 12000,
+      "status": "official_reference",
+      "scope": "88层观光成人标准参考120；不含云中漫步等项目",
+      "sources": [
+        "https://whlyj.sh.gov.cn/cysc/20250912/b34d37b3289f43389c18d98c8ae23d62.html",
+        "https://www.klook.cn/zh-CN/activity/3972-jin-mao-tower-tickets-shanghai/"
+      ],
+      "retrieved_at": "2026-10-06",
+      "requires_confirmation": true,
+      "auto_fill_eligible": true
+    },
+    {
+      "entity_id": "sh_poi_00123",
+      "name": "上海环球金融中心",
+      "currency": "CNY",
+      "unit": "per_person_admission",
+      "min_cents": null,
+      "max_cents": null,
+      "status": "unavailable",
+      "scope": "未核实当前在售观光票价。2024年因功能调整被取消4A级资质；此公告不等于确认整个大厦停业，不使用旧观光票价",
+      "sources": [
+        "https://whlyj.sh.gov.cn/jqxxgk/20240524/8bbd2926eaae4ea59fa1319125f6707e.html"
+      ],
+      "retrieved_at": "2026-10-06",
+      "requires_confirmation": true,
+      "auto_fill_eligible": false
+    },
+    {
+      "entity_id": "sh_poi_00124",
+      "name": "龙华寺",
+      "currency": "CNY",
+      "unit": "per_person_admission",
+      "min_cents": 0,
+      "max_cents": 0,
+      "status": "secondary_reference",
+      "scope": "普通入寺参考免费，未找到本次可读取的官方常规票价公告；香火、素面、法会另计，需核实",
+      "sources": [
+        "https://travelnews.qunar.com/ugc/shanghai-longhua-temple-winter-pet",
+        "https://travelnews.qunar.com/qa_strategy/shanghai-longhuasi-weekend-prayer-photo-travel-guide"
+      ],
+      "retrieved_at": "2026-10-06",
+      "requires_confirmation": true,
+      "auto_fill_eligible": true
+    },
+    {
+      "entity_id": "sh_poi_00125",
+      "name": "静安寺",
+      "currency": "CNY",
+      "unit": "per_person_admission",
+      "min_cents": 5000,
+      "max_cents": 5000,
+      "status": "secondary_reference",
+      "scope": "常规成人参考50；节庆、特别开放时段可能不同，不套用常规票价",
+      "sources": [
+        "https://www.jtb.co.jp/kaigai_guide/china/people_s_republic_of_china/SHA/111928/"
+      ],
+      "retrieved_at": "2026-10-06",
+      "requires_confirmation": true,
+      "auto_fill_eligible": true
+    },
+    {
+      "entity_id": "sh_poi_00126",
+      "name": "武康路历史文化名街",
+      "currency": "CNY",
+      "unit": "per_person_admission",
+      "min_cents": 0,
+      "max_cents": 0,
+      "status": "secondary_reference",
+      "scope": "公共街道步行免费；沿街建筑内部参观另核实",
+      "sources": [
+        "https://www.ly.com/scenery/BookSceneryTicket_815429.html"
+      ],
+      "retrieved_at": "2026-10-06",
+      "requires_confirmation": true,
+      "auto_fill_eligible": true
+    },
+    {
+      "entity_id": "sh_poi_00127",
+      "name": "田子坊",
+      "currency": "CNY",
+      "unit": "per_person_admission",
+      "min_cents": 0,
+      "max_cents": 0,
+      "status": "secondary_reference",
+      "scope": "街区公共游览免费；购物、餐饮、展览另计",
+      "sources": [
+        "https://you.ctrip.com/destinationsite/sight/shanghai2/64755-traffic.html"
+      ],
+      "retrieved_at": "2026-10-06",
+      "requires_confirmation": true,
+      "auto_fill_eligible": true
+    },
+    {
+      "entity_id": "sh_poi_00128",
+      "name": "新天地",
+      "currency": "CNY",
+      "unit": "per_person_admission",
+      "min_cents": 0,
+      "max_cents": 0,
+      "status": "secondary_reference",
+      "scope": "开放街区免费；商店、餐饮、石库门屋里厢等不包含",
+      "sources": [
+        "https://m.sh.bendibao.com/jingdian/shanghaixintiandi/price/"
+      ],
+      "retrieved_at": "2026-10-06",
+      "requires_confirmation": true,
+      "auto_fill_eligible": true
+    },
+    {
+      "entity_id": "sh_poi_00129",
+      "name": "乌中市集",
+      "currency": "CNY",
+      "unit": "per_person_admission",
+      "min_cents": null,
+      "max_cents": null,
+      "status": "unverified",
+      "scope": "找到政府市集介绍，未找到明确门票价格声明；市场购物不是门票，不凭类型自动填0",
+      "sources": [
+        "https://touch.shio.gov.cn/jsp/tjcf_detail.jsp?id=196&lineId=1"
+      ],
+      "retrieved_at": "2026-10-06",
+      "requires_confirmation": true,
+      "auto_fill_eligible": false
+    },
+    {
+      "entity_id": "sh_poi_00130",
+      "name": "世纪公园",
+      "currency": "CNY",
+      "unit": "per_person_admission",
+      "min_cents": 0,
+      "max_cents": 0,
+      "status": "official_reference",
+      "scope": "公园入园免费；园内另收费项目另计",
+      "sources": [
+        "https://www.shanghai.gov.cn/nw4411/20240329/6f67596eb1b84a39abe4ddbaf7c85b64.html"
+      ],
+      "retrieved_at": "2026-10-06",
+      "requires_confirmation": true,
+      "auto_fill_eligible": true
+    },
+    {
+      "entity_id": "sh_poi_00131",
+      "name": "中山公园",
+      "currency": "CNY",
+      "unit": "per_person_admission",
+      "min_cents": 0,
+      "max_cents": 0,
+      "status": "official_reference",
+      "scope": "公园入园免费",
+      "sources": [
+        "https://www.shanghai.gov.cn/cnq/20230824/3672e702721245ebaa47e9f1631e6e80.html"
+      ],
+      "retrieved_at": "2026-10-06",
+      "requires_confirmation": true,
+      "auto_fill_eligible": true
+    },
+    {
+      "entity_id": "sh_poi_00132",
+      "name": "上海植物园",
+      "currency": "CNY",
+      "unit": "per_person_admission",
+      "min_cents": 0,
+      "max_cents": 0,
+      "status": "official_reference",
+      "scope": "公共园区免费；专类园、温室等需另外核实票种与价格",
+      "sources": [
+        "https://lhsr.sh.gov.cn/gyhd/20211230/5ff26486-7b39-424b-93f8-35f9bd2bf93c.html"
+      ],
+      "retrieved_at": "2026-10-06",
+      "requires_confirmation": true,
+      "auto_fill_eligible": true
+    },
+    {
+      "entity_id": "sh_poi_00133",
+      "name": "共青森林公园",
+      "currency": "CNY",
+      "unit": "per_person_admission",
+      "min_cents": 0,
+      "max_cents": 0,
+      "status": "official_reference",
+      "scope": "公园免费；游乐等另计",
+      "sources": [
+        "https://lhsr.sh.gov.cn/gyhd/20210623/e7da767b-26d2-4cf9-b043-e3dc6356ded3.html"
+      ],
+      "retrieved_at": "2026-10-06",
+      "requires_confirmation": true,
+      "auto_fill_eligible": true
+    },
+    {
+      "entity_id": "sh_poi_00134",
+      "name": "静安公园",
+      "currency": "CNY",
+      "unit": "per_person_admission",
+      "min_cents": 0,
+      "max_cents": 0,
+      "status": "media_reference",
+      "scope": "公园公共区域参考免费；依据2025年免费开放报道，收费项目另计",
+      "sources": [
+        "https://ep.shxwcb.com/2025/04/09/img/030409.pdf"
+      ],
+      "retrieved_at": "2026-10-06",
+      "requires_confirmation": true,
+      "auto_fill_eligible": true
+    },
+    {
+      "entity_id": "sh_poi_00135",
+      "name": "徐家汇公园",
+      "currency": "CNY",
+      "unit": "per_person_admission",
+      "min_cents": 0,
+      "max_cents": 0,
+      "status": "secondary_reference",
+      "scope": "公园入园参考免费；来源含游客反馈，需复核",
+      "sources": [
+        "https://you.ctrip.com/sight/shanghai2/109946.html"
+      ],
+      "retrieved_at": "2026-10-06",
+      "requires_confirmation": true,
+      "auto_fill_eligible": true
+    },
+    {
+      "entity_id": "sh_poi_00136",
+      "name": "长风公园",
+      "currency": "CNY",
+      "unit": "per_person_admission",
+      "min_cents": 0,
+      "max_cents": 0,
+      "status": "official_reference",
+      "scope": "公园本体免费；不包含海洋世界等收费场馆",
+      "sources": [
+        "https://www.shpt.gov.cn/zhengwu/kpgz-kwzdgz/2024/105/158387.html"
+      ],
+      "retrieved_at": "2026-10-06",
+      "requires_confirmation": true,
+      "auto_fill_eligible": true
+    },
+    {
+      "entity_id": "sh_poi_00137",
+      "name": "上海动物园",
+      "currency": "CNY",
+      "unit": "per_person_admission",
+      "min_cents": 4000,
+      "max_cents": 4000,
+      "status": "official_reference",
+      "scope": "上海动物园成人标准40；非上海野生动物园，游乐另计；不沿用已结束的活动优惠",
+      "sources": [
+        "https://www.shanghai.gov.cn/nw17239/20260519/b4cc7db33efe486b83f02e1b9dc4b712.html"
+      ],
+      "retrieved_at": "2026-10-06",
+      "requires_confirmation": true,
+      "auto_fill_eligible": true
+    },
+    {
+      "entity_id": "sh_poi_00138",
+      "name": "鲁迅公园",
+      "currency": "CNY",
+      "unit": "per_person_admission",
+      "min_cents": 0,
+      "max_cents": 0,
+      "status": "official_reference",
+      "scope": "公园免费开放，无需预约；内部收费项目另计",
+      "sources": [
+        "https://www.shhk.gov.cn/qyfwy/030002/030002002/030002002005/20250215/74e3afa7-144b-422c-9f5d-1608d530d89c.html"
+      ],
+      "retrieved_at": "2026-10-06",
+      "requires_confirmation": true,
+      "auto_fill_eligible": true
+    },
+    {
+      "entity_id": "sh_poi_00139",
+      "name": "世博文化公园",
+      "currency": "CNY",
+      "unit": "per_person_admission",
+      "min_cents": 0,
+      "max_cents": 0,
+      "status": "mixed_reference",
+      "scope": "公共园区免费；温室花园、申园等分区及活动不能默认免费，双子山预约与收费政策需按日期复核",
+      "sources": [
+        "https://english.shanghai.gov.cn/en-Parks/20240920/4c47d7f55b3f4a25b043981f4f54434d.html",
+        "https://zh.wikipedia.org/wiki/上海世博文化公园"
+      ],
+      "retrieved_at": "2026-10-06",
+      "requires_confirmation": true,
+      "auto_fill_eligible": true
+    },
+    {
+      "entity_id": "sh_poi_00140",
+      "name": "辰山植物园",
+      "currency": "CNY",
+      "unit": "per_person_admission",
+      "min_cents": 6000,
+      "max_cents": 6000,
+      "status": "official_republication",
+      "scope": "普通成人60；优惠资格和主题体验另计",
+      "sources": [
+        "https://www.shobserver.cn/sgh/detail?id=1724704"
+      ],
+      "retrieved_at": "2026-10-06",
+      "requires_confirmation": true,
+      "auto_fill_eligible": true
+    },
+    {
+      "entity_id": "sh_poi_00141",
+      "name": "上海博物馆东馆",
+      "currency": "CNY",
+      "unit": "per_person_admission",
+      "min_cents": 0,
+      "max_cents": 0,
+      "status": "mixed_reference",
+      "scope": "东馆常设展免费；付费特展另计，不能套用人民广场馆收费或把所有特展都标免费",
+      "sources": [
+        "https://www.shanghaimuseum.cn/mu/frontend/pg/service/visit-east",
+        "https://ep.shxwcb.com/2026/01/29/img/080129.pdf"
+      ],
+      "retrieved_at": "2026-10-06",
+      "requires_confirmation": true,
+      "auto_fill_eligible": true
+    },
+    {
+      "entity_id": "sh_poi_00142",
+      "name": "上海自然博物馆",
+      "currency": "CNY",
+      "unit": "per_person_admission",
+      "min_cents": 3000,
+      "max_cents": 3000,
+      "status": "official_reference",
+      "scope": "成人30；老人、学生及免费资格按官网，特定体验另计",
+      "sources": [
+        "https://www.snhm.org.cn/cgfw/cgzx.htm"
+      ],
+      "retrieved_at": "2026-10-06",
+      "requires_confirmation": true,
+      "auto_fill_eligible": true
+    },
+    {
+      "entity_id": "sh_poi_00143",
+      "name": "上海天文馆",
+      "currency": "CNY",
+      "unit": "per_person_admission",
+      "min_cents": 3000,
+      "max_cents": 3000,
+      "status": "official_reference",
+      "scope": "成人参观30；老人25、学生15；球幕电影等另计，免票资格按官方",
+      "sources": [
+        "https://www.shanghai.gov.cn/pudong/index.html"
+      ],
+      "retrieved_at": "2026-10-06",
+      "requires_confirmation": true,
+      "auto_fill_eligible": true
+    },
+    {
+      "entity_id": "sh_poi_00144",
+      "name": "世博会博物馆",
+      "currency": "CNY",
+      "unit": "per_person_admission",
+      "min_cents": 0,
+      "max_cents": 0,
+      "status": "official_reference",
+      "scope": "常设展免费；特展、活动及体验不在本项内。来源较早，出行前复核",
+      "sources": [
+        "https://www.shanghai.gov.cn/nw9822/20200906/0001-9822_1225204.html"
+      ],
+      "retrieved_at": "2026-10-06",
+      "requires_confirmation": true,
+      "auto_fill_eligible": true
+    },
+    {
+      "entity_id": "sh_poi_00145",
+      "name": "上海城市规划展示馆",
+      "currency": "CNY",
+      "unit": "per_person_admission",
+      "min_cents": 0,
+      "max_cents": 0,
+      "status": "secondary_reference",
+      "scope": "当前免费预约参观参考；旧政府介绍仍有30元，官网当前须知未明列价格，须复核，不能采用旧票价",
+      "sources": [
+        "https://sh.bendibao.com/jingdian/shanghaichengshiguihuazhanshiguan/",
+        "https://www.supec.org.cn/employ-index.html?tab=tab1",
+        "https://touch.shio.gov.cn/jsp/whjljd_detail.jsp?id=74"
+      ],
+      "retrieved_at": "2026-10-06",
+      "requires_confirmation": true,
+      "auto_fill_eligible": true
+    },
+    {
+      "entity_id": "sh_poi_00146",
+      "name": "中国航海博物馆",
+      "currency": "CNY",
+      "unit": "per_person_admission",
+      "min_cents": 3000,
+      "max_cents": 3000,
+      "status": "official_reference",
+      "scope": "普通成人馆票30；2021价格批复，潜艇参观等单独项目另核实",
+      "sources": [
+        "https://www.shanghai.gov.cn/gwk/search/content/48c1a399c92c44f281afdab6b9c7d56e",
+        "https://tt.shmmc.com.cn/SHMM_WeChat/visit?shelfCode=SHMM01"
+      ],
+      "retrieved_at": "2026-10-06",
+      "requires_confirmation": true,
+      "auto_fill_eligible": true
+    },
+    {
+      "entity_id": "sh_poi_00147",
+      "name": "广富林文化遗址",
+      "currency": "CNY",
+      "unit": "per_person_admission",
+      "min_cents": 0,
+      "max_cents": 0,
+      "status": "official_reference",
+      "scope": "公共区域免费；广富林文化展示馆30（2026报道），其他场馆另计",
+      "sources": [
+        "https://www.meet-in-shanghai.net/cn/news/the-public-area-of-guangfulin-cultural-site-will-be-open-to-the-public-free-of-charge-from-tomorrow-291420/",
+        "https://whlyj.sh.gov.cn/gqfc/20260109/755016cfa16649e3a9e761598b4857f9.html"
+      ],
+      "retrieved_at": "2026-10-06",
+      "requires_confirmation": true,
+      "auto_fill_eligible": true
+    },
+    {
+      "entity_id": "sh_poi_00148",
+      "name": "浦东美术馆",
+      "currency": "CNY",
+      "unit": "per_person_admission",
+      "min_cents": 10000,
+      "max_cents": 15000,
+      "status": "official_reference",
+      "scope": "2025公布成人日场：工作日100、周末法定节假日150；17点后80/120；2026实际展览和票种需复核",
+      "sources": [
+        "https://whlyj.sh.gov.cn/gqfc/20250515/2c814efbcb234c31a36d94c933e4b5e6.html",
+        "https://www.museumofartpd.org.cn/ticketing?id=10"
+      ],
+      "retrieved_at": "2026-10-06",
+      "requires_confirmation": true,
+      "auto_fill_eligible": true
+    },
+    {
+      "entity_id": "sh_poi_00149",
+      "name": "上海宋庆龄故居纪念馆",
+      "currency": "CNY",
+      "unit": "per_person_admission",
+      "min_cents": 2000,
+      "max_cents": 2000,
+      "status": "official_reference",
+      "scope": "上海故居普通成人20；学生等优惠另计，不能混同北京宋庆龄故居",
+      "sources": [
+        "https://www.meet-in-shanghai.net/cn/revolutionary-venues/the-former-residence-of-song-qingling-in-shanghai-is-basically-displayed-145303/",
+        "https://www.shsoong-chingling.com/list-canguanyuyue.html"
+      ],
+      "retrieved_at": "2026-10-06",
+      "requires_confirmation": true,
+      "auto_fill_eligible": true
+    },
+    {
+      "entity_id": "sh_poi_00150",
+      "name": "上海邮政博物馆",
+      "currency": "CNY",
+      "unit": "per_person_admission",
+      "min_cents": 0,
+      "max_cents": 0,
+      "status": "official_reference",
+      "scope": "博物馆免费；开放日及预约需核实",
+      "sources": [
+        "https://shanghai.chinapost.com.cn/xhtml1/report/23051/1809-1.htm",
+        "https://whlyj.sh.gov.cn/gqfc/20241218/b7a180236c7d47cba6b939a6092ae6c1.html"
+      ],
+      "retrieved_at": "2026-10-06",
+      "requires_confirmation": true,
+      "auto_fill_eligible": true
+    },
+    {
+      "entity_id": "sh_poi_00151",
+      "name": "七宝古镇",
+      "currency": "CNY",
+      "unit": "per_person_admission",
+      "min_cents": 0,
+      "max_cents": 0,
+      "status": "mixed_reference",
+      "scope": "古镇街区免首道门票；内部展馆分别收费，不当作整镇收费",
+      "sources": [
+        "https://sh.bendibao.com/tour/2023114/265817.shtm",
+        "https://whlyj.sh.gov.cn/4ajjq/20201124/0b873aa685d44ddcbb1bd66609e53b0f.html"
+      ],
+      "retrieved_at": "2026-10-06",
+      "requires_confirmation": true,
+      "auto_fill_eligible": true
+    },
+    {
+      "entity_id": "sh_poi_00152",
+      "name": "南翔老街",
+      "currency": "CNY",
+      "unit": "per_person_admission",
+      "min_cents": 0,
+      "max_cents": 0,
+      "status": "secondary_reference",
+      "scope": "老街公共游览免费；古猗园、檀园等收费项目另核实",
+      "sources": [
+        "https://sh.bendibao.com/jingdian/nanxianglaojie/"
+      ],
+      "retrieved_at": "2026-10-06",
+      "requires_confirmation": true,
+      "auto_fill_eligible": true
+    },
+    {
+      "entity_id": "sh_poi_00153",
+      "name": "枫泾古镇",
+      "currency": "CNY",
+      "unit": "per_person_admission",
+      "min_cents": 0,
+      "max_cents": 0,
+      "status": "mixed_reference",
+      "scope": "古镇街区免费；2025场馆联票参考50，不能套用已结束的半价活动",
+      "sources": [
+        "https://m.cncn.com/piao/1255",
+        "https://whlyj.sh.gov.cn/cmsres/60/60195750731c4871a03be0d896b2c7dc/7fdaf71fb7145466340c367268a7c85f.pdf"
+      ],
+      "retrieved_at": "2026-10-06",
+      "requires_confirmation": true,
+      "auto_fill_eligible": true
+    },
+    {
+      "entity_id": "sh_poi_00154",
+      "name": "新场古镇",
+      "currency": "CNY",
+      "unit": "per_person_admission",
+      "min_cents": 0,
+      "max_cents": 0,
+      "status": "official_reference",
+      "scope": "古镇公共游览免费；展馆及商业消费另计",
+      "sources": [
+        "https://www.meet-in-shanghai.net/tc/news/spring-is-coming-to-shanghaiin-this-free-admission-jiangnan-water-townfeel-the-freshness-of-spring-in-one-go-268898/"
+      ],
+      "retrieved_at": "2026-10-06",
+      "requires_confirmation": true,
+      "auto_fill_eligible": true
+    },
+    {
+      "entity_id": "sh_poi_00155",
+      "name": "北外滩滨江绿地",
+      "currency": "CNY",
+      "unit": "per_person_admission",
+      "min_cents": 0,
+      "max_cents": 0,
+      "status": "secondary_reference",
+      "scope": "滨江公共绿地参考免费；收费设施另计",
+      "sources": [
+        "https://you.ctrip.com/sight/shanghai2/2043565.html",
+        "https://news.sina.com.cn/o/2012-07-17/062024787721.shtml"
+      ],
+      "retrieved_at": "2026-10-06",
+      "requires_confirmation": true,
+      "auto_fill_eligible": true
+    },
+    {
+      "entity_id": "sh_poi_00156",
+      "name": "徐汇滨江绿地",
+      "currency": "CNY",
+      "unit": "per_person_admission",
+      "min_cents": 0,
+      "max_cents": 0,
+      "status": "secondary_reference",
+      "scope": "滨江公共步道参考免费；沿线美术馆、活动另计",
+      "sources": [
+        "https://you.ctrip.com/sight/shanghai2/1483401.html"
+      ],
+      "retrieved_at": "2026-10-06",
+      "requires_confirmation": true,
+      "auto_fill_eligible": true
+    },
+    {
+      "entity_id": "sh_poi_00157",
+      "name": "东方绿舟",
+      "currency": "CNY",
+      "unit": "per_person_admission",
+      "min_cents": 5000,
+      "max_cents": 5000,
+      "status": "official_reference",
+      "scope": "成人普通入园50；住宿、水上活动、体验等另计",
+      "sources": [
+        "https://www.shanghai.gov.cn/nw17239/20250225/0e9088c68a81408394b0a88580677d95.html"
+      ],
+      "retrieved_at": "2026-10-06",
+      "requires_confirmation": true,
+      "auto_fill_eligible": true
+    },
+    {
+      "entity_id": "sh_poi_00158",
+      "name": "佘山国家森林公园",
+      "currency": "CNY",
+      "unit": "per_person_admission",
+      "min_cents": 0,
+      "max_cents": 0,
+      "status": "official_republication",
+      "scope": "东、西佘山公共登山游览免费；天马山、天文博物馆及挖笋体验等不能默认免费",
+      "sources": [
+        "https://www.shobserver.cn/sgh/detail?id=1724704",
+        "https://www.songjiang.gov.cn/xwzx/001001/20260325/13758570-6c3d-4f5e-97c9-37d24cbd5a1b.html"
+      ],
+      "retrieved_at": "2026-10-06",
+      "requires_confirmation": true,
+      "auto_fill_eligible": true
+    },
+    {
+      "entity_id": "sh_poi_00159",
+      "name": "上海海湾国家森林公园",
+      "currency": "CNY",
+      "unit": "per_person_admission",
+      "min_cents": 8000,
+      "max_cents": 8000,
+      "status": "media_reference",
+      "scope": "普通成人原价参考80；依据2025报道，2026需复核，不沿用限时60优惠",
+      "sources": [
+        "https://ep.shxwcb.com/2025/11/27/img/06-071127.pdf",
+        "https://whlyj.sh.gov.cn/bmxx/20210514/7692b4249ca5472ba5a5eae918e747ff.html"
+      ],
+      "retrieved_at": "2026-10-06",
+      "requires_confirmation": true,
+      "auto_fill_eligible": true
+    },
+    {
+      "entity_id": "sh_poi_00160",
+      "name": "滴水湖",
+      "currency": "CNY",
+      "unit": "per_person_admission",
+      "min_cents": 0,
+      "max_cents": 0,
+      "status": "secondary_reference",
+      "scope": "环湖公共游览参考免费；游船、水上活动及附近景区另计",
+      "sources": [
+        "https://you.ctrip.com/destinationsite/sight/shanghai2/64745-sight.html"
+      ],
+      "retrieved_at": "2026-10-06",
+      "requires_confirmation": true,
+      "auto_fill_eligible": true
+    }
+  ]
+}

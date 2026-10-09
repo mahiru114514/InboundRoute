@@ -1,0 +1,54 @@
+{
+  "$schema_target": "trip.schema.json",
+  "$comment": "非法样例（回归用）：1) 抵达时刻 2026-09-18 与 days[0].date 2026-10-12 矛盾（PRD 原示例的错误复刻）；2) Day2 缺 daily_start_local；3) 出现裸时刻 target_arrival_time。校验器必须全部拦住。",
+  "trip_id": "trip_bad0001",
+  "version": 1,
+  "status": "draft",
+  "timezone": "Asia/Shanghai",
+  "created_at": 1789728000,
+  "updated_at": 1789728000,
+  "user_profile": {
+    "party_composition": "solo",
+    "pacing": "balanced",
+    "walking_speed_factor": 1.0,
+    "prefer_taxi": false
+  },
+  "anchor_arrival": {
+    "arrival_at": 1789728000,
+    "location_name": "Pudong Int'l Airport T2",
+    "coordinate": {"lat": 31.1443, "lng": 121.8083, "crs": "WGS84", "precision_m": 50},
+    "activity_start_at": 1789733400
+  },
+  "anchor_hotel": {
+    "name_en": "Radisson Collection Hotel, Hyland Shanghai",
+    "name_zh": "上海宏安瑞士大酒店",
+    "coordinate": {"lat": 31.2335, "lng": 121.4789, "crs": "WGS84", "precision_m": 40}
+  },
+  "days": [
+    {
+      "day_index": 1,
+      "date": "2026-10-12",
+      "day_status": "partial",
+      "daily_start_local": "09:00",
+      "ordered_stops": [
+        {
+          "stop_order": 1,
+          "stop_type": "poi",
+          "poi_id": "sh_poi_00042",
+          "arrival_at": null,
+          "departure_at": null,
+          "target_arrival_time": "19:30",
+          "planned_dwell_minutes": 90,
+          "transit_from_previous": null,
+          "rule_notices": []
+        }
+      ]
+    },
+    {
+      "day_index": 2,
+      "date": "2026-10-13",
+      "day_status": "empty",
+      "ordered_stops": []
+    }
+  ]
+}

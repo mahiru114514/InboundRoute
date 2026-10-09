@@ -1,0 +1,32 @@
+{
+  "version": "0.3.0-draft",
+  "comment": "回填后的三方字段可得性（对应 contracts/mappings.json#/provider_field_map）。available=可得；curated_only=仅站台库；unknown=需持 key 实测。",
+  "amap": {
+    "direction_transit": {"duration": "available", "cost": "available", "transfer_count": "available", "walking_distance": "available"},
+    "direction_driving": {"duration": "available", "distance": "available", "tolls": "available"},
+    "regeo": {"formatted_address": "available", "poi_name": "available"},
+    "entrance_no": "curated_only",
+    "exit_no": "curated_only",
+    "line_color": "curated_only",
+    "indoor_escalator_note": "curated_only",
+    "drop_off_locations": "unknown"
+  },
+  "tencent": {
+    "direction_transit": {"duration": "available", "cost": "available", "transfer_count": "available"},
+    "entrance_no": "curated_only",
+    "exit_no": "curated_only",
+    "walking_distance_per_transfer": "unknown"
+  },
+  "baidu": {
+    "direction_transit": {"duration": "available", "cost": "available", "transfer_count": "available"},
+    "crs": "BD-09"
+  },
+  "must_come_from_curated": [
+    "access_points.access_no",
+    "access_points.landmark_desc",
+    "interior_transfers.walking_distance_meters",
+    "interior_transfers.note_en",
+    "lines.directions[].name_en",
+    "lines.color_hex"
+  ]
+}

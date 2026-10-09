@@ -1,0 +1,13 @@
+{
+  "id": "rules_engine",
+  "name": "规则引擎",
+  "version": "0.1.0",
+  "description": "InboundRoute 时序推演与 Rule-01~04 求值：消费 trip_engine 的行程，写回时间轴与 notices。",
+  "dependencies": ["trip_engine"],
+  "service": {
+    "enabled": true,
+    "health_path": "/health",
+    "open_path": null,
+    "title": "规则引擎 API"
+  }
+}

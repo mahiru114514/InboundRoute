@@ -1,0 +1,7 @@
+{
+  "id": "heartbeat",
+  "name": "心跳示例",
+  "version": "1.0.0",
+  "description": "定时写入运行日志，验证模块启停、配置传递和独立进程运行。可作为新模块开发模板。",
+  "dependencies": []
+}

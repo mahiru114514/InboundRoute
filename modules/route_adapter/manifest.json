@@ -1,0 +1,13 @@
+{
+  "id": "route_adapter",
+  "name": "路线适配器",
+  "version": "0.1.0",
+  "description": "InboundRoute 门到门路线适配：三方地图归一化、坐标系统一、缓存与调用预算、5 类依赖降级、落客纠偏。内置 mock 数据源。",
+  "dependencies": ["trip_engine"],
+  "service": {
+    "enabled": true,
+    "health_path": "/health",
+    "open_path": null,
+    "title": "路线适配器 API"
+  }
+}

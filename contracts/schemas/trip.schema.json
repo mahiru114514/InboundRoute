@@ -1,0 +1,727 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://inboundroute.local/schemas/trip.schema.json",
+  "title": "TripInstance",
+  "$comment": "C2 实体表。时间字段一律遵循 TIME_BASELINE.md：*_at=UTC 秒、date=上海本地日期、*_local=同日时刻。",
+  "type": "object",
+  "required": [
+    "trip_id",
+    "version",
+    "status",
+    "user_profile",
+    "anchor_arrival",
+    "anchor_hotel",
+    "days",
+    "timezone",
+    "created_at",
+    "updated_at"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "budget": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "default": null,
+      "description": "每人整趟行程预算；null 表示未设置。金额使用整数分。",
+      "required": [
+        "scope",
+        "currency",
+        "amount_cents"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "scope": {
+          "type": "string",
+          "const": "per_person"
+        },
+        "currency": {
+          "type": "string",
+          "const": "CNY"
+        },
+        "amount_cents": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 999999999999
+        }
+      }
+    },
+    "trip_id": {
+      "type": "string",
+      "pattern": "^trip_[0-9a-z]{6,32}$",
+      "examples": [
+        "trip_982341"
+      ]
+    },
+    "user_id": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "$comment": "PRD 内嵌 user_profile 但无 user_id，无法做鉴权与越权校验。",
+      "x-changed": "新增"
+    },
+    "version": {
+      "type": "integer",
+      "minimum": 1,
+      "$comment": "乐观锁 + 离线包过期判定，PRD 缺失。",
+      "x-changed": "新增"
+    },
+    "status": {
+      "$ref": "enums.json#/trip_status",
+      "x-changed": "新增"
+    },
+    "timezone": {
+      "type": "string",
+      "const": "Asia/Shanghai"
+    },
+    "created_at": {
+      "type": "integer",
+      "x-changed": "新增"
+    },
+    "updated_at": {
+      "type": "integer",
+      "x-changed": "新增"
+    },
+    "user_profile": {
+      "type": "object",
+      "required": [
+        "party_composition",
+        "pacing",
+        "walking_speed_factor"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "party_composition": {
+          "$ref": "enums.json#/party_composition"
+        },
+        "pacing": {
+          "$ref": "enums.json#/pacing"
+        },
+        "interests": {
+          "type": "array",
+          "items": {
+            "$ref": "enums.json#/interest"
+          },
+          "maxItems": 4,
+          "default": []
+        },
+        "walking_speed_factor": {
+          "type": "number",
+          "minimum": 0.5,
+          "maximum": 2.0,
+          "default": 1.0,
+          "$comment": "最终生效系数 = walking_speed_factor × party_walk_multiplier（见 mappings.json/weighting）。"
+        },
+        "party_walk_multiplier": {
+          "type": "number",
+          "minimum": 0.5,
+          "maximum": 2.0,
+          "default": 1.0,
+          "$comment": "由 party_composition 派生：family_kids/senior → 1.3，其余 1.0。PRD 只写了「1.3」没说作用对象与叠加方式。",
+          "x-changed": "新增（把 PRD 的 1.3 落到独立字段，避免与 walking_speed_factor 混用）"
+        },
+        "prefer_taxi": {
+          "type": "boolean",
+          "default": false,
+          "$comment": "family_kids/senior 时为 true，对应「优先推荐打车模式」。"
+        }
+      }
+    },
+    "anchor_arrival": {
+      "type": "object",
+      "required": [
+        "arrival_at",
+        "location_name",
+        "coordinate",
+        "activity_start_at"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "arrival_at": {
+          "type": "integer",
+          "description": "UTC 秒（PRD 的 timestamp，与 date 矛盾的元凶）",
+          "x-changed": "timestamp → arrival_at"
+        },
+        "location_name": {
+          "type": "string"
+        },
+        "coordinate": {
+          "$ref": "poi.schema.json#/$defs/point"
+        },
+        "activity_start_at": {
+          "type": "integer",
+          "description": "服务端派生 = arrival_at + 90min；客户端只读"
+        },
+        "border_buffer_minutes": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 300,
+          "default": 90
+        }
+      }
+    },
+    "anchor_departure": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "$comment": "PRD 缺离境锚点，导致 Day N 最后一段（酒店→机场）无法推演。",
+      "additionalProperties": false,
+      "required": [
+        "departure_at",
+        "location_name",
+        "coordinate",
+        "hub_buffer_minutes"
+      ],
+      "properties": {
+        "departure_at": {
+          "type": "integer"
+        },
+        "location_name": {
+          "type": "string"
+        },
+        "coordinate": {
+          "$ref": "poi.schema.json#/$defs/point"
+        },
+        "is_international": {
+          "type": "boolean",
+          "default": true
+        },
+        "hub_buffer_minutes": {
+          "type": "integer",
+          "minimum": 60,
+          "maximum": 300,
+          "default": 180
+        }
+      },
+      "default": null,
+      "x-changed": "新增"
+    },
+    "anchor_hotel": {
+      "type": "object",
+      "required": [
+        "name_en",
+        "name_zh",
+        "coordinate"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "name_en": {
+          "type": "string"
+        },
+        "name_zh": {
+          "type": "string"
+        },
+        "name_pinyin": {
+          "type": "string",
+          "description": "PRD 的 anchor_hotel 连拼音都没有"
+        },
+        "coordinate": {
+          "$ref": "poi.schema.json#/$defs/point"
+        },
+        "poi_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "unassigned_pois": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "default": [],
+      "$comment": "PRD 选了 N 天却只选 M 个点时无「未装载」表示。",
+      "x-changed": "新增"
+    },
+    "days": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 15,
+      "items": {
+        "type": "object",
+        "required": [
+          "day_index",
+          "date",
+          "day_status",
+          "daily_start_local",
+          "ordered_stops"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "day_index": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 15
+          },
+          "date": {
+            "type": "string",
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+            "description": "上海本地日期"
+          },
+          "day_status": {
+            "$ref": "enums.json#/day_status",
+            "x-changed": "新增"
+          },
+          "daily_start_local": {
+            "type": "string",
+            "pattern": "^([01]\\d|2[0-3]):[0-5]\\d$",
+            "default": "09:00",
+            "$comment": "每日独立出发时刻；Day 1 取配置时刻与 anchor_arrival.activity_start_at 的较晚值。",
+            "x-changed": "新增（阻断项：缺它则 Day2..N 时序断链）"
+          },
+          "poi_cap": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "default": null,
+            "$comment": "由 pacing 派生：relaxed=2 / balanced=4 / packed=6"
+          },
+          "start_anchor": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/day_anchor"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "当日起点；null 时首日用抵达口岸，其余用前一日终点。"
+          },
+          "end_anchor": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/day_anchor"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "当日终点；null 时使用当前住宿，末日优先离境口岸。显式酒店终点成为后续默认住宿。"
+          },
+          "ordered_stops": {
+            "type": "array",
+            "minItems": 0,
+            "maxItems": 12,
+            "items": {
+              "type": "object",
+              "required": [
+                "stop_order",
+                "stop_type",
+                "planned_dwell_minutes"
+              ],
+              "additionalProperties": false,
+              "properties": {
+                "stop_order": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "stop_type": {
+                  "$ref": "enums.json#/stop_type",
+                  "x-changed": "新增（路线序列需锚点与 POI 混排）"
+                },
+                "poi_id": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "locked": {
+                  "type": "boolean",
+                  "default": false,
+                  "$comment": "用户手动固定的点，Rule-02 的 Move to Evening 不得移动它。"
+                },
+                "arrival_at": {
+                  "type": [
+                    "integer",
+                    "null"
+                  ],
+                  "description": "引擎推算，只读"
+                },
+                "departure_at": {
+                  "type": [
+                    "integer",
+                    "null"
+                  ],
+                  "description": "引擎推算 = arrival_at + dwell"
+                },
+                "user_preferred_arrival_local": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "pattern": "^([01]\\d|2[0-3]):[0-5]\\d$",
+                  "$comment": "用户意愿时刻。与引擎的 arrival_at 并存，不得互相覆盖（PRD 的 target_arrival_time 语义未定义）。",
+                  "x-changed": "target_arrival_time 拆为 arrival_at（引擎）与 user_preferred_arrival_local（用户）"
+                },
+                "planned_dwell_minutes": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 720
+                },
+                "transit_from_previous": {
+                  "anyOf": [
+                    {
+                      "$ref": "route.schema.json"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "rule_notices": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/$defs/notice"
+                  },
+                  "default": [],
+                  "x-changed": "新增（规则结果需要落库，尤其 Proceed anyway 确认）"
+                },
+                "stop_id": {
+                  "type": "string",
+                  "description": "稳定停靠点标识；排序、移除、跨天移动使用"
+                },
+                "name_zh": {
+                  "type": "string"
+                },
+                "name_en": {
+                  "type": "string"
+                },
+                "name_pinyin": {
+                  "type": "string"
+                },
+                "coordinate": {
+                  "$ref": "poi.schema.json#/$defs/point"
+                },
+                "hotel_stay_kind": {
+                  "type": "string",
+                  "enum": [
+                    "rest",
+                    "overnight"
+                  ],
+                  "description": "酒店停靠用途：rest 为途中休息，不改变后续住宿；overnight 为过夜或换酒店。旧数据缺字段沿用过夜继承。"
+                }
+              },
+              "allOf": [
+                {
+                  "if": {
+                    "required": [
+                      "hotel_stay_kind"
+                    ]
+                  },
+                  "then": {
+                    "required": [
+                      "stop_type"
+                    ],
+                    "properties": {
+                      "stop_type": {
+                        "const": "hotel"
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "is_arrival_day": {
+            "type": "boolean",
+            "description": "服务端按抵达日期派生，独立于 day_status"
+          },
+          "end_transit": {
+            "anyOf": [
+              {
+                "$ref": "route.schema.json"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        }
+      }
+    },
+    "revision_history": {
+      "type": "array",
+      "maxItems": 200,
+      "items": {
+        "type": "object",
+        "required": [
+          "version",
+          "changed_at",
+          "operation"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "version": {
+            "type": "integer"
+          },
+          "changed_at": {
+            "type": "integer"
+          },
+          "operation": {
+            "type": "string",
+            "enum": [
+              "create",
+              "add_stop",
+              "remove_stop",
+              "reorder",
+              "move_to_evening",
+              "change_day",
+              "change_anchor",
+              "confirm_conflict",
+              "unlock_day",
+              "update_config"
+            ]
+          },
+          "target": {
+            "type": "string"
+          }
+        }
+      },
+      "default": [],
+      "x-changed": "新增（PRD 无撤销/回滚/审计能力）"
+    },
+    "resolved_day_points": {
+      "type": "object",
+      "additionalProperties": true,
+      "description": "服务端只读派生每日起终点快照，不持久化"
+    },
+    "default_day_points": {
+      "type": "object",
+      "additionalProperties": true,
+      "description": "服务端只读派生每日起终点快照，不持久化"
+    },
+    "cost_inputs": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "intercity_cents": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0,
+          "maximum": 999999999999
+        },
+        "meal_daily_cents": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0,
+          "maximum": 999999999999
+        },
+        "extras_cents": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0,
+          "maximum": 999999999999
+        },
+        "travelers": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 1,
+          "maximum": 100
+        },
+        "lodging_rooms": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 1,
+          "maximum": 100,
+          "description": "自动住宿估算的房间数；未填写按1间参考估算。"
+        },
+        "taxi_vehicles": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 1,
+          "maximum": 100
+        },
+        "contingency_percent": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "itinerary_key": {
+          "type": "string",
+          "maxLength": 128
+        },
+        "ticket_cents": {
+          "type": "object",
+          "maxProperties": 240,
+          "additionalProperties": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 0,
+            "maximum": 999999999999
+          }
+        },
+        "meal_overrides": {
+          "type": "object",
+          "maxProperties": 240,
+          "additionalProperties": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 0,
+            "maximum": 999999999999
+          }
+        },
+        "lodging_nights": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "maxItems": 60,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "date",
+              "hotel_name",
+              "rooms",
+              "room_price_cents"
+            ],
+            "properties": {
+              "date": {
+                "type": "string",
+                "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+              },
+              "hotel_name": {
+                "type": "string",
+                "maxLength": 160
+              },
+              "rooms": {
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "minimum": 1,
+                "maximum": 100
+              },
+              "room_price_cents": {
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "minimum": 0,
+                "maximum": 999999999999
+              }
+            }
+          }
+        }
+      }
+    },
+    "budget_assessment": {
+      "type": "object",
+      "readOnly": true,
+      "description": "动态费用评估，不保存到行程文件；缺失费用不视为免费。"
+    }
+  },
+  "$defs": {
+    "day_anchor": {
+      "type": "object",
+      "required": [
+        "type",
+        "name_zh",
+        "name_en",
+        "coordinate"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "$ref": "enums.json#/stop_type"
+        },
+        "name_zh": {
+          "type": "string",
+          "minLength": 1
+        },
+        "name_en": {
+          "type": "string",
+          "minLength": 1
+        },
+        "name_pinyin": {
+          "type": "string"
+        },
+        "poi_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "coordinate": {
+          "$ref": "poi.schema.json#/$defs/point"
+        }
+      }
+    },
+    "notice": {
+      "type": "object",
+      "required": [
+        "rule_id",
+        "severity",
+        "outcome",
+        "channel",
+        "raised_at"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "rule_id": {
+          "$ref": "enums.json#/rule_id"
+        },
+        "severity": {
+          "$ref": "enums.json#/rule_severity"
+        },
+        "outcome": {
+          "$ref": "enums.json#/rule_outcome"
+        },
+        "channel": {
+          "$ref": "enums.json#/notice_channel"
+        },
+        "message_key": {
+          "type": "string",
+          "description": "对应 mappings.json/notice_templates 的键，不存最终文案（便于多语言）"
+        },
+        "message_args": {
+          "type": "object",
+          "additionalProperties": true,
+          "default": {}
+        },
+        "confirmed_at": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "default": null
+        },
+        "raised_at": {
+          "type": "integer"
+        },
+        "expires_on_reorder": {
+          "type": "boolean",
+          "default": true,
+          "$comment": "改期后确认是否失效（PRD 未定义）"
+        }
+      }
+    }
+  }
+}

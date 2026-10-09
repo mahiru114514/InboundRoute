@@ -1,0 +1,403 @@
+{
+  "$schema_target": "trip.schema.json",
+  "$comment": "合法样例：演示 TIME_BASELINE 的三条规则（跨零点抵达、Day2..N 起点锚、引擎/用户双时刻）。",
+  "trip_id": "trip_982341",
+  "user_id": "user_7f3a91",
+  "version": 7,
+  "status": "draft",
+  "timezone": "Asia/Shanghai",
+  "created_at": 1791763200,
+  "updated_at": 1791819600,
+  "user_profile": {
+    "party_composition": "family_kids",
+    "pacing": "balanced",
+    "interests": [
+      "history_culture",
+      "modern_skyline"
+    ],
+    "walking_speed_factor": 1.0,
+    "party_walk_multiplier": 1.3,
+    "prefer_taxi": true
+  },
+  "anchor_arrival": {
+    "arrival_at": 1791819000,
+    "location_name": "Pudong Int'l Airport T2",
+    "coordinate": {
+      "lat": 31.1443,
+      "lng": 121.8083,
+      "crs": "WGS84",
+      "precision_m": 50
+    },
+    "activity_start_at": 1791824400,
+    "border_buffer_minutes": 90
+  },
+  "anchor_departure": {
+    "departure_at": 1791985200,
+    "location_name": "Shanghai Hongqiao Railway Station",
+    "coordinate": {
+      "lat": 31.1943,
+      "lng": 121.3198,
+      "crs": "WGS84",
+      "precision_m": 50
+    },
+    "is_international": false,
+    "hub_buffer_minutes": 90
+  },
+  "anchor_hotel": {
+    "name_en": "Radisson Collection Hotel, Hyland Shanghai",
+    "name_zh": "上海宏安瑞士大酒店",
+    "name_pinyin": "shàng hǎi hóng ān ruì shì dà jiǔ diàn",
+    "coordinate": {
+      "lat": 31.2335,
+      "lng": 121.4789,
+      "crs": "WGS84",
+      "precision_m": 40
+    },
+    "poi_id": null
+  },
+  "unassigned_pois": [
+    "sh_poi_00118"
+  ],
+  "days": [
+    {
+      "day_index": 1,
+      "date": "2026-10-12",
+      "day_status": "arrival_only",
+      "daily_start_local": "09:00",
+      "poi_cap": 4,
+      "ordered_stops": [
+        {
+          "stop_order": 1,
+          "stop_type": "hotel",
+          "poi_id": null,
+          "locked": true,
+          "arrival_at": 1791824400,
+          "departure_at": null,
+          "user_preferred_arrival_local": null,
+          "planned_dwell_minutes": 0,
+          "transit_from_previous": null,
+          "rule_notices": [
+            {
+              "rule_id": "rule_02_lightup",
+              "severity": "soft_hint",
+              "outcome": "auto_dismissed",
+              "channel": "inline_bubble",
+              "message_key": "rule.lightup.too_late",
+              "message_args": {
+                "window_close": "23:00"
+              },
+              "confirmed_at": null,
+              "raised_at": 1791819600,
+              "expires_on_reorder": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "day_index": 2,
+      "date": "2026-10-13",
+      "day_status": "partial",
+      "daily_start_local": "09:00",
+      "poi_cap": 4,
+      "ordered_stops": [
+        {
+          "stop_order": 1,
+          "stop_type": "poi",
+          "poi_id": "sh_poi_00042",
+          "locked": false,
+          "arrival_at": 1791855600,
+          "departure_at": 1791861000,
+          "user_preferred_arrival_local": "09:30",
+          "planned_dwell_minutes": 90,
+          "transit_from_previous": {
+            "from": {
+              "type": "hotel",
+              "poi_id": null,
+              "station_id": null,
+              "name_zh": "上海宏安瑞士大酒店",
+              "name_en": "Radisson Collection Hotel, Hyland Shanghai"
+            },
+            "to": {
+              "type": "poi",
+              "poi_id": "sh_poi_00042",
+              "station_id": null,
+              "name_zh": "外滩",
+              "name_en": "The Bund"
+            },
+            "mode": "transit",
+            "variants": [
+              {
+                "mode": "transit",
+                "duration_seconds": 2400,
+                "distance_meters": 4100,
+                "cost": {
+                  "min": 3,
+                  "max": 4,
+                  "currency": "CNY"
+                },
+                "transfer_count": 0,
+                "walking_distance_meters": 720,
+                "estimated_steps": 1029,
+                "highlight": false,
+                "data_source": "amap",
+                "is_default_tab": false
+              },
+              {
+                "mode": "taxi",
+                "duration_seconds": 1080,
+                "distance_meters": 4600,
+                "cost": {
+                  "min": 24,
+                  "max": 32,
+                  "currency": "CNY"
+                },
+                "congestion_level": "medium",
+                "transfer_count": 0,
+                "walking_distance_meters": 120,
+                "estimated_steps": 171,
+                "highlight": false,
+                "data_source": "amap",
+                "is_default_tab": true
+              },
+              {
+                "mode": "walk",
+                "duration_seconds": 3300,
+                "distance_meters": 4100,
+                "cost": null,
+                "congestion_level": "unknown",
+                "transfer_count": 0,
+                "walking_distance_meters": 4100,
+                "estimated_steps": 5857,
+                "highlight": false,
+                "data_source": "amap",
+                "is_default_tab": false
+              }
+            ],
+            "distance_meters": 4100,
+            "duration_seconds": 2400,
+            "walking_distance_meters": 720,
+            "walking_duration_seconds": 576,
+            "estimated_steps": 1029,
+            "transfer_count": 0,
+            "has_long_transfer": false,
+            "long_transfer_threshold_m": 200,
+            "transfer_overhead": null,
+            "cost": {
+              "min": 3,
+              "max": 4,
+              "currency": "CNY",
+              "display_currency": "CNY"
+            },
+            "congestion_level": "medium",
+            "segments": [
+              {
+                "kind": "walk",
+                "duration_seconds": 480,
+                "distance_meters": 600,
+                "walk_note_en": "Walk 600m to East Nanjing Rd Station.",
+                "walk_note_zh": "步行 600 米至南京东路站。"
+              },
+              {
+                "kind": "transfer",
+                "duration_seconds": 420,
+                "distance_meters": 320,
+                "transfer": {
+                  "walking_distance_meters": 320,
+                  "duration_min_minutes": 6,
+                  "duration_max_minutes": 8,
+                  "is_in_station": true,
+                  "note_en": "Take indoor escalators",
+                  "note_zh": "建议走站内扶梯",
+                  "vertical_gap_note_zh": "站厅到站台高差较大",
+                  "is_barrier_free": false,
+                  "source": "curated"
+                }
+              }
+            ],
+            "drop_off": null,
+            "last_mile_walk_meters": 350,
+            "polyline": null,
+            "crs": "WGS84",
+            "cache": {
+              "key": "wtw3sjq:wtw3sm1:transit:202610130900",
+              "ttl_seconds": 1800,
+              "hit": false
+            },
+            "data_source": "amap",
+            "degraded_reason": "none",
+            "degraded_notice_key": null,
+            "partial": false,
+            "fetched_at": 1791819600
+          },
+          "rule_notices": []
+        },
+        {
+          "stop_order": 2,
+          "stop_type": "poi",
+          "poi_id": "sh_poi_00088",
+          "locked": false,
+          "arrival_at": 1791863928,
+          "departure_at": 1791870228,
+          "user_preferred_arrival_local": null,
+          "planned_dwell_minutes": 105,
+          "transit_from_previous": {
+            "from": {
+              "type": "poi",
+              "poi_id": "sh_poi_00042",
+              "station_id": null,
+              "name_zh": "外滩",
+              "name_en": "The Bund"
+            },
+            "to": {
+              "type": "poi",
+              "poi_id": "sh_poi_00088",
+              "station_id": null,
+              "name_zh": "上海博物馆",
+              "name_en": "Shanghai Museum"
+            },
+            "mode": "transit",
+            "variants": [],
+            "distance_meters": 3200,
+            "duration_seconds": 2700,
+            "walking_distance_meters": 950,
+            "walking_duration_seconds": 760,
+            "estimated_steps": 1357,
+            "transfer_count": 1,
+            "has_long_transfer": true,
+            "long_transfer_threshold_m": 200,
+            "transfer_overhead": {
+              "applies_to": "walking_segment",
+              "factor": 1.3,
+              "counts_in_timeline": true
+            },
+            "cost": {
+              "min": 3,
+              "max": 4,
+              "currency": "CNY",
+              "display_currency": "CNY"
+            },
+            "congestion_level": "unknown",
+            "segments": [
+              {
+                "kind": "ride",
+                "duration_seconds": 300,
+                "distance_meters": 1800,
+                "line": {
+                  "code": "2",
+                  "name_en": "Line 2 (Green)",
+                  "name_zh": "2 号线",
+                  "color_hex": "#00A650"
+                },
+                "direction": {
+                  "name_en": "Towards Pudong Int'l Airport",
+                  "name_zh": "往浦东国际机场方向",
+                  "terminal_station_id": "sh_stn_00002"
+                },
+                "board": {
+                  "station_id": "sh_stn_00107",
+                  "station_name_zh": "南京东路",
+                  "station_name_en": "East Nanjing Rd",
+                  "access_no": "2",
+                  "access_name_zh": "2号口",
+                  "access_name_en": "Entrance 2",
+                  "landmark_desc_zh": "南京东路步行街方向",
+                  "landmark_desc_en": "Towards Nanjing Road Pedestrian Street",
+                  "source": "curated"
+                },
+                "alight": {
+                  "station_id": "sh_stn_00214",
+                  "station_name_zh": "人民广场",
+                  "station_name_en": "People's Square",
+                  "access_no": "7",
+                  "access_name_zh": "7号口",
+                  "access_name_en": "Exit 7",
+                  "landmark_desc_zh": "上海博物馆方向",
+                  "landmark_desc_en": "Towards Shanghai Museum",
+                  "source": "curated"
+                },
+                "stops": 2,
+                "transfer": null,
+                "walk_note_en": null,
+                "walk_note_zh": null
+              },
+              {
+                "kind": "transfer",
+                "duration_seconds": 390,
+                "distance_meters": 280,
+                "transfer": {
+                  "walking_distance_meters": 280,
+                  "duration_min_minutes": 5,
+                  "duration_max_minutes": 7,
+                  "is_in_station": true,
+                  "note_en": "Take indoor escalators",
+                  "note_zh": "建议走站内扶梯",
+                  "vertical_gap_note_zh": null,
+                  "is_barrier_free": true,
+                  "source": "curated"
+                }
+              },
+              {
+                "kind": "walk",
+                "duration_seconds": 600,
+                "distance_meters": 700,
+                "walk_note_en": "Walk 700m to the museum entrance.",
+                "walk_note_zh": "步行 700 米至博物馆入口。"
+              }
+            ],
+            "drop_off": null,
+            "last_mile_walk_meters": 700,
+            "polyline": null,
+            "crs": "WGS84",
+            "cache": {
+              "key": "wtw3sm1:wtw3skp:transit:202610131100",
+              "ttl_seconds": 1800,
+              "hit": false
+            },
+            "data_source": "amap",
+            "degraded_reason": "none",
+            "degraded_notice_key": null,
+            "partial": false,
+            "fetched_at": 1791819600
+          },
+          "rule_notices": [
+            {
+              "rule_id": "rule_01_closure",
+              "severity": "hard",
+              "outcome": "confirmed_proceed",
+              "channel": "modal_confirm",
+              "message_key": "rule.closure.confirm",
+              "message_args": {
+                "poi_name": "Shanghai Museum",
+                "weekday": "Monday"
+              },
+              "confirmed_at": 1791819700,
+              "raised_at": 1791819650,
+              "expires_on_reorder": true
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "revision_history": [
+    {
+      "version": 7,
+      "changed_at": 1791819700,
+      "operation": "confirm_conflict",
+      "target": "sh_poi_00088"
+    },
+    {
+      "version": 6,
+      "changed_at": 1791819600,
+      "operation": "add_stop",
+      "target": "sh_poi_00088"
+    },
+    {
+      "version": 1,
+      "changed_at": 1791763200,
+      "operation": "create",
+      "target": "trip_982341"
+    }
+  ]
+}

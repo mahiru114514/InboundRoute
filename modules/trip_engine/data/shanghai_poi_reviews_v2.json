@@ -1,0 +1,591 @@
+{
+  "reviewed_on": "2026-10-04",
+  "coordinate_policy": "公开高德地点页坐标按GCJ-02反解成WGS84；门口开放状态和合法落客点未经实地核验。",
+  "operating_policy": "verified_operating_fields只核对列出的常规字段；未收齐节日例外，所有新点closure_data_status保留unverified。",
+  "dwell_policy": "策划参考时长，不是景区官方时长。",
+  "reviews": [
+    {
+      "poi_id": "sh_poi_00141",
+      "reviewed_on": "2026-10-04",
+      "venue": "上海博物馆东馆",
+      "address": "上海市浦东新区世纪大道1952号",
+      "coordinate_source": "https://www.amap.com/place/B0FFIFP90V",
+      "provider_venue_source": "https://www.amap.com/place/B0FFIFP90V",
+      "gcj02": {
+        "lat": 31.219913,
+        "lng": 121.538745
+      },
+      "point_scope": "map_place",
+      "point_label": "上海博物馆东馆地图标注点",
+      "precision_status": "入口地面精度未实测；坐标转换误差不代表入口定位精度",
+      "operating_sources": [
+        "https://www.shanghaimuseum.cn/mu/frontend/pg/m/service/visit-east"
+      ],
+      "verified_operating_fields": {
+        "opening_hours": [
+          {
+            "weekdays": [
+              1,
+              3,
+              4,
+              5,
+              6,
+              7
+            ],
+            "open": "10:00",
+            "close": "18:00",
+            "close_next_day": false
+          }
+        ],
+        "last_entry_time": "17:00",
+        "reservation_required": false
+      },
+      "unverified_fields": [
+        "holiday_closures",
+        "lighting",
+        "dropoff",
+        "entrance_availability"
+      ],
+      "notes": [
+        "只核实常规时段与散客预约；节日及夜场不自动套用。周二节日例外未收齐，因此不生成硬闭馆规则。"
+      ]
+    },
+    {
+      "poi_id": "sh_poi_00142",
+      "reviewed_on": "2026-10-04",
+      "venue": "上海自然博物馆",
+      "address": "上海市静安区北京西路510号",
+      "coordinate_source": "https://www.amap.com/place/B00156NVZG",
+      "provider_venue_source": "https://www.amap.com/place/B00156NVZG",
+      "gcj02": {
+        "lat": 31.235021,
+        "lng": 121.462672
+      },
+      "point_scope": "map_place",
+      "point_label": "上海自然博物馆地图标注点",
+      "precision_status": "入口地面精度未实测；坐标转换误差不代表入口定位精度",
+      "operating_sources": [
+        "https://www.snhm.org.cn/cgfw/cgzx.htm",
+        "https://www.snhm.org.cn/cgfw/zqyy.htm"
+      ],
+      "verified_operating_fields": {},
+      "unverified_fields": [
+        "holiday_closures",
+        "lighting",
+        "dropoff",
+        "entrance_availability",
+        "opening_hours",
+        "last_entry_time",
+        "reservation_required"
+      ],
+      "notes": [
+        "官方参观咨询与展区预约页面的周闭馆日、闭馆时刻冲突；不录入确定营业时段与预约结论。坐标使用北京西路510号新馆，不使用旧延安东路馆址。"
+      ]
+    },
+    {
+      "poi_id": "sh_poi_00143",
+      "reviewed_on": "2026-10-04",
+      "venue": "上海天文馆",
+      "address": "上海市浦东新区临港大道380号",
+      "coordinate_source": "https://www.amap.com/place/B0FFHGVTPF",
+      "provider_venue_source": "https://www.amap.com/place/B0FFHGVTPF",
+      "gcj02": {
+        "lat": 30.9128,
+        "lng": 121.926924
+      },
+      "point_scope": "map_place",
+      "point_label": "上海天文馆地图标注点",
+      "precision_status": "入口地面精度未实测；坐标转换误差不代表入口定位精度",
+      "operating_sources": [],
+      "verified_operating_fields": {},
+      "unverified_fields": [
+        "holiday_closures",
+        "lighting",
+        "dropoff",
+        "entrance_availability",
+        "opening_hours",
+        "last_entry_time",
+        "reservation_required"
+      ],
+      "notes": []
+    },
+    {
+      "poi_id": "sh_poi_00144",
+      "reviewed_on": "2026-10-04",
+      "venue": "世博会博物馆",
+      "address": "上海市黄浦区蒙自路818号",
+      "coordinate_source": "https://www.amap.com/place/B001575WDA",
+      "provider_venue_source": "https://www.amap.com/place/B001575WDA",
+      "gcj02": {
+        "lat": 31.194391,
+        "lng": 121.482161
+      },
+      "point_scope": "map_place",
+      "point_label": "世博会博物馆地图标注点",
+      "precision_status": "入口地面精度未实测；坐标转换误差不代表入口定位精度",
+      "operating_sources": [
+        "https://www.expo-museum.cn/sbbwg/n281/n282/index.html"
+      ],
+      "verified_operating_fields": {
+        "opening_hours": [
+          {
+            "weekdays": [
+              2,
+              3,
+              4,
+              5,
+              6,
+              7
+            ],
+            "open": "09:00",
+            "close": "17:00",
+            "close_next_day": false
+          }
+        ],
+        "last_entry_time": "16:15",
+        "reservation_required": false
+      },
+      "unverified_fields": [
+        "holiday_closures",
+        "lighting",
+        "dropoff",
+        "entrance_availability"
+      ],
+      "notes": [
+        "官网暑期每周六夜场仅7月11日至8月29日，不套用到10月。节日开放需另查公告，不生成硬周闭规则。"
+      ]
+    },
+    {
+      "poi_id": "sh_poi_00145",
+      "reviewed_on": "2026-10-04",
+      "venue": "上海城市规划展示馆",
+      "address": "上海市黄浦区人民大道100号",
+      "coordinate_source": "https://www.amap.com/place/B001546728",
+      "provider_venue_source": "https://www.amap.com/place/B001546728",
+      "gcj02": {
+        "lat": 31.231444,
+        "lng": 121.475551
+      },
+      "point_scope": "map_place",
+      "point_label": "上海城市规划展示馆地图标注点",
+      "precision_status": "入口地面精度未实测；坐标转换误差不代表入口定位精度",
+      "operating_sources": [],
+      "verified_operating_fields": {},
+      "unverified_fields": [
+        "holiday_closures",
+        "lighting",
+        "dropoff",
+        "entrance_availability",
+        "opening_hours",
+        "last_entry_time",
+        "reservation_required"
+      ],
+      "notes": []
+    },
+    {
+      "poi_id": "sh_poi_00146",
+      "reviewed_on": "2026-10-04",
+      "venue": "中国航海博物馆",
+      "address": "上海市浦东新区申港大道197号",
+      "coordinate_source": "https://www.amap.com/place/B0FFGW76Q9",
+      "provider_venue_source": "https://www.amap.com/place/B00156DD2R",
+      "gcj02": {
+        "lat": 30.897042,
+        "lng": 121.919371
+      },
+      "point_scope": "map_gate",
+      "point_label": "中国航海博物馆北门",
+      "precision_status": "入口地面精度未实测；坐标转换误差不代表入口定位精度",
+      "operating_sources": [],
+      "verified_operating_fields": {},
+      "unverified_fields": [
+        "holiday_closures",
+        "lighting",
+        "dropoff",
+        "entrance_availability",
+        "opening_hours",
+        "last_entry_time",
+        "reservation_required"
+      ],
+      "notes": []
+    },
+    {
+      "poi_id": "sh_poi_00147",
+      "reviewed_on": "2026-10-04",
+      "venue": "广富林文化遗址",
+      "address": "上海市松江区广富林路3260弄",
+      "coordinate_source": "https://www.amap.com/place/B0FFF0JR9H",
+      "provider_venue_source": "https://www.amap.com/place/B0FFF0JR9H",
+      "gcj02": {
+        "lat": 31.062675,
+        "lng": 121.196269
+      },
+      "point_scope": "map_place",
+      "point_label": "广富林文化遗址地图标注点",
+      "precision_status": "入口地面精度未实测；坐标转换误差不代表入口定位精度",
+      "operating_sources": [],
+      "verified_operating_fields": {},
+      "unverified_fields": [
+        "holiday_closures",
+        "lighting",
+        "dropoff",
+        "entrance_availability",
+        "opening_hours",
+        "last_entry_time",
+        "reservation_required"
+      ],
+      "notes": []
+    },
+    {
+      "poi_id": "sh_poi_00148",
+      "reviewed_on": "2026-10-04",
+      "venue": "浦东美术馆",
+      "address": "上海市浦东新区滨江大道2777号",
+      "coordinate_source": "https://www.amap.com/place/B0FFLCKUTU",
+      "provider_venue_source": "https://www.amap.com/place/B0FFLCKUTU",
+      "gcj02": {
+        "lat": 31.238115,
+        "lng": 121.49631
+      },
+      "point_scope": "map_place",
+      "point_label": "浦东美术馆地图标注点",
+      "precision_status": "入口地面精度未实测；坐标转换误差不代表入口定位精度",
+      "operating_sources": [],
+      "verified_operating_fields": {},
+      "unverified_fields": [
+        "holiday_closures",
+        "lighting",
+        "dropoff",
+        "entrance_availability",
+        "opening_hours",
+        "last_entry_time",
+        "reservation_required"
+      ],
+      "notes": []
+    },
+    {
+      "poi_id": "sh_poi_00149",
+      "reviewed_on": "2026-10-04",
+      "venue": "上海宋庆龄故居纪念馆",
+      "address": "上海市徐汇区淮海中路1843号",
+      "coordinate_source": "https://www.amap.com/place/B00155LGQC",
+      "provider_venue_source": "https://www.amap.com/place/B00151EA79",
+      "gcj02": {
+        "lat": 31.20434,
+        "lng": 121.438779
+      },
+      "point_scope": "map_gate",
+      "point_label": "宋庆龄故居西北门",
+      "precision_status": "入口地面精度未实测；坐标转换误差不代表入口定位精度",
+      "operating_sources": [],
+      "verified_operating_fields": {},
+      "unverified_fields": [
+        "holiday_closures",
+        "lighting",
+        "dropoff",
+        "entrance_availability",
+        "opening_hours",
+        "last_entry_time",
+        "reservation_required"
+      ],
+      "notes": []
+    },
+    {
+      "poi_id": "sh_poi_00150",
+      "reviewed_on": "2026-10-04",
+      "venue": "上海邮政博物馆",
+      "address": "上海市虹口区天潼路395号",
+      "coordinate_source": "https://www.amap.com/place/B00155F9RW",
+      "provider_venue_source": "https://www.amap.com/place/B00155F9RW",
+      "gcj02": {
+        "lat": 31.244286,
+        "lng": 121.484749
+      },
+      "point_scope": "map_place",
+      "point_label": "上海邮政博物馆地图标注点",
+      "precision_status": "入口地面精度未实测；坐标转换误差不代表入口定位精度",
+      "operating_sources": [],
+      "verified_operating_fields": {},
+      "unverified_fields": [
+        "holiday_closures",
+        "lighting",
+        "dropoff",
+        "entrance_availability",
+        "opening_hours",
+        "last_entry_time",
+        "reservation_required"
+      ],
+      "notes": []
+    },
+    {
+      "poi_id": "sh_poi_00151",
+      "reviewed_on": "2026-10-04",
+      "venue": "七宝古镇",
+      "address": "上海市闵行区青年路与横沥路交叉口",
+      "coordinate_source": "https://www.amap.com/place/B0FFHRIVGO",
+      "provider_venue_source": "https://www.amap.com/place/B0FFHRIVGO",
+      "gcj02": {
+        "lat": 31.153315,
+        "lng": 121.355927
+      },
+      "point_scope": "map_place",
+      "point_label": "七宝古镇地图标注点",
+      "precision_status": "入口地面精度未实测；坐标转换误差不代表入口定位精度",
+      "operating_sources": [],
+      "verified_operating_fields": {},
+      "unverified_fields": [
+        "holiday_closures",
+        "lighting",
+        "dropoff",
+        "entrance_availability",
+        "opening_hours",
+        "last_entry_time",
+        "reservation_required"
+      ],
+      "notes": []
+    },
+    {
+      "poi_id": "sh_poi_00152",
+      "reviewed_on": "2026-10-04",
+      "venue": "南翔老街",
+      "address": "上海市嘉定区南翔镇老街",
+      "coordinate_source": "https://www.amap.com/place/B0H2UHPMJ4",
+      "provider_venue_source": "https://www.amap.com/place/B0H2UHPMJ4",
+      "gcj02": {
+        "lat": 31.290272,
+        "lng": 121.308626
+      },
+      "point_scope": "map_place",
+      "point_label": "南翔老街地图标注点",
+      "precision_status": "入口地面精度未实测；坐标转换误差不代表入口定位精度",
+      "operating_sources": [],
+      "verified_operating_fields": {},
+      "unverified_fields": [
+        "holiday_closures",
+        "lighting",
+        "dropoff",
+        "entrance_availability",
+        "opening_hours",
+        "last_entry_time",
+        "reservation_required"
+      ],
+      "notes": []
+    },
+    {
+      "poi_id": "sh_poi_00153",
+      "reviewed_on": "2026-10-04",
+      "venue": "枫泾古镇",
+      "address": "上海市金山区枫泾镇亭枫公路8588弄28号",
+      "coordinate_source": "https://www.amap.com/place/B00156D5LD",
+      "provider_venue_source": "https://www.amap.com/place/B001556VY1",
+      "gcj02": {
+        "lat": 30.884358,
+        "lng": 121.014252
+      },
+      "point_scope": "map_gate",
+      "point_label": "枫泾古镇正门",
+      "precision_status": "入口地面精度未实测；坐标转换误差不代表入口定位精度",
+      "operating_sources": [],
+      "verified_operating_fields": {},
+      "unverified_fields": [
+        "holiday_closures",
+        "lighting",
+        "dropoff",
+        "entrance_availability",
+        "opening_hours",
+        "last_entry_time",
+        "reservation_required"
+      ],
+      "notes": []
+    },
+    {
+      "poi_id": "sh_poi_00154",
+      "reviewed_on": "2026-10-04",
+      "venue": "新场古镇",
+      "address": "上海市浦东新区海泉街128号",
+      "coordinate_source": "https://www.amap.com/place/B00155LZNL",
+      "provider_venue_source": "https://www.amap.com/place/B00155LZNL",
+      "gcj02": {
+        "lat": 31.024851,
+        "lng": 121.646758
+      },
+      "point_scope": "map_place",
+      "point_label": "新场古镇地图标注点",
+      "precision_status": "入口地面精度未实测；坐标转换误差不代表入口定位精度",
+      "operating_sources": [],
+      "verified_operating_fields": {},
+      "unverified_fields": [
+        "holiday_closures",
+        "lighting",
+        "dropoff",
+        "entrance_availability",
+        "opening_hours",
+        "last_entry_time",
+        "reservation_required"
+      ],
+      "notes": []
+    },
+    {
+      "poi_id": "sh_poi_00155",
+      "reviewed_on": "2026-10-04",
+      "venue": "北外滩滨江绿地",
+      "address": "上海市虹口区东大名路",
+      "coordinate_source": "https://www.amap.com/place/B00156NZVG",
+      "provider_venue_source": "https://www.amap.com/place/B00156NZVG",
+      "gcj02": {
+        "lat": 31.247461,
+        "lng": 121.499372
+      },
+      "point_scope": "map_place",
+      "point_label": "北外滩滨江绿地地图标注点",
+      "precision_status": "入口地面精度未实测；坐标转换误差不代表入口定位精度",
+      "operating_sources": [],
+      "verified_operating_fields": {},
+      "unverified_fields": [
+        "holiday_closures",
+        "lighting",
+        "dropoff",
+        "entrance_availability",
+        "opening_hours",
+        "last_entry_time",
+        "reservation_required"
+      ],
+      "notes": []
+    },
+    {
+      "poi_id": "sh_poi_00156",
+      "reviewed_on": "2026-10-04",
+      "venue": "徐汇滨江绿地",
+      "address": "上海市徐汇区东安路与龙腾大道交界处",
+      "coordinate_source": "https://www.amap.com/place/B00156ZEPU",
+      "provider_venue_source": "https://www.amap.com/place/B00156ZEPU",
+      "gcj02": {
+        "lat": 31.180766,
+        "lng": 121.463869
+      },
+      "point_scope": "map_place",
+      "point_label": "徐汇滨江绿地地图标注点",
+      "precision_status": "入口地面精度未实测；坐标转换误差不代表入口定位精度",
+      "operating_sources": [],
+      "verified_operating_fields": {},
+      "unverified_fields": [
+        "holiday_closures",
+        "lighting",
+        "dropoff",
+        "entrance_availability",
+        "opening_hours",
+        "last_entry_time",
+        "reservation_required"
+      ],
+      "notes": []
+    },
+    {
+      "poi_id": "sh_poi_00157",
+      "reviewed_on": "2026-10-04",
+      "venue": "东方绿舟",
+      "address": "上海市青浦区沪青平公路6888号",
+      "coordinate_source": "https://www.amap.com/place/B00155L7R0",
+      "provider_venue_source": "https://www.amap.com/place/B00155IPXY",
+      "gcj02": {
+        "lat": 31.099303,
+        "lng": 121.01798
+      },
+      "point_scope": "map_gate",
+      "point_label": "东方绿舟1号门",
+      "precision_status": "入口地面精度未实测；坐标转换误差不代表入口定位精度",
+      "operating_sources": [],
+      "verified_operating_fields": {},
+      "unverified_fields": [
+        "holiday_closures",
+        "lighting",
+        "dropoff",
+        "entrance_availability",
+        "opening_hours",
+        "last_entry_time",
+        "reservation_required"
+      ],
+      "notes": []
+    },
+    {
+      "poi_id": "sh_poi_00158",
+      "reviewed_on": "2026-10-04",
+      "venue": "佘山国家森林公园",
+      "address": "上海市松江区外青松公路9258号",
+      "coordinate_source": "https://www.amap.com/place/B00156D0SP",
+      "provider_venue_source": "https://www.amap.com/place/B00155IWT7",
+      "gcj02": {
+        "lat": 31.094787,
+        "lng": 121.185403
+      },
+      "point_scope": "map_gate",
+      "point_label": "佘山国家森林公园东北门（西佘山一侧）",
+      "precision_status": "入口地面精度未实测；坐标转换误差不代表入口定位精度",
+      "operating_sources": [],
+      "verified_operating_fields": {},
+      "unverified_fields": [
+        "holiday_closures",
+        "lighting",
+        "dropoff",
+        "entrance_availability",
+        "opening_hours",
+        "last_entry_time",
+        "reservation_required"
+      ],
+      "notes": []
+    },
+    {
+      "poi_id": "sh_poi_00159",
+      "reviewed_on": "2026-10-04",
+      "venue": "上海海湾国家森林公园",
+      "address": "上海市奉贤区随塘河路1677号",
+      "coordinate_source": "https://www.amap.com/place/B00156R4VR",
+      "provider_venue_source": "https://www.amap.com/place/B00155LYLB",
+      "gcj02": {
+        "lat": 30.865974,
+        "lng": 121.678653
+      },
+      "point_scope": "map_gate",
+      "point_label": "海湾国家森林公园1号门",
+      "precision_status": "入口地面精度未实测；坐标转换误差不代表入口定位精度",
+      "operating_sources": [],
+      "verified_operating_fields": {},
+      "unverified_fields": [
+        "holiday_closures",
+        "lighting",
+        "dropoff",
+        "entrance_availability",
+        "opening_hours",
+        "last_entry_time",
+        "reservation_required"
+      ],
+      "notes": []
+    },
+    {
+      "poi_id": "sh_poi_00160",
+      "reviewed_on": "2026-10-04",
+      "venue": "滴水湖",
+      "address": "上海市浦东新区临港大道11号",
+      "coordinate_source": "https://www.amap.com/place/B00155LYLW",
+      "provider_venue_source": "https://www.amap.com/place/B00155LYLW",
+      "gcj02": {
+        "lat": 30.902727,
+        "lng": 121.928728
+      },
+      "point_scope": "map_place",
+      "point_label": "滴水湖地图标注点",
+      "precision_status": "入口地面精度未实测；坐标转换误差不代表入口定位精度",
+      "operating_sources": [],
+      "verified_operating_fields": {},
+      "unverified_fields": [
+        "holiday_closures",
+        "lighting",
+        "dropoff",
+        "entrance_availability",
+        "opening_hours",
+        "last_entry_time",
+        "reservation_required"
+      ],
+      "notes": []
+    }
+  ]
+}

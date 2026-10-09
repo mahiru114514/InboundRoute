@@ -1,0 +1,13 @@
+{
+  "id": "trip_engine",
+  "name": "行程引擎",
+  "version": "0.1.0",
+  "description": "InboundRoute 行程数据服务：行程的创建、读写与 POI 查询。唯一持久化行程数据的模块。",
+  "dependencies": [],
+  "service": {
+    "enabled": true,
+    "health_path": "/health",
+    "open_path": null,
+    "title": "行程引擎 API"
+  }
+}

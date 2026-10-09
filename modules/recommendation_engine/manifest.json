@@ -1,0 +1,13 @@
+{
+  "id": "recommendation_engine",
+  "name": "推荐行程",
+  "version": "0.1.0",
+  "description": "按兴趣、节奏、日期开放信息与每日出入境边界生成可编辑建议；只读，不直接保存行程。",
+  "dependencies": ["trip_engine"],
+  "service": {
+    "enabled": true,
+    "health_path": "/health",
+    "open_path": null,
+    "title": "推荐行程 API"
+  }
+}

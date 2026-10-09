@@ -1,0 +1,18 @@
+@echo off
+setlocal
+cd /d "%~dp0"
+where python >nul 2>&1
+if errorlevel 1 goto use_py
+python manager.py
+goto finished
+:use_py
+where py >nul 2>&1
+if errorlevel 1 goto missing
+py -3 manager.py
+goto finished
+:missing
+echo Python 3.10+ is required. Please install Python and try again.
+pause
+exit /b 1
+:finished
+if errorlevel 1 pause

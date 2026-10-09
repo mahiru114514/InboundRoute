@@ -1,0 +1,7 @@
+{
+  "id": "greeting",
+  "name": "问候卡片",
+  "version": "1.0.0",
+  "description": "读取配置生成一份本地问候文本，用于体验 ZIP 安装、运行和数据保留。",
+  "dependencies": []
+}

@@ -1,0 +1,79 @@
+{
+  "$schema_target": "station.schema.json",
+  "$comment": "PRD 架构图提到但第 4 章缺失的「核心站台库」实体。3.5/3.6/3.7 的进出站口、站台方向、站内换乘全部来自这里。",
+  "station_id": "sh_stn_00107",
+  "names": {"zh-Hans": "南京东路", "zh-Hant": "南京東路", "en": "East Nanjing Rd", "ja": "南京東路", "ko": "난징둥루"},
+  "romanization": {"pinyin": "nán jīng dōng lù", "pinyin_plain": "nanjing donglu"},
+  "coordinate": {"lat": 31.2389, "lng": 121.4805, "crs": "WGS84", "precision_m": 20},
+  "station_group_id": "sh_stn_grp_0031",
+  "is_transfer_hub": true,
+  "vertical_complexity": "multi_level",
+  "lines": [
+    {
+      "code": "2",
+      "name_en": "Line 2 (Green)",
+      "name_zh": "2 号线",
+      "color_hex": "#00A650",
+      "directions": [
+        {"name_en": "Towards Pudong Int'l Airport", "name_zh": "往浦东国际机场方向", "terminal_station_id": "sh_stn_00002"},
+        {"name_en": "Towards East Xujing", "name_zh": "往徐泾东方向", "terminal_station_id": "sh_stn_00003"}
+      ]
+    },
+    {
+      "code": "10",
+      "name_en": "Line 10 (Lilac)",
+      "name_zh": "10 号线",
+      "color_hex": "#C6AFD4",
+      "directions": [
+        {"name_en": "Towards Hangzhong Rd", "name_zh": "往航中路方向", "terminal_station_id": "sh_stn_00021"}
+      ]
+    }
+  ],
+  "access_points": [
+    {
+      "access_no": "2",
+      "kind": "entrance",
+      "name_zh": "2号口",
+      "name_en": "Entrance 2",
+      "coordinate": {"lat": 31.2392, "lng": 121.4811, "crs": "WGS84", "precision_m": 15},
+      "landmark_desc_zh": "南京东路步行街方向",
+      "landmark_desc_en": "Towards Nanjing Road Pedestrian Street",
+      "is_barrier_free": true,
+      "has_escalator": true,
+      "is_open": true
+    },
+    {
+      "access_no": "7",
+      "kind": "exit",
+      "name_zh": "7号口",
+      "name_en": "Exit 7",
+      "coordinate": {"lat": 31.2381, "lng": 121.4798, "crs": "WGS84", "precision_m": 15},
+      "landmark_desc_zh": "外滩方向",
+      "landmark_desc_en": "Towards The Bund",
+      "is_barrier_free": false,
+      "has_escalator": true,
+      "is_open": true
+    }
+  ],
+  "interior_transfers": [
+    {
+      "from_line_code": "2",
+      "to_line_code": "10",
+      "walking_distance_meters": 320,
+      "minutes_min": 6,
+      "minutes_max": 8,
+      "is_in_station": true,
+      "note_zh": "建议走站内扶梯",
+      "note_en": "Take indoor escalators",
+      "vertical_gap_note_zh": "站厅到站台高差较大",
+      "is_barrier_free": false
+    }
+  ],
+  "coverage": {"tier": "core_hub", "completeness": "full"},
+  "provenance": {
+    "source": "manual",
+    "updated_at": 1791763200,
+    "reviewed_by": "data-ops",
+    "field_verified_at": {"access_points": 1791763200, "interior_transfers": 1791504000}
+  }
+}

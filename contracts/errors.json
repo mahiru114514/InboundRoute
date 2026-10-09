@@ -1,0 +1,35 @@
+{
+  "$comment": "C4 错误码表。PRD 全篇无错误码设计。所有响应体遵循 api.schema.json#/$defs/errorBody。",
+  "version": "0.1.0-draft",
+  "envelope": {
+    "success": {"ok": true, "data": "<payload>", "meta": {"version": "契约版本", "server_time": "<UTC 秒>"}},
+    "failure": {"ok": false, "error": {"code": "<下方错误码>", "message_key": "<i18n 键>", "message": "<英文兜底文案>", "details": {}, "retryable": false, "trace_id": "<请求追踪号>"}}
+  },
+  "codes": [
+    {"code": "BAD_REQUEST", "http": 400, "message_key": "error.bad_request", "retryable": false, "desc": "参数校验失败，details 含字段级错误"},
+    {"code": "UNAUTHORIZED", "http": 401, "message_key": "error.unauthorized", "retryable": false, "desc": "缺少或无效凭证"},
+    {"code": "FORBIDDEN", "http": 403, "message_key": "error.forbidden", "retryable": false, "desc": "越权访问他人 trip（裸 trip_id 必须返回此码）"},
+    {"code": "TRIP_NOT_FOUND", "http": 404, "message_key": "error.trip_not_found", "retryable": false},
+    {"code": "VERSION_CONFLICT", "http": 409, "message_key": "error.version_conflict", "retryable": true, "desc": "乐观锁冲突，details 返回服务端最新 version"},
+    {"code": "RULE_HARD_CONFLICT", "http": 409, "message_key": "error.rule_hard_conflict", "retryable": false, "desc": "Rule-01 未确认时提交；details 含待确认冲突列表与确认令牌"},
+    {"code": "PACING_EXCEEDED", "http": 422, "message_key": "error.pacing_exceeded", "retryable": false, "desc": "超过单日点位上限（软约束，可用 force=true 绕过）"},
+    {"code": "UPSTREAM_TIMEOUT", "http": 504, "message_key": "error.upstream_timeout", "retryable": true, "desc": "三方超时；响应可能带 degraded 数据"},
+    {"code": "UPSTREAM_RATE_LIMITED", "http": 429, "message_key": "error.upstream_rate_limited", "retryable": true, "desc": "三方限流；客户端按 Retry-After 退避，不重试同请求"},
+    {"code": "UPSTREAM_UNSUPPORTED", "http": 501, "message_key": "error.upstream_unsupported", "retryable": false, "desc": "该城市/线路三方不支持"},
+    {"code": "DEGRADED_RESULT", "http": 200, "message_key": "degraded.direct_orientation", "retryable": true, "desc": "成功返回但带 degraded_reason；前端必须展示提示"},
+    {"code": "RATE_LIMITED", "http": 429, "message_key": "error.rate_limited", "retryable": true, "desc": "本服务限流（建议单用户 ≤60 次/小时）"},
+    {"code": "INTERNAL", "http": 500, "message_key": "error.internal", "retryable": true}
+  ],
+  "idempotency": {
+    "$comment": "PRD 无幂等设计；重发会造成重复计费与重复消耗三方配额。",
+    "header": "Idempotency-Key",
+    "applies_to": ["POST /trips/{trip_id}/stops", "POST /trips/{trip_id}/routes:compute"],
+    "window_hours": 24,
+    "on_replay": "返回首次结果，不重复调用三方"
+  },
+  "versioning": {
+    "schema_version_header": "X-Contract-Version",
+    "policy": "新增可选字段=次版本；删除/改语义/改必填=主版本，且服务端需同时支持旧版至少一个大版本",
+    "client_requirement": "客户端必须忽略未知字段（additionalProperties 在前端解析层放宽），避免旧客户端崩溃"
+  }
+}

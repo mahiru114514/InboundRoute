@@ -1,0 +1,715 @@
+{
+  "version": 1,
+  "checked_at": "2026-10-09",
+  "scope": "Shanghai display names; keep original Chinese. Published names and rule-based labels are distinguished by kind; no invented station IDs, coordinates, directions or access points.",
+  "sources": {
+    "airport": {
+      "url": "https://english.shanghai.gov.cn/en-Transportation/20241231/f66f14bbd4b549ab88e6f3aec375790c.html",
+      "title": "How to take Airport Link Line",
+      "kind": "official_english"
+    },
+    "metro": {
+      "url": "https://www.metroman.cn/cities/shanghai/stations",
+      "title": "Shanghai Metro bilingual station list",
+      "kind": "published_english"
+    },
+    "road_rules": {
+      "url": "https://www.shanghai.gov.cn/nw9788/20200906/0001-9788_690.html",
+      "title": "上海市公共场所英文译名使用管理：专名采用汉语拼音",
+      "kind": "rule_based_display",
+      "reference": "https://zh.wikisource.org/wiki/上海市道路名称英译导则"
+    },
+    "jidi": {
+      "url": "https://www.black-river.net/contact.html",
+      "title": "Black River bilingual address: 纪翟路 / Jidi Road",
+      "kind": "published_english"
+    },
+    "ring": {
+      "url": "https://www.swfc-shanghai.com/pdf/swfc_access_en.pdf",
+      "title": "Shanghai World Financial Center bilingual access map",
+      "kind": "published_english"
+    },
+    "hub": {
+      "url": "https://sowec.ecnu.edu.cn/f3/45/c28645a717637/page.htm",
+      "title": "EPAM 2025 traffic guide: 虹桥东交通中心",
+      "kind": "descriptive_translation"
+    },
+    "night_bus": {
+      "url": "https://bkso.baidu.com/item/上海公交隧道夜宵线/19196125",
+      "title": "隧道夜宵线线路资料；英文仅为拼音显示名，非官方线路译名",
+      "kind": "pinyin_display"
+    }
+  },
+  "places": {
+    "浦东1号2号航站楼": {
+      "en": "Pudong Airport Terminal 1 & 2",
+      "source": "airport",
+      "kind": "official_english"
+    },
+    "虹桥2号航站楼": {
+      "en": "Hongqiao Airport Terminal 2",
+      "source": "airport",
+      "kind": "official_english"
+    },
+    "七宝": {
+      "en": "Qibao",
+      "source": "metro",
+      "kind": "published_english"
+    },
+    "上海动物园": {
+      "en": "Shanghai Zoo",
+      "source": "metro",
+      "kind": "published_english"
+    },
+    "上海图书馆": {
+      "en": "Shanghai Library",
+      "source": "metro",
+      "kind": "published_english"
+    },
+    "上海科技馆": {
+      "en": "Shanghai Science & Technology Museum",
+      "source": "metro",
+      "kind": "published_english"
+    },
+    "中山公园": {
+      "en": "Zhongshan Park",
+      "source": "metro",
+      "kind": "published_english"
+    },
+    "交通大学": {
+      "en": "Jiao Tong University",
+      "source": "metro",
+      "kind": "published_english"
+    },
+    "人民广场": {
+      "en": "People's Square",
+      "source": "metro",
+      "kind": "published_english"
+    },
+    "南京东路": {
+      "en": "East Nanjing Road",
+      "source": "metro",
+      "kind": "published_english"
+    },
+    "南京西路": {
+      "en": "West Nanjing Road",
+      "source": "metro",
+      "kind": "published_english"
+    },
+    "国际客运中心": {
+      "en": "International Cruise Terminal",
+      "source": "metro",
+      "kind": "published_english"
+    },
+    "天潼路": {
+      "en": "Tiantong Road",
+      "source": "metro",
+      "kind": "published_english"
+    },
+    "娄山关路": {
+      "en": "Loushanguan Road",
+      "source": "metro",
+      "kind": "published_english"
+    },
+    "打浦桥": {
+      "en": "Dapuqiao",
+      "source": "metro",
+      "kind": "published_english"
+    },
+    "曲阜路": {
+      "en": "Qufu Road",
+      "source": "metro",
+      "kind": "published_english"
+    },
+    "淞虹路": {
+      "en": "Songhong Road",
+      "source": "metro",
+      "kind": "published_english"
+    },
+    "红宝石路": {
+      "en": "Hongbaoshi Road",
+      "source": "metro",
+      "kind": "published_english"
+    },
+    "长风公园": {
+      "en": "Changfeng Park",
+      "source": "metro",
+      "kind": "published_english"
+    },
+    "陆家嘴": {
+      "en": "Lujiazui",
+      "source": "metro",
+      "kind": "published_english"
+    },
+    "陕西南路": {
+      "en": "South Shaanxi Road",
+      "source": "metro",
+      "kind": "published_english"
+    },
+    "隆德路": {
+      "en": "Longde Road",
+      "source": "metro",
+      "kind": "published_english"
+    },
+    "静安寺": {
+      "en": "Jing'an Temple",
+      "source": "metro",
+      "kind": "published_english"
+    },
+    "龙华中路": {
+      "en": "Middle Longhua Road",
+      "source": "metro",
+      "kind": "published_english"
+    },
+    "基隆路": {
+      "en": "Jilong Road",
+      "source": "metro",
+      "kind": "published_english"
+    },
+    "虹桥火车站": {
+      "en": "Hongqiao Railway Station",
+      "source": "metro",
+      "kind": "published_english"
+    },
+    "航中路": {
+      "en": "Hangzhong Road",
+      "source": "metro",
+      "kind": "published_english"
+    },
+    "花桥": {
+      "en": "Huaqiao",
+      "source": "metro",
+      "kind": "published_english"
+    },
+    "迪士尼": {
+      "en": "Disney Resort",
+      "source": "metro",
+      "kind": "published_english"
+    },
+    "七莘路": {
+      "en": "Qixin Road",
+      "source": "metro",
+      "kind": "published_english"
+    },
+    "金海路": {
+      "en": "Jinhai Road",
+      "source": "metro",
+      "kind": "published_english"
+    },
+    "紫竹高新区": {
+      "en": "Zizhu Hi-Tech Park",
+      "source": "metro",
+      "kind": "published_english"
+    },
+    "顾村公园": {
+      "en": "Gucun Park",
+      "source": "metro",
+      "kind": "published_english"
+    },
+    "富锦路": {
+      "en": "Fujin Road",
+      "source": "metro",
+      "kind": "published_english"
+    },
+    "莘庄": {
+      "en": "Xinzhuang",
+      "source": "metro",
+      "kind": "published_english"
+    },
+    "蟠祥路·国家会计学院": {
+      "en": "Panxiang Road · Shanghai National Accounting Institute",
+      "source": "metro",
+      "kind": "published_english"
+    },
+    "美兰湖": {
+      "en": "Meilan Lake",
+      "source": "metro",
+      "kind": "published_english"
+    },
+    "花木路": {
+      "en": "Huamu Road",
+      "source": "metro",
+      "kind": "published_english"
+    },
+    "市光路": {
+      "en": "Shiguang Road",
+      "source": "metro",
+      "kind": "published_english"
+    },
+    "沈杜公路": {
+      "en": "Shendu Highway",
+      "source": "metro",
+      "kind": "published_english"
+    },
+    "曹路": {
+      "en": "Caolu",
+      "source": "metro",
+      "kind": "published_english"
+    },
+    "上海松江站": {
+      "en": "Shanghai Songjiang Railway Station",
+      "source": "metro",
+      "kind": "published_english"
+    },
+    "上海火车站": {
+      "en": "Shanghai Railway Station",
+      "source": "metro",
+      "kind": "published_english"
+    },
+    "上海体育馆": {
+      "en": "Shanghai Indoor Stadium",
+      "source": "metro",
+      "kind": "published_english"
+    },
+    "老西门": {
+      "en": "Laoximen",
+      "source": "metro",
+      "kind": "published_english"
+    },
+    "万航渡路": {
+      "en": "Wanhangdu Road",
+      "source": "road_rules",
+      "kind": "rule_based_display"
+    },
+    "世纪大道": {
+      "en": "Century Avenue",
+      "source": "road_rules",
+      "kind": "rule_based_display"
+    },
+    "东大名路": {
+      "en": "Dongdaming Road",
+      "source": "road_rules",
+      "kind": "rule_based_display"
+    },
+    "东安路": {
+      "en": "Dong'an Road",
+      "source": "road_rules",
+      "kind": "rule_based_display"
+    },
+    "东泰路": {
+      "en": "Dongtai Road",
+      "source": "road_rules",
+      "kind": "rule_based_display"
+    },
+    "丰和路": {
+      "en": "Fenghe Road",
+      "source": "road_rules",
+      "kind": "rule_based_display"
+    },
+    "保乐路": {
+      "en": "Baole Road",
+      "source": "road_rules",
+      "kind": "rule_based_display"
+    },
+    "北苏州路": {
+      "en": "Beisuzhou Road",
+      "source": "road_rules",
+      "kind": "rule_based_display"
+    },
+    "北青公路": {
+      "en": "Beiqing Highway",
+      "source": "road_rules",
+      "kind": "rule_based_display"
+    },
+    "华山路": {
+      "en": "Huashan Road",
+      "source": "road_rules",
+      "kind": "rule_based_display"
+    },
+    "南京路": {
+      "en": "Nanjing Road",
+      "source": "road_rules",
+      "kind": "rule_based_display"
+    },
+    "南洋泾路": {
+      "en": "Nanyangjing Road",
+      "source": "road_rules",
+      "kind": "rule_based_display"
+    },
+    "大渡河路": {
+      "en": "Daduhe Road",
+      "source": "road_rules",
+      "kind": "rule_based_display"
+    },
+    "天平路": {
+      "en": "Tianping Road",
+      "source": "road_rules",
+      "kind": "rule_based_display"
+    },
+    "富城路": {
+      "en": "Fucheng Road",
+      "source": "road_rules",
+      "kind": "rule_based_display"
+    },
+    "山东中路": {
+      "en": "Middle Shandong Road",
+      "source": "road_rules",
+      "kind": "rule_based_display"
+    },
+    "广西北路": {
+      "en": "North Guangxi Road",
+      "source": "road_rules",
+      "kind": "rule_based_display"
+    },
+    "康平路": {
+      "en": "Kangping Road",
+      "source": "road_rules",
+      "kind": "rule_based_display"
+    },
+    "延安东路": {
+      "en": "East Yan'an Road",
+      "source": "road_rules",
+      "kind": "rule_based_display"
+    },
+    "延安西路": {
+      "en": "West Yan'an Road",
+      "source": "road_rules",
+      "kind": "rule_based_display"
+    },
+    "建国中路": {
+      "en": "Middle Jianguo Road",
+      "source": "road_rules",
+      "kind": "rule_based_display"
+    },
+    "建德路": {
+      "en": "Jiande Road",
+      "source": "road_rules",
+      "kind": "rule_based_display"
+    },
+    "愚园路": {
+      "en": "Yuyuan Road",
+      "source": "road_rules",
+      "kind": "rule_based_display"
+    },
+    "明珠塔路": {
+      "en": "Mingzhuta Road",
+      "source": "road_rules",
+      "kind": "rule_based_display"
+    },
+    "步行街": {
+      "en": "pedestrian street",
+      "source": "road_rules",
+      "kind": "rule_based_display"
+    },
+    "江苏北路": {
+      "en": "North Jiangsu Road",
+      "source": "road_rules",
+      "kind": "rule_based_display"
+    },
+    "江西中路": {
+      "en": "Middle Jiangxi Road",
+      "source": "road_rules",
+      "kind": "rule_based_display"
+    },
+    "江西北路": {
+      "en": "North Jiangxi Road",
+      "source": "road_rules",
+      "kind": "rule_based_display"
+    },
+    "泰康路": {
+      "en": "Taikang Road",
+      "source": "road_rules",
+      "kind": "rule_based_display"
+    },
+    "浦东南路": {
+      "en": "South Pudong Road",
+      "source": "road_rules",
+      "kind": "rule_based_display"
+    },
+    "浦东大道": {
+      "en": "Pudong Avenue",
+      "source": "road_rules",
+      "kind": "rule_based_display"
+    },
+    "浦东机场路": {
+      "en": "Pudong Jichang Road",
+      "source": "road_rules",
+      "kind": "rule_based_display"
+    },
+    "海口路": {
+      "en": "Haikou Road",
+      "source": "road_rules",
+      "kind": "rule_based_display"
+    },
+    "淮海中路": {
+      "en": "Middle Huaihai Road",
+      "source": "road_rules",
+      "kind": "rule_based_display"
+    },
+    "湖北路": {
+      "en": "Hubei Road",
+      "source": "road_rules",
+      "kind": "rule_based_display"
+    },
+    "湖南路": {
+      "en": "Hunan Road",
+      "source": "road_rules",
+      "kind": "rule_based_display"
+    },
+    "滇池路": {
+      "en": "Dianchi Road",
+      "source": "road_rules",
+      "kind": "rule_based_display"
+    },
+    "瑞平路": {
+      "en": "Ruiping Road",
+      "source": "road_rules",
+      "kind": "rule_based_display"
+    },
+    "瑞金二路": {
+      "en": "Ruijin Road Number Two",
+      "source": "road_rules",
+      "kind": "rule_based_display"
+    },
+    "福州路": {
+      "en": "Fuzhou Road",
+      "source": "road_rules",
+      "kind": "rule_based_display"
+    },
+    "繁兴路": {
+      "en": "Fanxing Road",
+      "source": "road_rules",
+      "kind": "rule_based_display"
+    },
+    "胶州路": {
+      "en": "Jiaozhou Road",
+      "source": "road_rules",
+      "kind": "rule_based_display"
+    },
+    "花园石桥路": {
+      "en": "Huayuanshiqiao Road",
+      "source": "road_rules",
+      "kind": "rule_based_display"
+    },
+    "芳甸路": {
+      "en": "Fangdian Road",
+      "source": "road_rules",
+      "kind": "rule_based_display"
+    },
+    "茂名北路": {
+      "en": "North Maoming Road",
+      "source": "road_rules",
+      "kind": "rule_based_display"
+    },
+    "虹井路": {
+      "en": "Hongjing Road",
+      "source": "road_rules",
+      "kind": "rule_based_display"
+    },
+    "虹桥路": {
+      "en": "Hongqiao Road",
+      "source": "road_rules",
+      "kind": "rule_based_display"
+    },
+    "西藏北路": {
+      "en": "North Xizang Road",
+      "source": "road_rules",
+      "kind": "rule_based_display"
+    },
+    "银城中路": {
+      "en": "Middle Yincheng Road",
+      "source": "road_rules",
+      "kind": "rule_based_display"
+    },
+    "锦绣路": {
+      "en": "Jinxiu Road",
+      "source": "road_rules",
+      "kind": "rule_based_display"
+    },
+    "陆家嘴西路": {
+      "en": "West Lujiazui Road",
+      "source": "road_rules",
+      "kind": "rule_based_display"
+    },
+    "天山西路": {
+      "en": "West Tianshan Road",
+      "source": "road_rules",
+      "kind": "rule_based_display"
+    },
+    "福泉路": {
+      "en": "Fuquan Road",
+      "source": "road_rules",
+      "kind": "rule_based_display"
+    },
+    "浙江中路": {
+      "en": "Middle Zhejiang Road",
+      "source": "road_rules",
+      "kind": "rule_based_display"
+    },
+    "苗圃路": {
+      "en": "Miaopu Road",
+      "source": "road_rules",
+      "kind": "rule_based_display"
+    },
+    "张杨路": {
+      "en": "Zhangyang Road",
+      "source": "road_rules",
+      "kind": "rule_based_display"
+    },
+    "武康路": {
+      "en": "Wukang Road",
+      "source": "road_rules",
+      "kind": "rule_based_display"
+    },
+    "东昌路": {
+      "en": "Dongchang Road",
+      "source": "road_rules",
+      "kind": "rule_based_display"
+    },
+    "水城路": {
+      "en": "Shuicheng Road",
+      "source": "road_rules",
+      "kind": "rule_based_display"
+    },
+    "海宁路": {
+      "en": "Haining Road",
+      "source": "road_rules",
+      "kind": "rule_based_display"
+    },
+    "名商路": {
+      "en": "Mingshang Road",
+      "source": "road_rules",
+      "kind": "rule_based_display"
+    },
+    "滨江大道": {
+      "en": "Binjiang Avenue",
+      "source": "road_rules",
+      "kind": "rule_based_display"
+    },
+    "合川路": {
+      "en": "Hechuan Road",
+      "source": "road_rules",
+      "kind": "rule_based_display"
+    },
+    "虹泉路": {
+      "en": "Hongquan Road",
+      "source": "road_rules",
+      "kind": "rule_based_display"
+    },
+    "金辉路": {
+      "en": "Jinhui Road",
+      "source": "road_rules",
+      "kind": "rule_based_display"
+    },
+    "崂山路": {
+      "en": "Laoshan Road",
+      "source": "road_rules",
+      "kind": "rule_based_display"
+    },
+    "潍坊路": {
+      "en": "Weifang Road",
+      "source": "road_rules",
+      "kind": "rule_based_display"
+    },
+    "圆明园路": {
+      "en": "Yuanmingyuan Road",
+      "source": "road_rules",
+      "kind": "rule_based_display"
+    },
+    "尚泰路": {
+      "en": "Shangtai Road",
+      "source": "road_rules",
+      "kind": "rule_based_display"
+    },
+    "乐高路": {
+      "en": "Legao Road",
+      "source": "road_rules",
+      "kind": "rule_based_display"
+    },
+    "泸定路": {
+      "en": "Luding Road",
+      "source": "road_rules",
+      "kind": "rule_based_display"
+    },
+    "同普路": {
+      "en": "Tongpu Road",
+      "source": "road_rules",
+      "kind": "rule_based_display"
+    },
+    "耀体路": {
+      "en": "Yaoti Road",
+      "source": "road_rules",
+      "kind": "rule_based_display"
+    },
+    "平家桥路": {
+      "en": "Pingjiaqiao Road",
+      "source": "road_rules",
+      "kind": "rule_based_display"
+    },
+    "金杨路": {
+      "en": "Jinyang Road",
+      "source": "road_rules",
+      "kind": "rule_based_display"
+    },
+    "金口路": {
+      "en": "Jinkou Road",
+      "source": "road_rules",
+      "kind": "rule_based_display"
+    },
+    "豆市街": {
+      "en": "Doushi Street",
+      "source": "road_rules",
+      "kind": "rule_based_display"
+    },
+    "复兴东路": {
+      "en": "East Fuxing Road",
+      "source": "road_rules",
+      "kind": "rule_based_display"
+    },
+    "南广场": {
+      "en": "South Square",
+      "source": "road_rules",
+      "kind": "rule_based_display"
+    },
+    "环线": {
+      "en": "Loop",
+      "source": "road_rules",
+      "kind": "rule_based_display"
+    },
+    "龙柏新村": {
+      "en": "Longbai Xincun",
+      "source": "road_rules",
+      "kind": "rule_based_display"
+    },
+    "长寿新村": {
+      "en": "Changshou Xincun",
+      "source": "road_rules",
+      "kind": "rule_based_display"
+    },
+    "纪王": {
+      "en": "Jiwang",
+      "source": "road_rules",
+      "kind": "rule_based_display"
+    },
+    "东昌路渡口": {
+      "en": "Dongchang Road Ferry Crossing",
+      "source": "road_rules",
+      "kind": "rule_based_display"
+    },
+    "徐汇滨江绿道": {
+      "en": "Xuhui Riverside Greenway",
+      "source": "road_rules",
+      "kind": "rule_based_display"
+    },
+    "纪翟路": {
+      "en": "Jidi Road",
+      "source": "jidi",
+      "kind": "published_english"
+    },
+    "陆家嘴环路": {
+      "en": "Lujiazui Ring Road",
+      "source": "ring",
+      "kind": "published_english"
+    },
+    "虹桥东交通中心": {
+      "en": "Hongqiao East Transportation Center",
+      "source": "hub",
+      "kind": "descriptive_translation"
+    },
+    "隧道夜宵线": {
+      "en": "Suidao Yexiao Line (night bus)",
+      "source": "night_bus",
+      "kind": "pinyin_display"
+    }
+  }
+}

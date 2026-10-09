@@ -1,0 +1,27 @@
+const assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm');
+class Node {constructor(){this.value='';this.children=[];this.dataset={};}replaceChildren(){this.children=[];}append(n){this.children.push(n);}setAttribute(name,value){this[name]=value;} }
+const nodes=new Map(['hotel','hotel-search','hub-search','arrival-hub','anchor-pick-state','budget-per-person'].map(id=>[id,new Node()]));
+const state={anchors:{hubs:[{id:'hub',name_zh:'机场',name_en:'Airport',lat:31,lng:121}],hotels:[{id:'seed',name_zh:'酒店',name_en:'Hotel',lat:31,lng:121}]},pickedHotel:{lat:32,lng:122,crs:'WGS84'}};
+const ctx={state,$:id=>nodes.get(id)||null,element:(tag,cls,text)=>Object.assign(new Node(),{textContent:text}),document:{querySelectorAll:()=>[]},ymd:()=>'',hhmm:()=>''};
+vm.createContext(ctx);for(const file of ['anchors','setup'])vm.runInContext(fs.readFileSync('modules/web_workbench/web/'+file+'.js','utf8'),ctx);
+nodes.get('hotel').value='seed';assert.equal(ctx.readHotelAnchor().coordinate.lat,31,'selected hotel coordinates cannot be overridden by an obsolete map pick');
+const saved={name_zh:'江边民宿',name_en:'Riverside Home',coordinate:{lat:31.12345,lng:121.54321,crs:'WGS84',precision_m:15},poi_id:null};
+const trip={anchor_hotel:saved,anchor_arrival:{},days:[{day_index:1}],user_profile:{}};
+ctx.formFromTrip(trip);assert.deepEqual(JSON.parse(JSON.stringify(ctx.readHotelAnchor())),saved);
+nodes.get('hotel-search').value='riverside';ctx.renderAnchorPickers();assert.equal(ctx.readHotelAnchor().coordinate.lat,saved.coordinate.lat);assert.match(ctx.pickStateText(),/江边民宿/);assert.doesNotMatch(ctx.pickStateText(),/坐标|WGS84/);
+nodes.get('hotel-search').value='Hotel';ctx.renderAnchorPickers();assert.throws(()=>ctx.readHotelAnchor(),/选择住宿/,'filtering must never silently replace a saved hotel');
+ctx.applyDraft({hotel:'seed',hotel_mode:'manual',hotel_name:'位置缺失的旧民宿'});assert.throws(()=>ctx.readHotelAnchor(),/选择住宿/,'an incomplete legacy custom hotel cannot silently revert to a candidate');
+ctx.applyDraft({hotel_mode:'manual',hotel_name:'旧草稿民宿',picked_hotel:{lat:31.9,lng:121.9,crs:'WGS84'}});assert.equal(ctx.readHotelAnchor().name_zh,'旧草稿民宿');assert.equal(ctx.readHotelAnchor().coordinate.lat,31.9);
+const draft=JSON.parse(JSON.stringify(ctx.formSnapshot()));assert.ok(draft.saved_hotels.length);assert.equal(draft.hotel_mode,undefined);assert.equal(draft.picked_hotel,undefined);
+state.savedHotels=[];nodes.get('hotel').value='seed';ctx.applyDraft(draft);assert.equal(ctx.readHotelAnchor().name_zh,'旧草稿民宿');
+let order=[];ctx.applyCurrencySnapshot=s=>{order.push('currency');assert.equal(nodes.get('budget-per-person').value,'');assert.equal(s.currency,'USD');};ctx.currencySnapshot=()=>({currency:'USD'});ctx.readCurrencyBudget=t=>({amount_cents:123,currency:'CNY',text:t});
+nodes.get('budget-per-person').value='';ctx.applyDraft({budget_per_person:'12.34',currency_settings:{currency:'USD'}});assert.equal(nodes.get('budget-per-person').value,'12.34');assert.deepEqual(order,['currency']);assert.equal(ctx.readBudget().amount_cents,123);assert.equal(ctx.formSnapshot().currency_settings.currency,'USD');
+vm.runInContext(fs.readFileSync('modules/web_workbench/web/flow.js','utf8'),ctx);
+nodes.set('setup-form',{reset(){nodes.get('budget-per-person').value='';}});nodes.set('departure-fields',new Node());
+ctx.discardDraft=()=>{};ctx.applyArrivalDefaults=()=>{};let resetSync=[];
+ctx.setCurrencyBudgetInput=v=>{resetSync.push(['input',v]);};ctx.currencyControls=()=>resetSync.push(['controls']);
+state.trip=null;ctx.resetSetup();assert.deepEqual(resetSync,[['input',null],['controls']],'new-trip reset must synchronize visible currency and clear budget context');
+let legacyCurrency=null;ctx.applyCurrencySnapshot=s=>{legacyCurrency=s;};ctx.applyDraft({budget_per_person:'100'});
+assert.equal(legacyCurrency?.code,'CNY','legacy draft without currency context is always interpreted as CNY');
+ctx.state.trip={trip_id:'t'};const calls=[];ctx.api=async(url,options)=>{calls.push(options.body);return {trip:ctx.state.trip};};ctx.afterTripEdit=async()=>{};
+(async()=>{await ctx.addAnchorStop(1,{...saved,type:'hotel'},1,60,'rest');assert.equal(calls[0].hotel_stay_kind,'rest');await ctx.addAnchorStop(1,{...saved,type:'arrival_anchor'},1,0,'rest');assert.equal(calls[1].hotel_stay_kind,undefined);await ctx.addAnchorStop(1,{...saved,type:'hotel'},1,480);assert.equal(calls[2].hotel_stay_kind,undefined);console.log('Lodging selection: saved coordinates, unified search, no replacement, legacy drafts, currency hooks and insertion payload passed');})().catch(e=>{console.error(e);process.exitCode=1;});

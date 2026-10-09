@@ -1,0 +1,249 @@
+{
+  "$comment": "C3 规则执行规范。冻结内容：编号对齐、硬/软分类、执行顺序、裁决逻辑、提示承载、缺失数据行为。依据 PRD 3.3，但 PRD 的流程图只有 3 个框且与正文编号错位（流程图「规则2」=正文 Rule-03、「规则3」=正文 Rule-02，Rule-03/04 不在流程图中），此处以正文 4 条为准重排。",
+  "version": "0.1.0-draft",
+
+  "execution_model": {
+    "trigger_events": ["add_stop", "remove_stop", "reorder", "move_to_evening", "change_day", "change_anchor", "change_config", "load_trip"],
+    "order": [
+      "step_1_timeline",
+      "step_2_hard_rules",
+      "step_3_soft_rules",
+      "step_4_render"
+    ],
+    "steps": {
+      "step_1_timeline": {
+        "desc": "按当日排序 + daily_start_local 逐点推算 arrival_at / departure_at；已 locked 的点不得被移动。",
+        "produces": ["arrival_at", "departure_at"],
+        "blocks_on": ["daily_start_local", "transit_from_previous.duration_seconds", "transfer_overhead.counts_in_timeline"]
+      },
+      "step_2_hard_rules": {
+        "desc": "硬规则求值。命中即产生待确认冲突，进入 modal_confirm；不改变排序。",
+        "rules": ["rule_01_closure"]
+      },
+      "step_3_soft_rules": {
+        "desc": "软规则并行求值。**软规则不得改变排序**，只产出提示；所有建议动作由用户显式触发。",
+        "rules": ["rule_02_lightup", "rule_03_spread", "rule_04_homogeneous"],
+        "parallel": true
+      },
+      "step_4_render": {
+        "desc": "汇总提示，按 severity 排序后一次性渲染。同一停靠点多条提示并存，按 channel 分配承载位。",
+        "severity_order": ["hard", "soft_warning", "soft_hint"],
+        "channel_capacity": {"modal_confirm": 1, "toast": 3, "inline_bubble": 3, "list_banner": 2, "card_badge": 3, "pin_badge": 1}
+      }
+    },
+    "iteration_policy": {
+      "$comment": "PRD 存在「排序→时间→规则→排序」循环依赖且未定义收敛方式。冻结为方案 A：软规则从不改变顺序，因此引擎内不存在自触发回路。",
+      "auto_apply_soft_rules": false,
+      "order_mutation_allowed": ["user_reorder", "user_add_stop", "user_remove_stop", "user_move_to_evening", "user_change_day"],
+      "engine_mutation": "禁止。引擎只产出提示，绝不改动 days[].ordered_stops 的顺序。",
+      "on_order_changed": "重跑全部规则；未被用户显式操作的旧提示按 expires_on_reorder 处理",
+      "max_iterations": 1,
+      "rationale": "方案 A（2026-09-25 决策）：保证行为可预期、可撤销、可测试，且不与一次拖拽 ≤4 次三方调用的预算冲突。详见 SOFT_RULE_DECISION.md"
+    },
+    "soft_rule_decision": {
+      "chosen": "A",
+      "decided_at": "2026-09-25",
+      "summary": "软规则只出提示；改单必须由用户显式触发",
+      "rejected": {
+        "B": "系统自动改单并重算 —— 会自触发（迭代 N 轮 = N 倍三方调用，与 1.2s 指标冲突），且不收敛行为无客观标准，难以写确定性 AC",
+        "C": "仅换提示顺序 —— 会让 [Move to Evening] 的语义失效，弱化产品承诺"
+      }
+    }
+  },
+
+  "rules": [
+    {
+      "rule_id": "rule_01_closure",
+      "name_zh": "闭馆日强冲突",
+      "name_en": "Closure Day Conflict",
+      "severity": "hard",
+      "prd_ref": "3.3 Rule-01",
+      "trigger": {
+        "all": [
+          {"field": "poi.operating_rules.closure_rules", "op": "matches_date", "args": {"date": "day.date", "weekday": "weekday(day.date, Asia/Shanghai)"}},
+          {"field": "poi.operating_rules.is_enclosed_attraction", "op": "eq", "value": true}
+        ]
+      },
+      "exception_precedence": [
+        "closure_kind=holiday_exception_open 命中 → 不触发（如「逢法定节假日照常开放」）",
+        "closure_kind=holiday_exception_closed 命中 → 触发",
+        "closure_kind=special_period / maintenance 命中 → 触发",
+        "closure_kind=weekly 命中且未来 7 天内有 holiday_exception_open → 触发但文案追加例外提示"
+      ],
+      "response": {
+        "channel": "modal_confirm",
+        "message_key": "rule.closure.confirm",
+        "message_args": ["poi.name_en", "weekday_label_en"],
+        "special_closure": {"message_key": "rule.closure.reason", "message_args": ["poi.name_en", "reason_en"], "$comment": "special_period / maintenance / holiday_exception_closed 命中时使用原因文案，而非 weekday。"},
+        "actions": ["proceed_anyway", "cancel"],
+        "on_proceed": {"set_pin_state": "added_conflict_warned", "badge": "red", "notice_outcome": "confirmed_proceed"},
+        "on_cancel": {"revert": true}
+      },
+      "missing_data_policy": {
+        "$comment": "PRD 的 closure_days: [] 无法区分「不闭馆」与「未采集」。",
+        "closure_data_status=unknown": {"action": "soft_hint", "message_key": "rule.closure.data_unknown", "silent_pass": false},
+        "closure_data_status=unverified": {"action": "soft_hint", "message_key": "rule.closure.data_unverified"},
+        "closure_data_status=verified": {"action": "evaluate_normally"}
+      },
+      "recheck_on": ["change_day", "reorder", "change_anchor"],
+      "confirmation_expiry": {"expires_on_reorder": true, "reason": "改期后原确认失效，需重新校验"}
+    },
+    {
+      "rule_id": "rule_02_lightup",
+      "name_zh": "亮灯时序自适应优化",
+      "name_en": "Light-up Timing Optimization",
+      "severity": "soft_warning",
+      "prd_ref": "3.3 Rule-02",
+      "precondition": {"field": "poi.operating_rules.light_up.required", "op": "eq", "value": true},
+      "window_resolution": {
+        "$comment": "PRD 的 summer/winter 两键无法回答「9-10 月取哪档」，改为按生效日期区间匹配。",
+        "match": "light_up.windows[] where date_from <= day.MM-DD <= date_to",
+        "on_no_match": "不触发",
+        "T_light": "由 light_up.T_light_rule 计算：window_start_minus_30 → start - 30min；window_start → start；sunset → 当日日落"
+      },
+      "branches": [
+        {
+          "id": "too_early",
+          "condition": {"op": "lt", "left": "arrival_at_local", "right": "T_light"},
+          "message_key": "rule.lightup.too_early",
+          "message_args": ["T_light"],
+          "actions": ["move_to_evening", "dismiss"],
+          "on_action": {
+            "move_to_evening": {
+              "trigger": "user",
+              "move_to": "after_dinner_or_last_unlocked",
+              "respect_locked": true,
+              "last_position_definition": "当日 ordered_stops 中最后一个未被标记 locked 的位置；末尾连续 locked 的点不动，新位置插在它们之前",
+              "records_revision": "move_to_evening",
+              "on_still_failing": {
+                "$comment": "决策 A 必须定义此分支：点已移到能到的最晚位置，仍早于 T_light（或已过窗口）时怎么办。",
+                "condition": {"op": "lt", "left": "arrival_at_local_after_move", "right": "T_light"},
+                "action": "keep_notice_with_note",
+                "message_key": "rule.lightup.still_early",
+                "notice_outcome": "pending",
+                "do_not_replan": true
+              }
+            }
+          }
+        },
+        {
+          "id": "too_late",
+          "$comment": "PRD 只覆盖「到得太早」，晚到错过窗口不提示——与「缺乏前置拦截机制」的痛点不一致，故补对称分支。",
+          "condition": {"op": "gte", "left": "arrival_at_local", "right": "window_close"},
+          "message_key": "rule.lightup.too_late",
+          "actions": ["change_day", "dismiss"],
+          "x-changed": "新增（对称规则）"
+        }
+      ],
+      "reference_time": {"value": "arrival_at", "rationale": "以抵达时间为判定基准；如需改为离开时间，改此字段即可"},
+      "missing_data_policy": {
+        "light_up=null 或 windows=[]": {"action": "skip"}
+      }
+    },
+    {
+      "rule_id": "rule_03_spread",
+      "name_zh": "地理跨度预警",
+      "name_en": "Geographic Spread Warning",
+      "severity": "soft_hint",
+      "prd_ref": "3.3 Rule-03",
+      "trigger": {
+        "all": [
+          {"field": "straight_distance_km(prev, next)", "op": "gt", "value_from": "city_config.spread_straight_km", "default": 25},
+          {"field": "poi.city.is_core_urban", "op": "eq", "value": true},
+          {"field": "transit_duration_minutes(prev, next)", "op": "gt", "value_from": "city_config.spread_duration_minutes", "default": 60, "$comment": "PRD 只有直线距离单条件——浦东机场→人民广场直线约30km但轨道1小时+，黄浦江两岸直线1km却要过江，单条件既漏报又误报。改为双条件。"}
+        ],
+        "any_of_mode": false
+      },
+      "city_config": {
+        "$comment": "PRD 的 25km 只对上海成立，必须参数化。",
+        "shanghai": {"spread_straight_km": 25, "spread_duration_minutes": 60, "core_districts": ["huangpu", "jingan", "xuhui", "changning", "hongkou", "yangpu", "putuo", "pudong_core"]}
+      },
+      "response": {
+        "channel": "inline_bubble",
+        "message_key": "rule.spread.long_transit",
+        "message_args": ["distance_km", "duration_minutes"],
+        "attach_to": "adjacent_edge"
+      },
+      "missing_data_policy": {
+        "is_core_urban 缺失": {"action": "skip", "reason": "宁可不提示，也不误报"},
+        "distance 缺失": {"action": "skip"}
+      },
+      "x-changed": "单条件改双条件；新增 city_config；新增 is_core_urban 依赖"
+    },
+    {
+      "rule_id": "rule_04_homogeneous",
+      "name_zh": "同质化文化审美疲劳提示",
+      "name_en": "Similar Category Fatigue",
+      "severity": "soft_hint",
+      "prd_ref": "3.3 Rule-04",
+      "trigger": {
+        "field": "count(day.ordered_stops where poi.category.level2 == target)",
+        "op": "gte",
+        "value": 3,
+        "scope": "same_day"
+      },
+      "classification": {
+        "$comment": "PRD 引用 #ClassicalGarden / #Temple，但实体只有自由字符串 category/sub_category，规则无法统计。",
+        "uses": "poi.category.level2",
+        "taxonomy_ref": "mappings.json#/category_taxonomy"
+      },
+      "response": {
+        "channel": "list_banner",
+        "message_key": "rule.homogeneous.banner",
+        "message_args": ["count", "level2_label_en"],
+        "suggestion_pool": ["riverside_walk", "modern_skyline", "local_market"],
+        "x-changed": "文案改为插值（PRD 写死「3 similar historical sites」但阈值是 ≥3，出现 5 个时文案错误）"
+      },
+      "missing_data_policy": {
+        "level2 缺失或不在字典内": {"action": "skip"}
+      }
+    }
+  ],
+
+  "notice_message_keys": {
+    "$comment": "文案模板见 mappings.json#/notice_templates，本处只登记键名，保证规则与文案解耦（多语言）。",
+    "keys": [
+      "rule.closure.confirm",
+      "rule.closure.reason",
+      "rule.closure.data_unknown",
+      "rule.closure.data_unverified",
+      "rule.lightup.too_early",
+      "rule.lightup.too_late",
+      "rule.lightup.still_early",
+      "rule.spread.long_transit",
+      "rule.homogeneous.banner",
+      "degraded.direct_orientation",
+      "degraded.partial_data",
+      "offline.mode",
+      "offline.data_stale"
+    ]
+  },
+
+  "ac_matrix": {
+    "$comment": "验收用例骨架：每条规则必须有 GWT 用例（PRD 完全没有 AC）。",
+    "rule_01_closure": [
+      {"id": "AC-R1-01", "given": "POI closure_rules 含 weekday=1 且 is_enclosed=true", "when": "加入日期为周一（Asia/Shanghai）", "then": "弹二次确认；Proceed 后卡片红标且 notice.outcome=confirmed_proceed"},
+      {"id": "AC-R1-02", "given": "closure_data_status=unknown", "when": "加入任意日期", "then": "给出数据未采集提示，**不得静默放行**"},
+      {"id": "AC-R1-03", "given": "closure_rules 含 weekly=1 与 holiday_exception_open=2026-10-05", "when": "加入 2026-10-05（周一，法定假日）", "then": "不触发拦截"},
+      {"id": "AC-R1-04", "given": "用户在周一确认了 Proceed anyway", "when": "把该点拖到周二", "then": "原确认失效（expires_on_reorder），重新校验"}
+    ],
+    "rule_02_lightup": [
+      {"id": "AC-R2-01", "given": "light_up.required=true，窗口 19:00-23:00", "when": "预计 17:40 抵达（T_light=18:30）", "then": "提示 too_early 并提供 Move to Evening"},
+      {"id": "AC-R2-02", "given": "同上", "when": "预计 23:30 抵达", "then": "提示 too_late（PRD 缺失的对称分支）"},
+      {"id": "AC-R2-03", "given": "行程日期 10-12，窗口只有 05-01~09-30", "when": "求值", "then": "不触发（无匹配窗口）"},
+      {"id": "AC-R2-04", "$comment": "决策 A 新增：软规则不得自动改单", "given": "当日 4 个点，外滩预计 17:40 抵达且早于 T_light", "when": "仅执行规则求值（用户未点击任何按钮）", "then": "ordered_stops 顺序与求值前完全一致；仅产出 notice"},
+      {"id": "AC-R2-05", "$comment": "决策 A 新增：末位定义与 locked", "given": "当日末位 2 个点均 locked=true，外滩未锁定", "when": "用户点击 Move to Evening", "then": "外滩插到末尾连续 locked 点之前；两个 locked 点相对顺序不变；revision_history 增加一条 move_to_evening"},
+      {"id": "AC-R2-06", "$comment": "决策 A 新增：移动后仍不满足", "given": "当日仅 2 个点，移到最晚位置后抵达 17:45，仍早于 T_light=18:30", "when": "用户点击 Move to Evening", "then": "移动生效并保留提示，文案换成 rule.lightup.still_early；不再重复提供 Move to Evening（避免无效点击）"},
+      {"id": "AC-R2-07", "$comment": "决策 A 新增：改期后旧确认/提示失效", "given": "外滩已存在 too_early 提示（outcome=pending）", "when": "用户把外滩拖到另一天", "then": "原提示按 expires_on_reorder 失效，并对新日期重跑全部规则"}
+    ],
+    "rule_03_spread": [
+      {"id": "AC-R3-01", "given": "两点直线 30km 且轨道耗时 70min，均属核心城区", "when": "加入当日", "then": "在连接线上显示跨度提示"},
+      {"id": "AC-R3-02", "given": "两点直线 30km 但耗时 25min（高速直达）", "when": "加入当日", "then": "不提示（避免误报）"},
+      {"id": "AC-R3-03", "given": "POI 无 is_core_urban", "when": "求值", "then": "跳过"}
+    ],
+    "rule_04_homogeneous": [
+      {"id": "AC-R4-01", "given": "单日 3 个 level2=classical_garden", "when": "加入第 3 个", "then": "底部 Banner 文案显示 count=3"},
+      {"id": "AC-R4-02", "given": "单日 5 个同 level2", "when": "求值", "then": "文案显示 count=5（不得写死 3）"}
+    ]
+  }
+}

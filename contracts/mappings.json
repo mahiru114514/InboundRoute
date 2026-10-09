@@ -1,0 +1,156 @@
+{
+  "$comment": "C2/C5 的映射表集合：字段→文案→空值降级、分类字典、权重公式、三方字段映射、离线包清单。A 与 C 直接照此实现 UI 展示。",
+  "version": "0.1.0-draft",
+
+  "drawer_field_map": {
+    "$comment": "PRD 3.2 承诺展示 4 行，但字段与文案没有映射、也没有空值处理（last_entry_time 示例就是 null）。",
+    "opening_closure": {
+      "source_fields": ["operating_rules.opening_hours", "operating_rules.closure_rules", "operating_rules.closure_data_status"],
+      "template_key": "drawer.opening_closure",
+      "format": "逐条渲染 opening_hours 的 open-close；closure_rules 中 kind=weekly 渲染为 'Closed on {weekday_label_en}'",
+      "null_policy": {"closure_data_status=unknown": "显示「闭馆信息待确认」而非隐藏", "opening_hours=[]": "隐藏整行"}
+    },
+    "last_entry": {
+      "source_fields": ["operating_rules.last_entry_time"],
+      "template_key": "drawer.last_entry",
+      "format": "{time} Last Entry",
+      "null_policy": {"null": "隐藏该行（PRD 承诺展示但示例为 null，必须明确）"}
+    },
+    "light_up_hours": {
+      "source_fields": ["operating_rules.light_up"],
+      "template_key": "drawer.light_up",
+      "format": "{start} - {close} ({label})",
+      "null_policy": {"light_up=null 或 windows=[]": "隐藏该行"}
+    },
+    "suggested_dwell": {
+      "source_fields": ["operating_rules.dwell_time"],
+      "template_key": "drawer.dwell",
+      "format": {"point": "{minutes} 分钟 / {hours} Hours", "range": "{min} - {max} Hours"},
+      "null_policy": {"缺失": "显示默认 90 分钟并标注「参考值」"}
+    },
+    "reservation": {
+      "source_fields": ["operating_rules.reservation_required", "operating_rules.advance_booking_days"],
+      "template_key": "drawer.reservation",
+      "format": {"required": "需提前 {days} 天预约", "not_required": "无需预约"},
+      "null_policy": {"缺失": "隐藏该行"}
+    }
+  },
+
+  "pacing_cap": {
+    "$comment": "PRD 写「Relaxed ≤2；Balanced ≤4；Packed ≥5」，第三档是下界，逻辑不对称无法校验。本次冻结为对应区间（待产品确认）。",
+    "relaxed": {"min": 1, "max": 2, "default": 2},
+    "balanced": {"min": 3, "max": 4, "default": 4},
+    "packed": {"min": 5, "max": 6, "default": 6},
+    "exceed_policy": {"action": "soft_warning", "message_key": "pacing.exceed", "blocking": false},
+    "x-changed": "Packed 由 ≥5 改为 5-6 上界（否则 Rule-04 的 ≥3 计数阈值失去意义）"
+  },
+
+  "weighting": {
+    "$comment": "PRD 只写了「步行动线时间加权系数 1.3」和 walking_speed_factor=1.0，没说作用对象与叠加方式。",
+    "effective_factor_formula": "walking_speed_factor × party_walk_multiplier",
+    "party_walk_multiplier": {"solo": 1.0, "couple": 1.0, "family_kids": 1.3, "senior": 1.3},
+    "applies_to": "transit_from_previous.walking_duration_seconds（仅步行子段，不含乘车段）",
+    "clamp": {"min": 0.5, "max": 2.0},
+    "prefer_taxi_effect": {"set_variant_is_default_tab": "taxi", "sort_variants": ["taxi", "transit", "walk"]}
+  },
+
+  "interests_weight": {
+    "$comment": "PRD 说 Interests 控制推荐列表权重分值，但没给公式，导致「首次载入推荐」无法实现。",
+    "formula": "score = 0.6 × interest_hit_ratio + 0.3 × popularity_norm + 0.1 × data_quality",
+    "interest_hit_ratio": "命中用户所选 interests 的 level1 数 / 用户所选总数",
+    "popularity_norm": "POI 热度分归一化到 0-1（来源：搜索量或运营打分）",
+    "data_quality": "provenance.confidence",
+    "empty_interests_default": {"sort_by": ["popularity_norm", "name_en"], "note": "未选 Interests 时按热度排序"}
+  },
+
+  "category_taxonomy": {
+    "$comment": "Rule-04 依赖它计数；PRD 引用 #ClassicalGarden/#Temple 但实体里不存在这些值。",
+    "modern_skyline": {"label_zh": "现代天际线", "label_en": "Modern Skyline", "level2": {"observation_deck": {"zh": "观景台", "en": "Observation Deck"}, "riverwalk": {"zh": "滨江步道", "en": "Riverwalk"}, "skyscraper": {"zh": "摩天楼", "en": "Skyscraper"}}},
+    "history_culture": {"label_zh": "历史人文", "label_en": "History & Culture", "level2": {"classical_garden": {"zh": "古典园林", "en": "Classical Garden"}, "temple": {"zh": "寺庙", "en": "Temple"}, "museum": {"zh": "博物馆", "en": "Museum"}, "historic_street": {"zh": "历史街区", "en": "Historic Street"}}},
+    "local_life": {"label_zh": "市井生活", "label_en": "Local Life", "level2": {"wet_market": {"zh": "菜市场", "en": "Wet Market"}, "food_street": {"zh": "美食街", "en": "Food Street"}, "old_town": {"zh": "老城厢", "en": "Old Town"}}},
+    "nature": {"label_zh": "自然生态", "label_en": "Nature", "level2": {"park": {"zh": "公园", "en": "Park"}, "botanical_garden": {"zh": "植物园", "en": "Botanical Garden"}, "waterfront": {"zh": "湿地/滨水", "en": "Waterfront"}}},
+    "transport_hub": {"label_zh": "交通枢纽", "label_en": "Transport Hub", "level2": {"airport": {"zh": "机场", "en": "Airport"}, "rail_station": {"zh": "火车站", "en": "Rail Station"}}},
+    "other": {"label_zh": "其他", "label_en": "Other", "level2": {"misc": {"zh": "其他", "en": "Misc"}}}
+  },
+
+  "step_estimation": {
+    "$comment": "3.4 要求「注明消耗步数」，PRD 无步长与步速假设。",
+    "stride_meters": {"default": 0.7, "by_party": {"family_kids": 0.55, "senior": 0.65}},
+    "formula": "estimated_steps = round(walking_distance_meters / stride_meters)",
+    "walk_speed_mps": {"default": 1.25, "by_party": {"family_kids": 0.96, "senior": 0.96}}
+  },
+
+  "provider_field_map": {
+    "$comment": "C6：标注哪些字段来自三方、哪些必须来自站台库。附录 D 的 14 条实测完成后逐项确认。",
+    "amap": {"direction_transit": ["duration", "cost", "transfer_count", "walking_distance"], "direction_driving": ["duration", "distance", "tolls"], "regeo": ["formatted_address", "poi_name"], "unknown": ["entrance_no", "exit_no", "line_color", "indoor_escalator_note", "drop_off_locations"]},
+    "tencent": {"direction_transit": ["duration", "cost", "transfer_count"], "unknown": ["entrance_no", "exit_no", "walking_distance_per_transfer"]},
+    "baidu": {"direction_transit": ["duration", "cost", "transfer_count"], "crs": "BD-09"},
+    "must_come_from_curated": ["access_points.access_no", "access_points.landmark_desc", "interior_transfers.walking_distance_meters", "interior_transfers.note_en", "lines.directions[].name_en", "lines.color_hex"]
+  },
+
+  "crs_conversion": {
+    "$comment": "PRD 把高德/腾讯/百度当可互换，未定义坐标系与转换责任——而 1.2 痛点正是「坐标偏移」。",
+    "internal_master": "WGS84",
+    "provider_crs": {"amap": "GCJ-02", "tencent": "GCJ-02", "baidu": "BD-09", "device_gps": "WGS84"},
+    "responsibility": "Route Adapter 单点转换；客户端与规则引擎一律按 WGS84 计算，禁止各模块自行转换",
+    "precision_requirement_m": 50
+  },
+
+  "cache_keys": {
+    "$comment": "NFR 的 1.2s 依赖缓存，PRD 无任何缓存设计。",
+    "route": "{geohash7(from)}:{geohash7(to)}:{mode}:{departure_bucket_30min}",
+    "route_ttl_seconds": 1800,
+    "poi_detail_ttl_seconds": 3600,
+    "station_ttl_seconds": 86400,
+    "call_budget": {"max_calls_per_reorder": 4, "concurrency": 4, "prefetch_modes": ["transit"], "lazy_modes": ["taxi", "walk"]}
+  },
+
+  "offline_package": {
+    "$comment": "3.6 只说「LocalStorage/IndexedDB 强缓存」，未定义缓存范围、TTL、版本、淘汰。",
+    "storage": "IndexedDB（LocalStorage 容量量级不足，与 5MB 配额冲突，故选型收敛为 IndexedDB）",
+    "must_include": ["trip.days[].ordered_stops[].arrival_at/departure_at", "站点中英文名", "线路号与颜色", "进出站口编号", "区段步行距离与方向", "问路卡模板键"],
+    "optional": ["每日起点与终点", "POI 详情字段", "亮灯/闭馆规则快照", "底图瓦片（≤50MB，LRU）"],
+    "versioning": {"field": "trip.version", "on_mismatch": "提示「离线数据可能过期」并允许刷新", "ttl_hours": 24},
+    "excluded": ["三模态对比卡（拥堵/费用离线不可得）", "实时公交到站"],
+    "capacity_mb": 5,
+    "font_subset_mb": 1.5,
+    "x-changed": "新增（PRD 无版本/无 TTL/无一致性策略）"
+  },
+
+  "notice_templates": {
+    "$comment": "规则与文案解耦：规则只产出 message_key 与 args，文案在此维护多语言。",
+    "rule.closure.confirm": {"zh": "{poi_name} 在{weekday}官方闭馆，内部展陈无法参观。仍要加入吗？", "en": "{poi_name} is officially closed on {weekday}. Visiting the interior/exhibits will not be possible. Proceed anyway?"},
+    "rule.closure.reason": {"zh": "{poi_name} 因{reason}闭馆，内部展陈无法参观。仍要加入吗？", "en": "{poi_name} is closed for {reason}. Visiting the interior/exhibits will not be possible. Proceed anyway?"},
+    "rule.closure.data_unknown": {"zh": "{poi_name} 的闭馆信息尚未采集，请出行前自行确认。", "en": "Closure information for {poi_name} has not been verified yet. Please double-check before your visit."},
+    "rule.closure.data_unverified": {"zh": "{poi_name} 的闭馆信息待复核。", "en": "Closure information for {poi_name} is pending review."},
+    "rule.lightup.too_early": {"zh": "建议 {T_light} 之后前往，夜景效果最佳。", "en": "Recommended after {T_light} for the best illuminated view."},
+    "rule.lightup.too_late": {"zh": "抵达时已过今日亮灯时段，建议改日。", "en": "You will arrive after tonight's light-up window. Consider moving it to another day."},
+    "rule.lightup.still_early": {"zh": "已移到当天最晚位置，抵达时间 {arrival_local} 仍在亮灯时段之前，建议改日。", "en": "Moved to the latest slot today; arrival at {arrival_local} is still before the light-up window. Consider another day."},
+    "rule.spread.long_transit": {"zh": "长途移动提醒：直线 {distance_km} 公里，预计 {duration_minutes} 分钟。考虑挪到另一天以节省时间。", "en": "Long transit alert: {distance_km} km straight-line, about {duration_minutes} min. Consider moving this spot to another day to save travel time."},
+    "rule.homogeneous.banner": {"zh": "今天有 {count} 个同类景点（{category}），可以混入滨江步道或现代天际线。", "en": "You have {count} similar sites today ({category}). You might want to mix in a riverside walk or modern skyline."},
+    "degraded.direct_orientation": {"zh": "详细公交换乘暂不可用，仅显示方位参考。", "en": "Detailed public transit schedule temporarily unavailable. Showing direct orientation."},
+    "degraded.partial_data": {"zh": "部分路线数据缺失，已用可用信息展示。", "en": "Some route data is unavailable; showing what we have."},
+    "offline.mode": {"zh": "离线模式", "en": "Offline Mode"},
+    "offline.data_stale": {"zh": "离线数据可能已过期，恢复网络后请刷新。", "en": "Offline data may be outdated. Please refresh when back online."},
+    "pacing.exceed": {"zh": "今天的点位已超过 {pacing} 的建议上限（{cap} 个）。", "en": "Today has more stops than the {pacing} guideline ({cap})."}
+  },
+
+  "ask_card_templates": {
+    "$comment": "3.7 只给了一种模板（去地铁站台），出站口/换乘处/落客点无模板。",
+    "station_entrance": {"zh": "请问去往 {access_name_zh} 怎么走？", "en": "Excuse me, which way is {access_name_en}?", "ja": "すみません、{access_name_en} へはどう行けばよいですか？", "ko": "실례합니다, {access_name_en}에는 어떻게 가나요?"},
+    "transfer": {"zh": "请问换乘 {line_name_zh} 怎么走？", "en": "Excuse me, how do I transfer to {line_name_en}?", "ja": "すみません、{line_name_en} へはどう乗り換えればよいですか？", "ko": "실례합니다, {line_name_en}으로 어떻게 환승하나요?"},
+    "station_exit": {"zh": "请问 {access_name_zh} 在哪个方向？", "en": "Excuse me, which way is {access_name_en}?", "ja": "すみません、{access_name_en} はどちらですか？", "ko": "실례합니다, {access_name_en}은 어느 방향인가요?"},
+    "drop_off": {"zh": "请把我送到 {desc_zh}。", "en": "Please drop me off at {desc_en}.", "ja": "{desc_en} で降ろしてください。", "ko": "{desc_en}에서 내려 주세요."},
+    "poi_arrival": {"zh": "请问 {poi_name_zh} 怎么走？", "en": "Excuse me, how do I get to {poi_name_en}?", "ja": "すみません、{poi_name_en} へはどう行けばよいですか？", "ko": "실례합니다, {poi_name_en}에는 어떻게 가나요?"},
+    "direction_fallback": {"zh": "请问 {line_name_zh} 怎么走？", "en": "Excuse me, which way is {line_name_en}?", "ja": "すみません、{line_name_en} はどちらですか？", "ko": "실례합니다, {line_name_en}은 어느 방향인가요?", "note": "方向字段缺失时的降级：宁可只问线路，也不显示空方向"}
+  },
+
+  "degradation_matrix": {
+    "$comment": "NFR 只有一句「三方超时降级为直线距离」，实际 5 类依赖。",
+    "route_api": {"failure": ["timeout", "rate_limited", "no_route"], "fallback": "直线距离粗算", "null_fields": ["cost", "transfer_count", "congestion_level", "segments"], "notice_key": "degraded.direct_orientation", "must_notify": true},
+    "reverse_geo": {"failure": ["timeout", "no_result"], "fallback": "要求用户手动打点确认坐标", "must_notify": true},
+    "realtime_transit": {"failure": ["unsupported_city", "timeout"], "fallback": "使用计划时刻表；换乘预警不可用", "must_notify": true},
+    "rules_data": {"failure": ["closure_data_status=unknown"], "fallback": "软提示，**禁止静默放行**", "must_notify": true},
+    "tiles": {"failure": ["load_error"], "fallback": "保留纯文字流程树", "must_notify": true}
+  }
+}

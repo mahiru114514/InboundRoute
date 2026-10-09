@@ -1,0 +1,366 @@
+{
+  "reviewed_on": "2026-10-06",
+  "content_policy": "仅概述地点主要看点；适合人群、组合方式及取舍是编辑建议，不是官方推荐，不承诺实时开放、票务或展览。简介核对不提升原运营数据的可信度。",
+  "reviews": [
+    {
+      "poi_id": "sh_poi_00042",
+      "name_zh": "外滩",
+      "sources": [
+        "https://www.shanghai.gov.cn/citywalk/20260625/9dfb6f86b9664e018607b5cc9ec9a53c.html"
+      ],
+      "fact_scope": "地点类型及主要参观内容；适合人群与游览安排为编辑建议"
+    },
+    {
+      "poi_id": "sh_poi_00088",
+      "name_zh": "上海博物馆",
+      "sources": [
+        "https://www.shanghaimuseum.cn/mu/frontend/pg/m/service/visit-west"
+      ],
+      "fact_scope": "地点类型及主要参观内容；适合人群与游览安排为编辑建议"
+    },
+    {
+      "poi_id": "sh_poi_00107",
+      "name_zh": "豫园",
+      "sources": [
+        "https://www.shanghai.gov.cn/huangpu/index.html"
+      ],
+      "fact_scope": "地点类型及主要参观内容；适合人群与游览安排为编辑建议"
+    },
+    {
+      "poi_id": "sh_poi_00119",
+      "name_zh": "朱家角古镇",
+      "sources": [
+        "https://www.meet-in-shanghai.net/jpn/tourist-attraction/zhujiajiao-ancient-town-158636/"
+      ],
+      "fact_scope": "地点类型及主要参观内容；适合人群与游览安排为编辑建议"
+    },
+    {
+      "poi_id": "sh_poi_00120",
+      "name_zh": "东方明珠",
+      "sources": [
+        "https://english.shanghai.gov.cn/en-ScenicSpots/20231205/19a5f5184eca45728fd57a4d4c8efc61.html"
+      ],
+      "fact_scope": "地点类型及主要参观内容；适合人群与游览安排为编辑建议"
+    },
+    {
+      "poi_id": "sh_poi_00121",
+      "name_zh": "上海中心大厦",
+      "sources": [
+        "https://rsj.sh.gov.cn/t05_17891/20260611/t0035_1441416.html"
+      ],
+      "fact_scope": "地点类型及主要参观内容；适合人群与游览安排为编辑建议"
+    },
+    {
+      "poi_id": "sh_poi_00122",
+      "name_zh": "金茂大厦",
+      "sources": [
+        "https://www.meet-in-shanghai.net/cn/guide/hop-aboard-this-bus-and-enjoy-shanghais-landmarks-009261/"
+      ],
+      "fact_scope": "地点类型及主要参观内容；适合人群与游览安排为编辑建议"
+    },
+    {
+      "poi_id": "sh_poi_00123",
+      "name_zh": "上海环球金融中心",
+      "sources": [
+        "https://rsj.sh.gov.cn/t05_17891/20260611/t0035_1441416.html"
+      ],
+      "fact_scope": "地点类型及主要参观内容；适合人群与游览安排为编辑建议"
+    },
+    {
+      "poi_id": "sh_poi_00124",
+      "name_zh": "龙华寺",
+      "sources": [
+        "https://www.meet-in-shanghai.net/cn/shanghai-cultural-relics-protection-unit/longhua-temple-998401/"
+      ],
+      "fact_scope": "地点类型及主要参观内容；适合人群与游览安排为编辑建议"
+    },
+    {
+      "poi_id": "sh_poi_00125",
+      "name_zh": "静安寺",
+      "sources": [
+        "https://www.jingan.gov.cn/jagl/index.html"
+      ],
+      "fact_scope": "地点类型及主要参观内容；适合人群与游览安排为编辑建议"
+    },
+    {
+      "poi_id": "sh_poi_00126",
+      "name_zh": "武康路历史文化名街",
+      "sources": [
+        "https://www.shanghai.gov.cn/citywalk/20260625/3492b1b945c146fc96c4585d7b04f00d.html"
+      ],
+      "fact_scope": "地点类型及主要参观内容；适合人群与游览安排为编辑建议"
+    },
+    {
+      "poi_id": "sh_poi_00127",
+      "name_zh": "田子坊",
+      "sources": [
+        "https://service.shanghai.gov.cn/XingZhengWenDangKuJyh/XZGFDetails.aspx?docid=230220141250SGUTAJDzyGiwTLVshtA"
+      ],
+      "fact_scope": "地点类型及主要参观内容；适合人群与游览安排为编辑建议"
+    },
+    {
+      "poi_id": "sh_poi_00128",
+      "name_zh": "新天地",
+      "sources": [
+        "https://rsj.sh.gov.cn/t05_17891/20260611/t0035_1441416.html"
+      ],
+      "fact_scope": "地点类型及主要参观内容；适合人群与游览安排为编辑建议"
+    },
+    {
+      "poi_id": "sh_poi_00129",
+      "name_zh": "乌中市集",
+      "sources": [
+        "https://www.shanghai.gov.cn/zfkfmtbd/20260903/6d3b77718c0e4ff2b3707c6b7f4ea8a3.html"
+      ],
+      "fact_scope": "地点类型及主要参观内容；适合人群与游览安排为编辑建议"
+    },
+    {
+      "poi_id": "sh_poi_00130",
+      "name_zh": "世纪公园",
+      "sources": [
+        "https://english.shanghai.gov.cn/en-Parks/20231220/489a4c048d594b1d9fec56e57214a284.html"
+      ],
+      "fact_scope": "地点类型及主要参观内容；适合人群与游览安排为编辑建议"
+    },
+    {
+      "poi_id": "sh_poi_00131",
+      "name_zh": "中山公园",
+      "sources": [
+        "https://www.shanghai.gov.cn/nw49248/20210106/bba49396109d4c23adaa652eb3d16986.html"
+      ],
+      "fact_scope": "地点类型及主要参观内容；适合人群与游览安排为编辑建议"
+    },
+    {
+      "poi_id": "sh_poi_00132",
+      "name_zh": "上海植物园",
+      "sources": [
+        "https://english.shanghai.gov.cn/en-Parks/20231220/bfe6a47b21c74edd96d6aa6e547be48c.html"
+      ],
+      "fact_scope": "地点类型及主要参观内容；适合人群与游览安排为编辑建议"
+    },
+    {
+      "poi_id": "sh_poi_00133",
+      "name_zh": "共青森林公园",
+      "sources": [
+        "https://www.shanghai.gov.cn/ypwl/20260615/311f83104fb94f08be377409e07eec13.html"
+      ],
+      "fact_scope": "地点类型及主要参观内容；适合人群与游览安排为编辑建议"
+    },
+    {
+      "poi_id": "sh_poi_00134",
+      "name_zh": "静安公园",
+      "sources": [
+        "https://sh-gov-open-doc.oss-cn-shanghai.aliyuncs.com/1108QZ/5e2a3fc5-567e-4089-88b8-c1364a60a328.pdf"
+      ],
+      "fact_scope": "地点类型及主要参观内容；适合人群与游览安排为编辑建议"
+    },
+    {
+      "poi_id": "sh_poi_00135",
+      "name_zh": "徐家汇公园",
+      "sources": [
+        "https://www.shanghai.gov.cn/xuhui/index.html"
+      ],
+      "fact_scope": "地点类型及主要参观内容；适合人群与游览安排为编辑建议"
+    },
+    {
+      "poi_id": "sh_poi_00136",
+      "name_zh": "长风公园",
+      "sources": [
+        "https://english.shanghai.gov.cn/en-Parks/20240312/98215a29d5014efdbaf548a9f41a3218.html"
+      ],
+      "fact_scope": "地点类型及主要参观内容；适合人群与游览安排为编辑建议"
+    },
+    {
+      "poi_id": "sh_poi_00137",
+      "name_zh": "上海动物园",
+      "sources": [
+        "https://static.shcn.gov.cn/cncms/2021/0310/3d900424-190e-4e55-ac12-49a63ad52ec8.pdf"
+      ],
+      "fact_scope": "地点类型及主要参观内容；适合人群与游览安排为编辑建议"
+    },
+    {
+      "poi_id": "sh_poi_00138",
+      "name_zh": "鲁迅公园",
+      "sources": [
+        "https://www.shanghai.gov.cn/hongkou/index.html"
+      ],
+      "fact_scope": "地点类型及主要参观内容；适合人群与游览安排为编辑建议"
+    },
+    {
+      "poi_id": "sh_poi_00139",
+      "name_zh": "世博文化公园",
+      "sources": [
+        "https://www.shanghai.gov.cn/pudong/index.html"
+      ],
+      "fact_scope": "地点类型及主要参观内容；适合人群与游览安排为编辑建议"
+    },
+    {
+      "poi_id": "sh_poi_00140",
+      "name_zh": "辰山植物园",
+      "sources": [
+        "https://www.shanghai.gov.cn/nw18454/20250122/eab33acfccf8459d8833e1b206ea6412.html"
+      ],
+      "fact_scope": "地点类型及主要参观内容；适合人群与游览安排为编辑建议"
+    },
+    {
+      "poi_id": "sh_poi_00141",
+      "name_zh": "上海博物馆东馆",
+      "sources": [
+        "https://www.shanghaimuseum.cn/mu/frontend/pg/m/infomation/about"
+      ],
+      "fact_scope": "地点类型及主要参观内容；适合人群与游览安排为编辑建议"
+    },
+    {
+      "poi_id": "sh_poi_00142",
+      "name_zh": "上海自然博物馆",
+      "sources": [
+        "https://www.snhm.org.cn/cszl/zggk.htm"
+      ],
+      "fact_scope": "地点类型及主要参观内容；适合人群与游览安排为编辑建议"
+    },
+    {
+      "poi_id": "sh_poi_00143",
+      "name_zh": "上海天文馆",
+      "sources": [
+        "https://www.shanghai.gov.cn/pudong/index.html"
+      ],
+      "fact_scope": "地点类型及主要参观内容；适合人群与游览安排为编辑建议"
+    },
+    {
+      "poi_id": "sh_poi_00144",
+      "name_zh": "世博会博物馆",
+      "sources": [
+        "https://www.expo-museum.cn/sbbwg/n281/n282/index.html"
+      ],
+      "fact_scope": "地点类型及主要参观内容；适合人群与游览安排为编辑建议"
+    },
+    {
+      "poi_id": "sh_poi_00145",
+      "name_zh": "上海城市规划展示馆",
+      "sources": [
+        "https://ghzyj.sh.gov.cn/zsdw/20191102/0032-357216.html"
+      ],
+      "fact_scope": "地点类型及主要参观内容；适合人群与游览安排为编辑建议"
+    },
+    {
+      "poi_id": "sh_poi_00146",
+      "name_zh": "中国航海博物馆",
+      "sources": [
+        "https://www.shanghai.gov.cn/pudong/index.html"
+      ],
+      "fact_scope": "地点类型及主要参观内容；适合人群与游览安排为编辑建议"
+    },
+    {
+      "poi_id": "sh_poi_00147",
+      "name_zh": "广富林文化遗址",
+      "sources": [
+        "https://english.shanghai.gov.cn/en-Parks/20240531/4574dec641a74faea2bba41381471b50.html"
+      ],
+      "fact_scope": "地点类型及主要参观内容；适合人群与游览安排为编辑建议"
+    },
+    {
+      "poi_id": "sh_poi_00148",
+      "name_zh": "浦东美术馆",
+      "sources": [
+        "https://english.shanghai.gov.cn/en-MuseumsGalleries/20250702/64d1d26886b3458b8dffb3a8533787b5.html"
+      ],
+      "fact_scope": "地点类型及主要参观内容；适合人群与游览安排为编辑建议"
+    },
+    {
+      "poi_id": "sh_poi_00149",
+      "name_zh": "上海宋庆龄故居纪念馆",
+      "sources": [
+        "https://www.shanghai.gov.cn/xuhui/index.html"
+      ],
+      "fact_scope": "地点类型及主要参观内容；适合人群与游览安排为编辑建议"
+    },
+    {
+      "poi_id": "sh_poi_00150",
+      "name_zh": "上海邮政博物馆",
+      "sources": [
+        "https://whlyj.sh.gov.cn/gqfc/20241218/b7a180236c7d47cba6b939a6092ae6c1.html"
+      ],
+      "fact_scope": "地点类型及主要参观内容；适合人群与游览安排为编辑建议"
+    },
+    {
+      "poi_id": "sh_poi_00151",
+      "name_zh": "七宝古镇",
+      "sources": [
+        "https://www.meet-in-shanghai.net/cn/guide/ancient-town-style-food-experience-cultural-checkin-these-four-routes-directly-meet-you-410194/"
+      ],
+      "fact_scope": "地点类型及主要参观内容；适合人群与游览安排为编辑建议"
+    },
+    {
+      "poi_id": "sh_poi_00152",
+      "name_zh": "南翔老街",
+      "sources": [
+        "https://www.meet-in-shanghai.net/cn/attraction/nanxiang-old-street-660048/"
+      ],
+      "fact_scope": "地点类型及主要参观内容；适合人群与游览安排为编辑建议"
+    },
+    {
+      "poi_id": "sh_poi_00153",
+      "name_zh": "枫泾古镇",
+      "sources": [
+        "https://www.shanghai.gov.cn/fygz/20260625/e6c5d4759061409197c64dd71464e984.html"
+      ],
+      "fact_scope": "地点类型及主要参观内容；适合人群与游览安排为编辑建议"
+    },
+    {
+      "poi_id": "sh_poi_00154",
+      "name_zh": "新场古镇",
+      "sources": [
+        "https://www.shanghai.gov.cn/nw17239/20260927/5cd77ff5d17b42f48beae533febd879e.html"
+      ],
+      "fact_scope": "地点类型及主要参观内容；适合人群与游览安排为编辑建议"
+    },
+    {
+      "poi_id": "sh_poi_00155",
+      "name_zh": "北外滩滨江绿地",
+      "sources": [
+        "https://www.shanghai.gov.cn/nw17239/20251106/d04c1b6145a84e5a9f1136066375082a.html"
+      ],
+      "fact_scope": "地点类型及主要参观内容；适合人群与游览安排为编辑建议"
+    },
+    {
+      "poi_id": "sh_poi_00156",
+      "name_zh": "徐汇滨江绿地",
+      "sources": [
+        "https://www.shanghai.gov.cn/nw30743/20200820/0001-30743_33149.html"
+      ],
+      "fact_scope": "地点类型及主要参观内容；适合人群与游览安排为编辑建议"
+    },
+    {
+      "poi_id": "sh_poi_00157",
+      "name_zh": "东方绿舟",
+      "sources": [
+        "https://gfjyjs.shec.edu.cn/"
+      ],
+      "fact_scope": "地点类型及主要参观内容；适合人群与游览安排为编辑建议"
+    },
+    {
+      "poi_id": "sh_poi_00158",
+      "name_zh": "佘山国家森林公园",
+      "sources": [
+        "https://www.shanghai.gov.cn/songjiang/index.html"
+      ],
+      "fact_scope": "地点类型及主要参观内容；适合人群与游览安排为编辑建议"
+    },
+    {
+      "poi_id": "sh_poi_00159",
+      "name_zh": "上海海湾国家森林公园",
+      "sources": [
+        "https://www.shanghai.gov.cn/nw17239/20251203/993f80f9cb6b452aa34eb2010d980fdf.html"
+      ],
+      "fact_scope": "地点类型及主要参观内容；适合人群与游览安排为编辑建议"
+    },
+    {
+      "poi_id": "sh_poi_00160",
+      "name_zh": "滴水湖",
+      "sources": [
+        "https://www.pudong.gov.cn/zwgk/cxjsgl-nhxcz/2022/287/94199.html"
+      ],
+      "fact_scope": "地点类型及主要参观内容；适合人群与游览安排为编辑建议"
+    }
+  ]
+}

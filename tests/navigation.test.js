@@ -1,0 +1,34 @@
+const assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm');
+const ctx={URL,URLSearchParams,console,window:{}};vm.createContext(ctx);
+vm.runInContext(fs.readFileSync('modules/web_workbench/web/map.js','utf8'),ctx);
+vm.runInContext(fs.readFileSync('modules/web_workbench/web/day_points.js','utf8'),ctx);
+vm.runInContext(fs.readFileSync('modules/web_workbench/web/navigation.js','utf8'),ctx);
+const point={lat:31.23,lng:121.47,crs:'WGS84'};
+const hotel={type:'hotel',name_zh:'酒店B',name_en:'Hotel B',coordinate:point};
+const trip={anchor_arrival:{location_name:'机场',coordinate:point},anchor_hotel:hotel,
+  anchor_departure:{location_name:'离境口岸',coordinate:point},days:[{day_index:1,end_anchor:hotel,ordered_stops:[{poi_id:'a'}]},
+  {day_index:2,ordered_stops:[]}]};
+require('./trip_fixture')(trip);
+ctx.state={trip,pois:[{poi_id:'a',names:{'zh-Hans':'景点&名称,安全测试'},coordinate:point}]};
+const route={mode:'transit',data_source:'amap',duration_seconds:600,from:{},to:{}};
+let nav=ctx.routeNavigation(trip,1,0,route);
+let url=new URL(nav.nativeURL);
+assert.equal(url.origin,'https://uri.amap.com');assert.equal(url.searchParams.get('mode'),'bus');
+assert.equal(url.searchParams.get('callnative'),'1');assert.equal(new URL(nav.webURL).searchParams.get('callnative'),'0');
+assert.ok(url.searchParams.get('to').endsWith('景点&名称,安全测试'));
+assert.notEqual(url.searchParams.get('to').split(',')[0],'121.470000','WGS84 converts once');
+assert.equal(ctx.routeNavigation(trip,1,0,{...route,data_source:'mock'}).nativeURL,null);
+assert.equal(ctx.routeNavigation(trip,1,0,{...route,duration_seconds:null}).nativeURL,null);
+nav=ctx.routeNavigation(trip,1,1,{...route,mode:'walk'});url=new URL(nav.nativeURL);
+assert.equal(url.searchParams.get('mode'),'walk');assert.ok(url.searchParams.get('to').endsWith('酒店B'));
+nav=ctx.routeNavigation(trip,2,0,{...route,mode:'taxi'});url=new URL(nav.nativeURL);
+assert.ok(url.searchParams.get('from').endsWith('酒店B'));assert.ok(url.searchParams.get('to').endsWith('离境口岸'));
+assert.equal(url.searchParams.get('mode'),'car');
+const gcj={lat:31.2,lng:121.4,crs:'GCJ-02'};
+assert.equal(ctx.navigationPoint(gcj).lng,121.4,'GCJ is not converted twice');
+for(const bad of [null,{...point,lat:NaN},{...point,lng:181},{...point,lat:true},{...point,crs:'bad'}]) assert.equal(ctx.navigationPoint(bad),null);
+assert.equal(ctx.routeNavigation(trip,1,99,route).nativeURL,null,'out of range cannot navigate');
+assert.equal(ctx.routeNavigation(trip,1,0,{...route,mode:'taxi',drop_off:{point:gcj,desc_zh:'落客点'}}).destination.name_zh,'落客点');
+assert.equal(ctx.parseRoutePolyline('121.4,31.2;121.41,31.21').length,2);
+assert.equal(ctx.parseRoutePolyline('121.4,31.2;bad').length,0,'partial geometry is not shown');
+console.log('Navigation: mode, coordinates, encoding, day endpoints, drop-off and unavailable routes passed');

@@ -1,0 +1,17 @@
+__pycache__/
+*.pyc
+server.*.log
+/config/
+/data/
+/logs/
+/.staging/
+/.trash/
+*.log
+*.run
+.env
+.env.*
+!.env.example
+/docs/backups/
+/docs/验收截图/
+/docs/language-content-preview/
+/docs/onboarding-preview/

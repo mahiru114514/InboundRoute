@@ -1,0 +1,12 @@
+{
+  "id": "offline_kit",
+  "name": "离线与问路卡",
+  "version": "0.3.0",
+  "description": "InboundRoute 离线行程与多语言问路卡：包含每日起终点、住宿用途、选定交通、站名、线路、进出站口与步行提示。",
+  "dependencies": ["trip_engine", "route_adapter"],  "service": {
+    "enabled": true,
+    "health_path": "/health",
+    "open_path": null,
+    "title": "离线包 API"
+  }
+}

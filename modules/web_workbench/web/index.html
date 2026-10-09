@@ -1,0 +1,313 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>行程工作台 · InboundRoute</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231f6f4a'/%3E%3Ctext x='16' y='22' font-size='16' font-family='sans-serif' font-weight='700' fill='%23fff' text-anchor='middle'%3EIR%3C/text%3E%3C/svg%3E">
+  <meta name="theme-color" content="#2d5b63">
+  <link rel="stylesheet" href="/style.css?v=40">
+  <!-- v=：静态资源缓存开关。改动任意脚本或样式后把这个数字 +1（全页统一），浏览器就会强制拉新文件。 -->
+  <!-- flow.js 必须先于 app.js 加载：app.js 的 boot() 会调用 flow.js 的 initFlow() 恢复历史行程。 -->
+  <script src="/runtime.js?v=40" defer></script>
+  <script src="/i18n_catalog.js?v=40" defer></script>
+  <script src="/poi_i18n_catalog.js?v=40" defer></script>
+  <script src="/suggestions_i18n.js?v=40" defer></script>
+  <script src="/common_i18n_catalog.js?v=40" defer></script>
+  <script src="/common_i18n_patterns.js?v=40" defer></script>
+  <script src="/onboarding_content.js?v=40" defer></script>
+  <script src="/i18n.js?v=40" defer></script>
+  <script src="/poi_content.js?v=40" defer></script>
+  <script src="/place_names.js?v=40" defer></script>
+  <script src="/currency.js?v=40" defer></script>
+  <script src="/offline_cache.js?v=40" defer></script>
+  <script src="/offline_view.js?v=40" defer></script>
+  <script src="/flow.js?v=40" defer></script>
+  <script src="/map.js?v=40" defer></script>
+  <script src="/day_points.js?v=40" defer></script>
+  <script src="/navigation.js?v=40" defer></script>
+  <script src="/day_cards.js?v=40" defer></script>
+  <script src="/reminders.js?v=40" defer></script>
+  <script src="/budget_assessment.js?v=40" defer></script>
+  <script src="/poi_details.js?v=40" defer></script>
+  <script src="/services.js?v=40" defer></script>
+  <script src="/anchors.js?v=40" defer></script>
+  <script src="/setup.js?v=40" defer></script>
+  <script src="/itinerary.js?v=40" defer></script>
+  <script src="/poi_list.js?v=40" defer></script>
+  <script src="/map_view.js?v=40" defer></script>
+  <script src="/recommendations.js?v=40" defer></script>
+  <script src="/onboarding.js?v=40" defer></script>
+  <script src="/app.js?v=40" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#setup-panel">跳到行程设定</a>
+<header class="topbar" id="top">
+  <div class="brand"><span class="mark" aria-hidden="true">IR</span><div><h1>行程工作台</h1><small>上海 · 从抵达到返程，安排好每一段</small></div></div>
+  <div class="topbar-actions"><div class="engine-status" id="engine-status" aria-live="polite"></div>
+    <button type="button" class="secondary onboarding-button" id="onboarding-open" aria-haspopup="dialog" aria-controls="onboarding-dialog">使用引导</button>
+    <button type="button" class="secondary settings-button" id="settings-open" aria-haspopup="dialog" aria-controls="settings-dialog"><span aria-hidden="true">⚙</span> 设置 / Settings</button>
+  </div>
+</header>
+
+<nav class="workspace-nav" aria-label="工作区导航">
+  <a href="#setup-panel"><span>01</span> 行程设定</a>
+  <a href="#trip-panel"><span>02</span> 行程概览</a>
+  <a href="#poi-panel"><span>03</span> 挑选景点</a>
+  <a href="#rules-panel"><span>04</span> 行程提醒</a>
+  <a href="#offline-panel"><span>05</span> 离线问路</a>
+</nav>
+
+<main>
+  <div class="workspace-intro"><div><p>旅程规划</p><h2>把每一天，安排得刚刚好。</h2></div><span>上海 · 日期 / 景点 / 交通</span></div>
+  <section class="panel" id="setup-panel" tabindex="-1">
+    <details id="setup-disclosure" class="setup-disclosure" open>
+    <summary class="setup-summary"><h2>行程设定</h2><span id="setup-summary-note">填写日期、住宿与出行偏好</span><span class="setup-chevron" aria-hidden="true">⌄</span></summary>
+    <div class="setup-content">
+    <div class="panel-head">
+      <p>先确定日期、住宿和出行节奏，再挑选喜欢的景点。保存后会自动计算每日可用时间与建议景点数量；超过建议数量时仍可继续添加。</p>
+    </div>
+    <div class="history-bar">
+      <label for="trip-history">已保存行程</label>
+      <select id="trip-history"><option value="">选择已保存行程</option></select>
+      <button type="button" class="secondary" id="refresh-history">刷新列表</button>
+      <button type="button" class="secondary" id="duplicate-trip" disabled>复制当前行程</button>
+      <button type="button" class="secondary" id="delete-trip" disabled>删除当前行程</button>
+      <span class="history-hint" id="history-hint">刷新或重开页面会自动恢复上次编辑的行程。</span>
+    </div>
+    <form id="setup-form" class="setup-grid" novalidate>
+      <label>目的地城市
+        <select name="city" id="city"><option value="shanghai">上海（一期）</option></select>
+      </label>
+      <label>行程天数（1~15）
+        <input type="number" name="duration_days" id="duration-days" value="2" min="1" max="15" required>
+      </label>
+      <label>出行构成
+        <select name="party_composition" id="party">
+          <option value="solo">独自出行</option>
+          <option value="couple">双人</option>
+          <option value="family_kids">带小孩的家庭</option>
+          <option value="senior">长者同行</option>
+        </select>
+      </label>
+      <label>节奏
+        <select name="pacing" id="pacing">
+          <option value="relaxed">轻松（建议 ≤2 个点位/天）</option>
+          <option value="balanced" selected>均衡（建议 3~4 个）</option>
+          <option value="packed">紧凑（建议 5~6 个）</option>
+        </select>
+      </label>
+      <label><span id="budget-currency-label">每人预算（CNY，可选）</span>
+        <input type="number" name="budget_per_person" id="budget-per-person" min="0" step="0.01" placeholder="例如 3000">
+        <span class="hint">每人整趟行程预算，留空表示未设置；外币按确认汇率换算保存。</span>
+      </label>
+      <fieldset class="currency-controls">
+        <legend>币种与参考汇率</legend>
+        <label>预算及显示币种<select id="currency-select"><option value="CNY">人民币 CNY</option><option value="USD">美元 USD</option><option value="EUR">欧元 EUR</option><option value="GBP">英镑 GBP</option><option value="JPY">日元 JPY</option><option value="HKD">港币 HKD</option><option value="AUD">澳元 AUD</option><option value="CAD">加元 CAD</option><option value="SGD">新加坡元 SGD</option></select></label>
+        <label>1 单位所选外币 = 人民币<input type="number" id="currency-rate" min="0.000000000001" step="any" value="1" disabled></label>
+        <button type="button" class="secondary" id="currency-refresh">更新参考汇率</button>
+        <p class="hint" id="currency-hint" role="status" aria-live="polite">人民币为保存与计算基准。</p>
+      </fieldset>
+      <fieldset class="interests">
+        <legend>兴趣（可多选，影响推荐排序）</legend>
+        <label><input type="checkbox" name="interest" value="history_culture"> 历史人文</label>
+        <label><input type="checkbox" name="interest" value="modern_skyline"> 现代天际线</label>
+        <label><input type="checkbox" name="interest" value="local_life"> 市井生活</label>
+        <label><input type="checkbox" name="interest" value="nature"> 自然生态</label>
+      </fieldset>
+      <label>抵达日期
+        <input type="date" name="arrival_date" id="arrival-date" required>
+      </label>
+      <label>抵达时刻（北京时间）
+        <input type="time" name="arrival_time" id="arrival-time" required>
+      </label>
+      <label>抵达口岸
+        <input type="search" id="hub-search" placeholder="中文 / 英文 / 拼音，如 pudong" autocomplete="off">
+        <select name="arrival_hub" id="arrival-hub"></select>
+      </label>
+      <label>搜索已预订住宿
+        <input type="search" id="hotel-search" placeholder="中文 / 英文 / 拼音，如 peace" autocomplete="off">
+        <select name="hotel" id="hotel" aria-label="选择住宿搜索结果"></select>
+        <span class="hint">选择已有预订的酒店或民宿；这里只安排行程。</span>
+      </label>
+      <p class="hint" id="anchor-pick-state">请搜索并确认住宿。</p>
+      <fieldset class="departure">
+        <legend>离境 / 返程安排（可选）</legend>
+        <label class="inline">
+          <input type="checkbox" id="has-departure">
+          填写离境口岸与时刻（用于推演最后一天「酒店 → 口岸」这一段；不填也能建行程）
+        </label>
+        <div class="departure-fields" id="departure-fields" hidden>
+          <label>离境口岸
+            <input type="search" id="departure-hub-search" placeholder="中文 / 英文 / 拼音，如 pudong" autocomplete="off">
+            <select name="departure_hub" id="departure-hub"></select>
+          </label>
+          <label>离境日期
+            <input type="date" name="departure_date" id="departure-date">
+          </label>
+          <label>离境时刻（北京时间）
+            <input type="time" name="departure_time" id="departure-time">
+          </label>
+          <label class="inline">
+            <input type="checkbox" id="departure-international" checked>
+            国际航班 / 国际列车（提前预留 180 分钟）
+          </label>
+        </div>
+      </fieldset>
+
+
+      <fieldset class="recommendation-section">
+        <legend>推荐安排哪些天</legend>
+        <div id="recommendation-days" class="recommendation-days"></div>
+        <p class="hint" id="recommendation-hint"></p>
+      </fieldset>
+    </form>
+    <p class="hint" id="edit-mode-hint"></p>
+    <p class="hint" id="ancillary-hint"></p>
+    </div>
+    </details>
+    <p class="hint" id="recommendation-progress" role="status" aria-live="polite"></p>
+    <div id="recommendation-results" aria-live="polite"></div>
+      <div class="form-actions">
+        <button type="button" class="primary" id="generate-recommendations">生成推荐行程</button>
+        <button type="submit" form="setup-form" class="primary" id="save-trip">保存行程</button>
+        <button type="button" class="secondary" id="reset-form">重置</button>
+      </div>
+  </section>
+
+  <section class="panel" id="trip-panel" tabindex="-1" hidden>
+    <div class="panel-head">
+      <h2>每日行程</h2><p>先看整趟安排，再展开某一天，调整景点与区间交通。</p>
+      <div class="trip-meta" id="trip-meta"></div>
+      <details id="budget-disclosure" class="budget-disclosure"><summary id="budget-summary">费用评估</summary><div id="budget-assessment" class="budget-body"></div></details>
+    </div>
+    <div class="flow-actions"><button type="button" class="primary" id="compute-all-routes">计算全部区间交通</button></div>
+    <p class="hint" id="route-hint"></p>
+    <p class="hint" id="route-progress" role="status" aria-live="polite"></p>
+    <div class="days" id="days"></div>
+  </section>
+
+  <section class="panel" id="poi-panel" tabindex="-1">
+    <div class="panel-head">
+      <h2>挑选景点</h2>
+      <p>在地图或推荐列表中查看景点，了解开放、预约与亮灯信息，再加入行程。未核验的信息会单独提示；底图不可用时显示示意地图。</p>
+    </div>
+    <div class="poi-toolbar">
+      <input type="search" id="poi-search" placeholder="搜索名称 / 拼音（如 waitan）" aria-label="搜索 POI">
+      <select id="poi-category" aria-label="景点类别">
+        <option value="">全部类别</option>
+        <option value="history_culture">历史人文</option>
+        <option value="modern_skyline">现代天际线</option>
+        <option value="local_life">市井生活</option>
+        <option value="nature">自然生态</option>
+      </select>
+    </div>
+    <p class="hint" id="poi-hint"></p>
+    <div class="poi-layout">
+      <div class="map-wrap">
+        <span class="sketch-label" id="map-label">示意地图</span>
+        <div class="sketch-map" id="sketch-map" role="img" aria-label="POI 空间分布"></div>
+        <button class="map-toggle" id="map-toggle" hidden>显示全部</button>
+      </div>
+      <div class="poi-scroll-controls"><p class="hint">景点自动滚动，使用滚轮或滑动后改为手动浏览。</p><button type="button" class="secondary" id="poi-auto-scroll" aria-controls="poi-list">恢复自动滚动</button></div>
+      <ul class="poi-list" id="poi-list" tabindex="0" aria-label="景点推荐，滚轮或左右滑动查看"></ul>
+    </div>
+    <p class="hint" id="map-hint"></p>
+  </section>
+
+  <section class="panel" id="rules-panel" tabindex="-1" hidden>
+    <div class="panel-head">
+      <h2>行程提醒</h2>
+      <p>看看哪天需要调整、哪些景点需要核实开放信息。每条提醒会说明原因；调整入口可以带你回到当天安排。</p>
+    </div>
+    <div class="flow-actions">
+      <button type="button" class="secondary" id="evaluate-trip">重新检查</button>
+    </div>
+    <div class="rule-notices" id="rule-notices"></div>
+  </section>
+
+  <section class="panel" id="offline-panel" tabindex="-1" hidden>
+    <div class="panel-head">
+      <h2>离线问路</h2>
+      <p>生成后可下载自包含 HTML：关闭本地服务也能打开。存在待确认冲突或缺交通时间时不会把离线包标为完整。</p>
+    </div>
+    <div class="flow-actions">
+      <button type="button" class="secondary" id="generate-offline">生成离线包</button>
+      <button type="button" class="secondary" id="download-offline">下载问路卡 HTML</button>
+      <button type="button" class="secondary" id="load-offline">读取浏览器缓存</button>
+    </div>
+    <p class="hint" id="offline-status"></p>
+    <div class="offline-preview" id="offline-preview"></div>
+    <div id="place-translation-editor"></div>
+  </section>
+</main>
+
+<a class="back-top" href="#top" aria-label="返回顶部">↑ 返回顶部</a>
+
+<dialog id="detail">
+  <div class="dialog-head">
+    <div>
+      <div class="names-en" id="d-name-en" data-i18n-ignore></div>
+      <div class="names-pinyin" id="d-name-pinyin" data-i18n-ignore></div>
+      <div class="names-zh" id="d-name-zh" data-i18n-ignore></div>
+      <p class="poi-introduction" id="d-introduction"></p>
+    </div>
+    <button class="icon-button" id="detail-close" aria-label="关闭详情">×</button>
+  </div>
+  <dl class="detail-rows" id="d-rows"></dl>
+  <div class="detail-actions">
+    <label>加入哪一天
+      <select id="d-day"></select>
+    </label>
+    <button class="primary" id="d-add">加入行程</button>
+  </div>
+  <p class="hint" id="d-hint"></p>
+</dialog>
+
+<dialog id="settings-dialog" class="settings-dialog" aria-labelledby="settings-title">
+  <div class="dialog-head"><h2 id="settings-title">设置</h2><button type="button" class="icon-button" id="settings-close" aria-label="关闭设置">×</button></div>
+  <label class="language-label" for="language-select"><span>界面语言</span><small lang="en" data-i18n-ignore>Language</small></label>
+  <select id="language-select" class="language-select" data-i18n-ignore>
+    <option value="zh-CN" lang="zh-CN">简体中文</option>
+    <option value="en" lang="en">English</option>
+    <option value="ja" lang="ja">日本語</option>
+    <option value="ko" lang="ko">한국어</option>
+  </select>
+  <p class="hint">语言更改立即生效，并在此浏览器中保存。</p>
+  <p class="language-scope">界面、内置景点简介与常见行程建议会随语言切换。地图与部分原始资料可能保留原文；中文地名与问路卡保留，方便向当地人问路。</p>
+  <div class="settings-actions"><button type="button" class="primary" id="settings-done">完成</button></div>
+</dialog>
+<dialog id="onboarding-dialog" class="onboarding-dialog" aria-labelledby="onboarding-title" aria-describedby="onboarding-step-title onboarding-body">
+  <div class="dialog-head"><h2 id="onboarding-title">使用引导</h2><button type="button" class="icon-button" id="onboarding-close" aria-label="关闭引导">×</button></div>
+  <nav id="onboarding-chapters" class="onboarding-chapters" aria-label="引导章节">
+    <button type="button" id="onboarding-chapter-0">行程设定</button>
+    <button type="button" id="onboarding-chapter-1">挑选景点</button>
+    <button type="button" id="onboarding-chapter-2">每日行程</button>
+    <button type="button" id="onboarding-chapter-3">提醒与费用</button>
+    <button type="button" id="onboarding-chapter-4">离线问路</button>
+  </nav>
+  <div id="onboarding-content" class="onboarding-content">
+    <p id="onboarding-progress" class="onboarding-progress" aria-label="引导进度" aria-live="polite" aria-atomic="true"></p>
+    <h3 id="onboarding-step-title" class="onboarding-step-title"></h3>
+    <p id="onboarding-location" class="onboarding-location"></p>
+    <p id="onboarding-body" class="onboarding-body"></p>
+    <section class="onboarding-howto" aria-labelledby="onboarding-howto-title">
+      <h4 id="onboarding-howto-title">操作要点</h4>
+      <ol><li id="onboarding-howto-0"></li><li id="onboarding-howto-1"></li><li id="onboarding-howto-2"></li><li id="onboarding-howto-3"></li></ol>
+    </section>
+    <aside class="onboarding-example" aria-labelledby="onboarding-example-title"><h4 id="onboarding-example-title">示例（仅作说明）</h4><p id="onboarding-example"></p></aside>
+    <p id="onboarding-tip" class="onboarding-tip"></p>
+    <section class="onboarding-faq" aria-labelledby="onboarding-faq-title">
+      <h4 id="onboarding-faq-title">常见问题</h4>
+      <details id="onboarding-faq-1"><summary id="onboarding-question-1"></summary><p id="onboarding-answer-1"></p></details>
+      <details id="onboarding-faq-2"><summary id="onboarding-question-2"></summary><p id="onboarding-answer-2"></p></details>
+    </section>
+  </div>
+  <div class="onboarding-actions">
+    <button type="button" class="secondary" id="onboarding-skip">跳过引导</button>
+    <div class="onboarding-navigation"><button type="button" class="secondary" id="onboarding-prev">上一步</button><button type="button" class="primary" id="onboarding-next">下一步</button></div>
+  </div>
+</dialog>
+<div id="toast" class="toast" role="status" hidden></div>
+</body>
+</html>

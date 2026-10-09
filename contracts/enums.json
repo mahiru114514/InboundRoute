@@ -1,0 +1,69 @@
+{
+  "$comment": "InboundRoute 枚举唯一取值域（C2）。任何模块不得自定义枚举值；新增值必须改本文件并升契约版本。",
+  "version": "0.1.0-draft",
+
+  "weekday": {
+    "$comment": "ISO 8601：1=周一 … 7=周日。已冻结（2026-09-25）：PRD 未定义取值域，若不钉死『0 是周日还是周一』，Rule-01 会整体判反。",
+    "type": "integer",
+    "enum": [1, 2, 3, 4, 5, 6, 7],
+    "labels": {"1": "周一/Monday", "2": "周二/Tuesday", "3": "周三/Wednesday", "4": "周四/Thursday", "5": "周五/Friday", "6": "周六/Saturday", "7": "周日/Sunday"}
+  },
+
+  "party_composition": {"type": "string", "enum": ["solo", "couple", "family_kids", "senior"]},
+  "pacing": {"type": "string", "enum": ["relaxed", "balanced", "packed"]},
+  "interest": {"type": "string", "enum": ["modern_skyline", "history_culture", "local_life", "nature"]},
+
+  "day_status": {
+    "$comment": "PRD 缺失，本次新增：用于表达「未装载天数」。",
+    "type": "string",
+    "enum": ["empty", "arrival_only", "partial", "fulfilled", "locked"]
+  },
+
+  "stop_type": {
+    "$comment": "PRD 缺失，本次新增：路线序列需要锚点与 POI 混排。",
+    "type": "string",
+    "enum": ["poi", "hotel", "arrival_anchor", "departure_anchor"]
+  },
+
+  "transit_mode": {"type": "string", "enum": ["transit", "taxi", "walk", "bike"]},
+  "segment_kind": {"type": "string", "enum": ["walk", "ride", "transfer"]},
+  "congestion_level": {"type": "string", "enum": ["unknown", "low", "medium", "high", "severe"]},
+
+  "data_source": {
+    "$comment": "降级必须在数据层可表达（NFR 只说了降级，没说怎么表示）。",
+    "type": "string",
+    "enum": ["amap", "tencent", "baidu", "curated", "manual", "degraded", "mock"]
+  },
+  "degraded_reason": {
+    "type": "string",
+    "enum": ["none", "timeout", "rate_limited", "no_route", "unsupported_city", "offline", "partial_data"]
+  },
+
+  "closure_kind": {
+    "$comment": "PRD 的 closure_days 无法表达这三类中国特有情形。",
+    "type": "string",
+    "enum": ["weekly", "special_period", "maintenance", "holiday_exception_open", "holiday_exception_closed"]
+  },
+
+  "rule_id": {"type": "string", "enum": ["rule_01_closure", "rule_02_lightup", "rule_03_spread", "rule_04_homogeneous"]},
+  "rule_severity": {"type": "string", "enum": ["hard", "soft_warning", "soft_hint"]},
+  "rule_outcome": {"type": "string", "enum": ["pending", "confirmed_proceed", "rejected", "auto_dismissed", "expired_on_reorder"]},
+
+  "notice_channel": {
+    "$comment": "提示承载方式，PRD 里混用了 Toast/Alert/气泡/Banner/卡片标签但没有枚举。",
+    "type": "string",
+    "enum": ["modal_confirm", "toast", "inline_bubble", "list_banner", "card_badge", "pin_badge"]
+  },
+
+  "pin_state": {
+    "$comment": "PRD 只定义了 3 态，缺「已加入当前天但未选中」这一最常见中态。",
+    "type": "string",
+    "enum": ["default", "added_current_day_unselected", "added_other_day", "selected_current_day", "added_conflict_warned"]
+  },
+
+  "ask_card_node": {"type": "string", "enum": ["station_entrance", "transfer", "station_exit", "drop_off", "poi_arrival"]},
+  "dwell_time_kind": {"type": "string", "enum": ["point", "range"]},
+  "coordinate_system": {"type": "string", "enum": ["WGS84", "GCJ-02", "BD-09"]},
+  "currency": {"type": "string", "enum": ["CNY"]},
+  "trip_status": {"type": "string", "enum": ["draft", "confirmed", "in_progress", "completed", "archived"]}
+}

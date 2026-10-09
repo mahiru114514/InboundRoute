@@ -1,0 +1,144 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://inboundroute.local/schemas/station.schema.json",
+  "title": "CuratedStation",
+  "$comment": "PRD 第 2 章架构图列出了「Curated Stations (核心站台库)」，但第 4 章没有实体；而 3.5/3.6/3.7 直接消费其内容（进出站口编号、站台方向、站内换乘步行距离、室内扶梯提示）。本 schema 是该库的最小可用实体。",
+  "type": "object",
+  "required": ["station_id", "names", "lines", "access_points", "provenance"],
+  "additionalProperties": false,
+  "properties": {
+    "station_id": {"type": "string", "pattern": "^[a-z]{2}_stn_[0-9]{4,8}$", "examples": ["sh_stn_00107"]},
+    "names": {
+      "type": "object",
+      "required": ["zh-Hans", "en"],
+      "additionalProperties": false,
+      "properties": {
+        "zh-Hans": {"type": "string", "examples": ["中山公园"]},
+        "zh-Hant": {"type": "string"},
+        "en": {"type": "string", "examples": ["Zhongshan Park"]},
+        "ja": {"type": "string"},
+        "ko": {"type": "string"}
+      }
+    },
+    "romanization": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "pinyin": {"type": "string", "examples": ["zhōng shān gōng yuán"]},
+        "pinyin_plain": {"type": "string", "examples": ["zhongshan gongyuan"]}
+      }
+    },
+    "coordinate": {"$ref": "poi.schema.json#/$defs/point"},
+    "station_group_id": {
+      "type": ["string", "null"],
+      "$comment": "同站不同线（换乘站群）归组，避免把「中山公园 2 号线」与「中山公园 3 号线」当成两个车站。"
+    },
+    "is_transfer_hub": {"type": "boolean", "default": false},
+    "vertical_complexity": {
+      "type": "string",
+      "enum": ["flat", "multi_level", "deep_multi_level"],
+      "default": "flat",
+      "$comment": "对应 1.2 痛点「枢纽站立体高差大」。"
+    },
+    "lines": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["code", "name_en", "name_zh"],
+        "additionalProperties": false,
+        "properties": {
+          "code": {"type": "string", "examples": ["2"]},
+          "name_en": {"type": "string", "examples": ["Line 2 (Green)"]},
+          "name_zh": {"type": "string", "examples": ["2 号线"]},
+          "color_hex": {"type": "string", "pattern": "^#[0-9A-Fa-f]{6}$", "examples": ["#00A650"]},
+          "directions": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["name_en", "name_zh"],
+              "additionalProperties": false,
+              "properties": {
+                "name_en": {"type": "string", "examples": ["Towards Pudong Int'l Airport"]},
+                "name_zh": {"type": "string", "examples": ["往浦东国际机场方向"]},
+                "terminal_station_id": {"type": ["string", "null"]}
+              }
+            },
+            "default": []
+          }
+        }
+      }
+    },
+    "access_points": {
+      "type": "array",
+      "description": "进出站口。这是「Enter via: Entrance 2 (2号口)」的唯一数据来源，三方 API 通常不返回。",
+      "items": {
+        "type": "object",
+        "required": ["access_no", "kind", "name_zh", "name_en"],
+        "additionalProperties": false,
+        "properties": {
+          "access_no": {"type": "string", "examples": ["2", "7", "A"]},
+          "kind": {"type": "string", "enum": ["entrance", "exit", "both"]},
+          "name_zh": {"type": "string", "examples": ["2号口"]},
+          "name_en": {"type": "string", "examples": ["Entrance 2"]},
+          "coordinate": {"$ref": "poi.schema.json#/$defs/point"},
+          "landmark_desc_zh": {"type": "string", "examples": ["南京东路步行街方向"]},
+          "landmark_desc_en": {"type": "string", "examples": ["Towards Nanjing Road Pedestrian Street"]},
+          "is_barrier_free": {"type": ["boolean", "null"]},
+          "has_escalator": {"type": ["boolean", "null"]},
+          "is_open": {"type": ["boolean", "null"], "$comment": "临时关闭的出口；null=未知"}
+        }
+      },
+      "default": []
+    },
+    "interior_transfers": {
+      "type": "array",
+      "description": "站内换乘。支撑「Long Transfer Warning: Walking distance ~320m / 6-8 mins / Take indoor escalators」。",
+      "items": {
+        "type": "object",
+        "required": ["from_line_code", "to_line_code", "walking_distance_meters", "minutes_min", "minutes_max"],
+        "additionalProperties": false,
+        "properties": {
+          "from_line_code": {"type": "string"},
+          "to_line_code": {"type": "string"},
+          "walking_distance_meters": {"type": "integer", "minimum": 0, "examples": [320]},
+          "minutes_min": {"type": "number", "minimum": 0, "examples": [6]},
+          "minutes_max": {"type": "number", "minimum": 0, "examples": [8]},
+          "is_in_station": {"type": "boolean", "default": true},
+          "note_zh": {"type": ["string", "null"], "examples": ["建议走站内扶梯"]},
+          "note_en": {"type": ["string", "null"], "examples": ["Take indoor escalators"]},
+          "vertical_gap_note_zh": {"type": ["string", "null"]},
+          "is_barrier_free": {"type": ["boolean", "null"]}
+        }
+      },
+      "default": []
+    },
+    "coverage": {
+      "type": "object",
+      "$comment": "PRD 未定义覆盖范围；没有它就无法回答「库里没有这个站怎么办」。",
+      "required": ["tier", "completeness"],
+      "additionalProperties": false,
+      "properties": {
+        "tier": {"type": "string", "enum": ["core_hub", "major", "standard"], "default": "standard"},
+        "completeness": {
+          "type": "string",
+          "enum": ["full", "partial", "access_points_only", "none"],
+          "default": "partial",
+          "$comment": "决定前端能展示到哪一层；none 时 3.5 的微观增强整体降级为纯文本。"
+        }
+      },
+      "x-changed": "新增"
+    },
+    "provenance": {
+      "type": "object",
+      "required": ["source", "updated_at"],
+      "additionalProperties": false,
+      "properties": {
+        "source": {"$ref": "enums.json#/data_source"},
+        "updated_at": {"type": "integer"},
+        "reviewed_by": {"type": "string"},
+        "field_verified_at": {"type": "object", "additionalProperties": {"type": "integer"}}
+      }
+    }
+  }
+}

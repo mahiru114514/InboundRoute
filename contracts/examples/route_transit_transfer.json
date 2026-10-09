@@ -1,0 +1,79 @@
+{
+  "$schema_target": "route.schema.json",
+  "$comment": "合法样例：长距离换乘 + 站台库提供的进出站口 + 30% 上浮只存系数（幂等）。",
+  "from": {"type": "poi", "poi_id": "sh_poi_00042", "station_id": null, "name_zh": "外滩", "name_en": "The Bund"},
+  "to": {"type": "poi", "poi_id": "sh_poi_00088", "station_id": null, "name_zh": "上海博物馆", "name_en": "Shanghai Museum"},
+  "mode": "transit",
+  "variants": [
+    {"mode": "transit", "duration_seconds": 2700, "distance_meters": 3200, "cost": {"min": 3, "max": 4, "currency": "CNY"}, "congestion_level": "unknown", "transfer_count": 1, "walking_distance_meters": 950, "estimated_steps": 1357, "highlight": false, "data_source": "amap", "is_default_tab": true},
+    {"mode": "taxi", "duration_seconds": 900, "distance_meters": 3600, "cost": {"min": 22, "max": 28, "currency": "CNY"}, "congestion_level": "low", "transfer_count": 0, "walking_distance_meters": 90, "estimated_steps": 129, "highlight": false, "data_source": "amap", "is_default_tab": false}
+  ],
+  "distance_meters": 3200,
+  "duration_seconds": 2700,
+  "walking_distance_meters": 950,
+  "walking_duration_seconds": 760,
+  "estimated_steps": 1357,
+  "transfer_count": 1,
+  "has_long_transfer": true,
+  "long_transfer_threshold_m": 200,
+  "transfer_overhead": {"applies_to": "walking_segment", "factor": 1.3, "counts_in_timeline": true},
+  "cost": {"min": 3, "max": 4, "currency": "CNY", "display_currency": "CNY"},
+  "congestion_level": "unknown",
+  "segments": [
+    {
+      "kind": "ride",
+      "duration_seconds": 300,
+      "distance_meters": 1800,
+      "line": {"code": "2", "name_en": "Line 2 (Green)", "name_zh": "2 号线", "color_hex": "#00A650"},
+      "direction": {"name_en": "Towards Pudong Int'l Airport", "name_zh": "往浦东国际机场方向", "terminal_station_id": "sh_stn_00002"},
+      "board": {"station_id": "sh_stn_00107", "station_name_zh": "南京东路", "station_name_en": "East Nanjing Rd", "access_no": "2", "access_name_zh": "2号口", "access_name_en": "Entrance 2", "landmark_desc_zh": "南京东路步行街方向", "landmark_desc_en": "Towards Nanjing Road Pedestrian Street", "source": "curated"},
+      "alight": {"station_id": "sh_stn_00214", "station_name_zh": "人民广场", "station_name_en": "People's Square", "access_no": "7", "access_name_zh": "7号口", "access_name_en": "Exit 7", "landmark_desc_zh": "上海博物馆方向", "landmark_desc_en": "Towards Shanghai Museum", "source": "curated"},
+      "stops": 2,
+      "transfer": null,
+      "walk_note_en": null,
+      "walk_note_zh": null
+    },
+    {
+      "kind": "transfer",
+      "duration_seconds": 390,
+      "distance_meters": 280,
+      "transfer": {"walking_distance_meters": 280, "duration_min_minutes": 5, "duration_max_minutes": 7, "is_in_station": true, "note_en": "Take indoor escalators", "note_zh": "建议走站内扶梯", "vertical_gap_note_zh": "站厅到站台高差较大", "is_barrier_free": true, "source": "curated"},
+      "line": null,
+      "direction": null,
+      "board": null,
+      "alight": null,
+      "stops": null,
+      "walk_note_en": null,
+      "walk_note_zh": null
+    },
+    {
+      "kind": "walk",
+      "duration_seconds": 600,
+      "distance_meters": 700,
+      "line": null,
+      "direction": null,
+      "board": null,
+      "alight": null,
+      "stops": null,
+      "transfer": null,
+      "walk_note_en": "Walk 700m to the museum entrance.",
+      "walk_note_zh": "步行 700 米至博物馆入口。"
+    }
+  ],
+  "drop_off": {
+    "point": {"lat": 31.2415, "lng": 121.4875, "crs": "WGS84", "precision_m": 25},
+    "desc_zh": "北京东路圆明园路口",
+    "desc_en": "Intersection of Beijing East Rd & Yuanmingyuan Rd",
+    "source": "curated",
+    "selected_from": "curated"
+  },
+  "last_mile_walk_meters": 700,
+  "polyline": null,
+  "crs": "WGS84",
+  "cache": {"key": "wtw3sm1:wtw3skp:transit:202610131100", "ttl_seconds": 1800, "hit": false},
+  "data_source": "amap",
+  "degraded_reason": "none",
+  "degraded_notice_key": null,
+  "partial": false,
+  "fetched_at": 1791819600
+}

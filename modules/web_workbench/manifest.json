@@ -1,0 +1,15 @@
+{
+  "id": "web_workbench",
+  "name": "行程工作台",
+  "version": "0.1.0",
+  "description": "InboundRoute 前端工作台：初始化看板、地图选点、时序编排与三模态对比卡。唯一可以代表用户调用其他引擎的模块。",
+  "dependencies": ["trip_engine"],
+  "service": {
+    "enabled": true,
+    "health_path": "/health",
+    "open_path": "/",
+    "title": "行程工作台（软件主界面）",
+    "optional_dependencies": ["rules_engine", "route_adapter", "offline_kit", "recommendation_engine"],
+    "notes": "rules_engine / route_adapter / offline_kit 未接入时界面降级展示（顶部引擎状态条会标出），因此只把 trip_engine 作为硬依赖。"
+  }
+}

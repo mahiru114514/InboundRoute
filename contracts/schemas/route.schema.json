@@ -1,0 +1,191 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://inboundroute.local/schemas/route.schema.json",
+  "title": "RouteSegment",
+  "$comment": "C5 Route Adapter 归一化契约。PRD 4.2 的 transit_from_previous 只有 5 个标量，导致「≤3km 高亮」「步行总长」「消耗步数」「换乘≥200m」全部无数据来源。本 schema 是 Adapter 的唯一输出格式。",
+  "type": "object",
+  "required": ["from", "to", "mode", "distance_meters", "duration_seconds", "data_source", "degraded_reason", "fetched_at"],
+  "additionalProperties": false,
+  "properties": {
+    "from": {"$ref": "#/$defs/endpoint"},
+    "to": {"$ref": "#/$defs/endpoint"},
+    "mode": {"$ref": "enums.json#/transit_mode"},
+    "variants": {
+      "type": "array",
+      "$comment": "3.4 要求「同时展示三组」——三模态统一放在 variants 里，避免客户端为每种模式各写一套结构。",
+      "items": {"$ref": "#/$defs/variant"},
+      "default": []
+    },
+    "distance_meters": {"type": ["integer", "null"], "minimum": 0, "$comment": "3.4「距离 ≤3km 高亮」的判定依据，PRD 缺失。", "x-changed": "新增"},
+    "duration_seconds": {"type": ["integer", "null"], "minimum": 0},
+    "walking_distance_meters": {"type": ["integer", "null"], "minimum": 0, "x-changed": "新增（3.4「步行总长」）"},
+    "walking_duration_seconds": {"type": ["integer", "null"], "minimum": 0, "x-changed": "新增"},
+    "estimated_steps": {"type": ["integer", "null"], "minimum": 0, "x-changed": "新增（3.4「注明消耗步数」，按 mappings.json/step_estimation 的步长假设）"},
+    "transfer_count": {"type": ["integer", "null"], "minimum": 0},
+    "has_long_transfer": {"type": "boolean", "default": false, "$comment": "派生布尔，保留原始值以便展示 「~X meters」。"},
+    "long_transfer_threshold_m": {"type": "integer", "default": 200},
+    "transfer_overhead": {
+      "type": ["object", "null"],
+      "$comment": "3.5 的「基础步行耗时上浮 30%」：只存系数不存改写后的值，保证多次重算幂等。",
+      "additionalProperties": false,
+      "required": ["applies_to", "factor"],
+      "properties": {
+        "applies_to": {"type": "string", "enum": ["walking_segment", "whole_transit", "none"], "default": "walking_segment"},
+        "factor": {"type": "number", "minimum": 1.0, "maximum": 2.0, "default": 1.3},
+        "counts_in_timeline": {"type": "boolean", "default": true, "$comment": "是否计入时序推演；PRD 未定义会导致两套时间。"}
+      },
+      "default": null,
+      "x-changed": "新增（幂等要求：用原值+系数，不改写值）"
+    },
+    "cost": {
+      "type": ["object", "null"],
+      "required": ["min", "max", "currency"],
+      "additionalProperties": false,
+      "properties": {
+        "min": {"type": "number", "minimum": 0},
+        "max": {"type": "number", "minimum": 0},
+        "currency": {"$ref": "enums.json#/currency", "default": "CNY"},
+        "display_currency": {"type": "string", "default": "CNY", "$comment": "海外用户展示币种，换算口径见 mappings.json/currency_display"}
+      },
+      "x-changed": "cost_cny 单值 → 区间（3.4 要求「预估费用区间」）"
+    },
+    "congestion_level": {"$ref": "enums.json#/congestion_level", "default": "unknown", "x-changed": "新增（3.4 打车卡要求）"},
+    "segments": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/segment"},
+      "default": [],
+      "$comment": "3.5 微观解析：进站→途中→换乘→出站→最后 300m。"
+    },
+    "drop_off": {
+      "type": ["object", "null"],
+      "$comment": "3.5 打车下客点纠偏结果。source 用于区分「人工录入」与「三方推荐」。",
+      "required": ["point", "desc_zh", "desc_en", "source"],
+      "additionalProperties": false,
+      "properties": {
+        "point": {"$ref": "poi.schema.json#/$defs/point"},
+        "desc_zh": {"type": "string"},
+        "desc_en": {"type": "string"},
+        "source": {"$ref": "enums.json#/data_source"},
+        "selected_from": {"type": "string", "enum": ["curated", "api", "poi_center_fallback"], "default": "curated"}
+      },
+      "default": null
+    },
+    "last_mile_walk_meters": {"type": ["integer", "null"], "minimum": 0, "x-changed": "新增（3.5「步行段最后 300m」）"},
+    "polyline": {"type": ["string", "null"], "$comment": "lng,lat;lng,lat 格式折线；坐标系由 crs 声明。不完整轨迹为 null。"},
+    "crs": {"$ref": "enums.json#/coordinate_system", "default": "WGS84"},
+    "cache": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "key": {"type": "string", "$comment": "建议 geohash7:geohash7:mode，见 mappings.json/cache_keys"},
+        "ttl_seconds": {"type": "integer", "default": 1800},
+        "hit": {"type": "boolean", "default": false}
+      }
+    },
+    "data_source": {"$ref": "enums.json#/data_source"},
+    "degraded_reason": {"$ref": "enums.json#/degraded_reason"},
+    "degraded_notice_key": {"type": ["string", "null"], "default": null, "$comment": "降级文案键；直线粗算时为 'degraded.direct_orientation'"},
+    "partial": {"type": "boolean", "default": false, "$comment": "部分成功语义：哪些字段为 null 必须能被前端识别"},
+    "fetched_at": {"type": "integer", "description": "UTC 秒"}
+  },
+  "$defs": {
+    "endpoint": {
+      "type": "object",
+      "required": ["type"],
+      "additionalProperties": false,
+      "properties": {
+        "type": {"$ref": "enums.json#/stop_type"},
+        "stop_id": {"type": "string", "description": "实际停靠点稳定标识；每日隐式起终点可省略"},
+        "stop_id": {"type": "string", "description": "实际停靠点稳定标识；每日隐式起终点可省略"},
+        "poi_id": {"type": ["string", "null"]},
+        "station_id": {"type": ["string", "null"]},
+        "name_zh": {"type": ["string", "null"]},
+        "name_en": {"type": ["string", "null"]}
+      }
+    },
+    "variant": {
+      "type": "object",
+      "required": ["mode", "duration_seconds", "data_source"],
+      "additionalProperties": false,
+      "properties": {
+        "mode": {"$ref": "enums.json#/transit_mode"},
+        "duration_seconds": {"type": ["integer", "null"]},
+        "distance_meters": {"type": ["integer", "null"]},
+        "cost": {"type": ["object", "null"]},
+        "congestion_level": {"$ref": "enums.json#/congestion_level"},
+        "transfer_count": {"type": ["integer", "null"]},
+        "walking_distance_meters": {"type": ["integer", "null"]},
+        "estimated_steps": {"type": ["integer", "null"]},
+        "highlight": {"type": "boolean", "default": false, "$comment": "步行/骑行 ≤3km 时由服务端置位"},
+        "data_source": {"$ref": "enums.json#/data_source"},
+        "is_default_tab": {"type": "boolean", "default": false, "$comment": "prefer_taxi 为 true 时打车置位"}
+      }
+    },
+    "segment": {
+      "type": "object",
+      "required": ["kind", "duration_seconds"],
+      "additionalProperties": false,
+      "properties": {
+        "kind": {"$ref": "enums.json#/segment_kind"},
+        "duration_seconds": {"type": "integer", "minimum": 0},
+        "distance_meters": {"type": ["integer", "null"]},
+        "line": {
+          "type": ["object", "null"],
+          "additionalProperties": false,
+          "properties": {
+            "code": {"type": "string", "examples": ["2"]},
+            "name_en": {"type": "string", "examples": ["Line 2 (Green)"]},
+            "name_zh": {"type": "string", "examples": ["2 号线"]},
+            "color_hex": {"type": "string", "pattern": "^#[0-9A-Fa-f]{6}$", "examples": ["#00A650"]}
+          }
+        },
+        "direction": {
+          "type": ["object", "null"],
+          "additionalProperties": false,
+          "properties": {
+            "name_en": {"type": "string", "examples": ["Towards Pudong Int'l Airport"]},
+            "name_zh": {"type": "string", "examples": ["往浦东国际机场方向"]},
+            "terminal_station_id": {"type": ["string", "null"]}
+          }
+        },
+        "board": {"$ref": "#/$defs/access_point"},
+        "alight": {"$ref": "#/$defs/access_point"},
+        "stops": {"type": ["integer", "null"], "minimum": 0},
+        "transfer": {
+          "type": ["object", "null"],
+          "$comment": "仅 kind=transfer 时有值；source 决定前端是否可展示「2号口」这类人工数据。",
+          "required": ["walking_distance_meters", "source"],
+          "additionalProperties": false,
+          "properties": {
+            "walking_distance_meters": {"type": ["integer", "null"]},
+            "duration_min_minutes": {"type": ["number", "null"]},
+            "duration_max_minutes": {"type": ["number", "null"]},
+            "is_in_station": {"type": "boolean", "default": true},
+            "note_en": {"type": ["string", "null"], "examples": ["Take indoor escalators"]},
+            "note_zh": {"type": ["string", "null"], "examples": ["建议走站内扶梯"]},
+            "vertical_gap_note_zh": {"type": ["string", "null"], "$comment": "枢纽立体高差提示（1.2 痛点之一）"},
+            "is_barrier_free": {"type": ["boolean", "null"]},
+            "source": {"$ref": "enums.json#/data_source"}
+          }
+        },
+        "walk_note_en": {"type": ["string", "null"], "examples": ["Walk 350m East along the pedestrian mall to reach The Bund."]},
+        "walk_note_zh": {"type": ["string", "null"]}
+      }
+    },
+    "access_point": {
+      "type": ["object", "null"],
+      "additionalProperties": false,
+      "properties": {
+        "station_id": {"type": ["string", "null"]},
+        "station_name_zh": {"type": ["string", "null"], "examples": ["南京东路"]},
+        "station_name_en": {"type": ["string", "null"], "examples": ["East Nanjing Rd"]},
+        "access_no": {"type": ["string", "null"], "examples": ["2", "7"]},
+        "access_name_zh": {"type": ["string", "null"], "examples": ["2号口"]},
+        "access_name_en": {"type": ["string", "null"], "examples": ["Entrance 2"]},
+        "landmark_desc_zh": {"type": ["string", "null"], "examples": ["南京东路步行街方向"]},
+        "landmark_desc_en": {"type": ["string", "null"]},
+        "source": {"$ref": "enums.json#/data_source", "$comment": "curated=站台库；api=三方；缺失时前端隐藏该行而非显示占位"}
+      }
+    }
+  }
+}

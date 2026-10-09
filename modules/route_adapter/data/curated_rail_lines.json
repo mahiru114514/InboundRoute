@@ -1,0 +1,13 @@
+{
+  "source": "official_name_reference",
+  "note": "上海轨道交通/市域线路的官方英文译名，仅供高德线路名（只给中文）派生英文显示名。数字线路（如「2号线」「闵行18路」）由编号规则直译，不查本表；本表只补无编号的具名线路。查不到时保持中文原文，不做机器翻译。新增线路需人工核录官方英文名。",
+  "lines": {
+    "市域机场线": "Airport Link Line",
+    "机场联络线": "Airport Link Line",
+    "磁浮线": "Maglev Line",
+    "磁悬浮线": "Maglev Line",
+    "浦江线": "Pujiang Line",
+    "金山铁路": "Jinshan Railway",
+    "张江有轨电车": "Zhangjiang Tram"
+  }
+}
