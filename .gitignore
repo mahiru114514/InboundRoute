@@ -15,3 +15,14 @@ server.*.log
 /docs/验收截图/
 /docs/language-content-preview/
 /docs/onboarding-preview/
+
+# 本机开发记录不发布到体验仓库，仅保留使用指南。
+/InboundRoute_*.md
+/docs/*
+!/docs/推荐行程使用说明.md
+!/docs/高德地图接入指引.md
+/modules/route_adapter/docs/
+/contracts/CHANGELOG.md
+/contracts/DECISIONS.md
+/contracts/RULE_TEST_CASES.md
+/contracts/devdocs/
