@@ -1,4 +1,4 @@
-# IboundRoute · 体验版
+# InboundRoute · 体验版
 
 在自己的电脑上规划上海行程：选择景点、安排每天的路线和住宿、查看参考费用，并下载可以离线打开的多语言问路卡。界面支持简体中文、English、日本語和한국어。
 
@@ -6,7 +6,7 @@
 
 需要 Python 3.10 或更新版本，无需安装第三方 Python 包。Windows 安装 Python 时请勾选 **Add python.exe to PATH**。
 
-1. 点击 [下载体验版 ZIP](https://github.com/mahiru114514/IboundRoute/archive/refs/heads/main.zip)，或在仓库上方选择 **Code → Download ZIP**。
+1. 点击 [下载体验版 ZIP](https://github.com/mahiru114514/InboundRoute/archive/refs/heads/main.zip)，或在仓库上方选择 **Code → Download ZIP**。
 2. 解压到本地文件夹，找到 `start_software.bat`。
 3. 双击 `start_software.bat`。首次启动出现“要启用并启动全部模块吗？”时，输入 `y` 并回车。
 4. 等待浏览器打开行程工作台，按照首次显示的使用引导操作。运行期间保持启动窗口打开。
@@ -45,4 +45,4 @@ macOS、Linux 也可使用上面的命令；如果系统的 Python 命令是 `py
 - **地图没有显示或在线路线失败**：检查自己的地图 Key、网络及配置；参照上面的地图接入指引。
 - **保存的行程在哪里**：程序保存在本地 `data/` 中，配置在 `config/` 中。更新版本时请保留这两个文件夹；分享程序时可删除自己的数据和配置。
 
-遇到问题可在 [Issues](https://github.com/mahiru114514/IboundRoute/issues) 反馈，说明操作步骤和报错文字。截图前请遮住个人行程与地图密钥。
+遇到问题可在 [Issues](https://github.com/mahiru114514/InboundRoute/issues) 反馈，说明操作步骤和报错文字。截图前请遮住个人行程与地图密钥。
