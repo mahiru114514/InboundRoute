@@ -21,6 +21,7 @@ server.*.log
 /docs/*
 !/docs/推荐行程使用说明.md
 !/docs/高德地图接入指引.md
+!/docs/高德API配置教程.md
 /modules/route_adapter/docs/
 /contracts/CHANGELOG.md
 /contracts/DECISIONS.md
